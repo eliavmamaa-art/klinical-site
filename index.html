@@ -8,7 +8,8 @@
   <meta property="og:title" content="קליניקל — ניהול קליניקה חכם" />
   <meta property="og:description" content="תזכורות ואישורי הגעה אוטומטיים בוואטסאפ, סיכומי טיפול וניהול קליניקה — במקום אחד." />
   <meta property="og:type" content="website" />
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='24' fill='%2312756B'/%3E%3Cpath d='M28 52l14 14 30-32' fill='none' stroke='%23FAF7F2' stroke-width='9' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E" />
+  <link rel="icon" type="image/png" href="logo.png" />
+  <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800;900&display=swap" rel="stylesheet" />
@@ -32,6 +33,9 @@
     .brand{display:flex;align-items:center;gap:12px}
     .mark{width:40px;height:40px;border-radius:11px;background:var(--teal);display:grid;place-items:center;flex:0 0 auto;box-shadow:var(--shadow)}
     .mark svg{width:24px;height:24px}
+    .mark{overflow:hidden}
+    .mark img,.app-side .logo .d img{width:100%;height:100%;object-fit:cover;display:block}
+    .app-side .logo .d{overflow:hidden}
     .brand-name{font-weight:800;font-size:24px;letter-spacing:-.5px}
     .nav-links{display:flex;align-items:center;gap:26px}
     .nav-links a{text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink);opacity:.8;transition:.2s}
@@ -208,7 +212,7 @@
     <div class="wrap">
       <nav>
         <div class="brand">
-          <div class="mark"><svg viewBox="0 0 100 100"><path d="M28 52l14 14 30-32" fill="none" stroke="#FAF7F2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="mark"><img src="logo.png" alt="קליניקל" /></div>
           <div class="brand-name">קליניקל</div>
         </div>
         <div class="nav-links">
@@ -235,7 +239,7 @@
 
       <div class="demo" aria-hidden="true">
         <div class="demo-top">
-          <div class="mark"><svg viewBox="0 0 100 100"><path d="M28 52l14 14 30-32" fill="none" stroke="#fff" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="mark"><img src="logo.png" alt="קליניקל" /></div>
           <div><b>קליניקל</b><small>הודעה עסקית</small></div>
         </div>
         <div class="demo-body">
@@ -299,7 +303,7 @@
         <div class="browser-bar"><i></i><i></i><i></i><div class="url">app.klinical.co.il</div></div>
         <div class="app">
           <aside class="app-side">
-            <div class="logo"><div class="d"><svg viewBox="0 0 100 100" width="16" height="16"><path d="M28 52l14 14 30-32" fill="none" stroke="#fff" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/></svg></div> קליניקל</div>
+            <div class="logo"><div class="d"><img src="logo.png" alt="קליניקל" /></div> קליניקל</div>
             <nav class="app-nav">
               <a class="on"><span class="dot"></span> יומן</a>
               <a><span class="dot"></span> מטופלים</a>
@@ -457,7 +461,7 @@
     <div class="wrap">
       <div class="foot-top">
         <div class="brand">
-          <div class="mark" style="width:34px;height:34px;border-radius:9px"><svg viewBox="0 0 100 100"><path d="M28 52l14 14 30-32" fill="none" stroke="#FAF7F2" stroke-width="9" stroke-linecap="round" stroke-linejoin="round"/></svg></div>
+          <div class="mark" style="width:34px;height:34px;border-radius:9px"><img src="logo.png" alt="קליניקל" /></div>
           <div class="brand-name" style="font-size:20px">קליניקל</div>
         </div>
         <div class="foot-links">
