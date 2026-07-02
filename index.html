@@ -146,7 +146,6 @@
     .appt.new{border-right-color:#d97706}
     .appt.ret{border-right-color:#059669}
     .appt .who{display:flex;align-items:center;gap:9px;min-width:0}
-    .appt .ava{width:30px;height:30px;border-radius:50%;background:var(--accsoft);color:var(--acc);display:grid;place-items:center;font-size:11.5px;font-weight:700;flex:0 0 auto}
     .appt .nm{font-size:13.5px;font-weight:600;white-space:nowrap}
     .appt .nm .tm{color:var(--muted);font-weight:500;font-size:11px;direction:ltr;display:inline-block;margin-right:4px}
     .appt .ty{font-size:11.5px;color:var(--muted)}
@@ -344,13 +343,13 @@
             <div class="rooms">
               <div class="room">
                 <div class="room-h r1">🔵 חדר 1</div>
-                <div class="appt"><div class="who"><div class="ava">ד.כ</div><div><div class="nm">דנה כהן <span class="tm">09:00</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span><span class="pay">🧾 קבלה</span></div></div>
-                <div class="appt new"><div class="who"><div class="ava">ר.א</div><div><div class="nm">רונית אברהם <span class="tm">12:00</span></div><div class="ty">מטופלת חדשה</div></div></div><div class="badges"></div></div>
+                <div class="appt"><div class="who"><div><div class="nm">דנה כהן <span class="tm">09:00</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span><span class="pay">🧾 קבלה</span></div></div>
+                <div class="appt new"><div class="who"><div><div class="nm">רונית אברהם <span class="tm">12:00</span></div><div class="ty">מטופלת חדשה</div></div></div><div class="badges"></div></div>
               </div>
               <div class="room">
                 <div class="room-h r2">🟣 חדר 2</div>
-                <div class="appt"><div class="who"><div class="ava">י.ל</div><div><div class="nm">יוסי לוי <span class="tm">10:30</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישר הגעה</span><span class="pay">💵 שולם</span></div></div>
-                <div class="appt ret"><div class="who"><div class="ava">מ.ש</div><div><div class="nm">מיכל שרון <span class="tm">14:00</span></div><div class="ty">טיפול ראשון</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span></div></div>
+                <div class="appt"><div class="who"><div><div class="nm">יוסי לוי <span class="tm">10:30</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישר הגעה</span><span class="pay">💵 שולם</span></div></div>
+                <div class="appt ret"><div class="who"><div><div class="nm">מיכל שרון <span class="tm">14:00</span></div><div class="ty">טיפול ראשון</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span></div></div>
               </div>
             </div>
             <div class="legend"><span><i style="background:#d97706"></i> מטופל חדש</span><span><i style="background:#059669"></i> טיפול ראשון — חזר</span><span><i class="lg-fu"></i> פגישת המשך</span></div>
@@ -474,17 +473,6 @@
           <div class="field"><label>שם מלא *</label><input type="text" id="f-name" required placeholder="שם פרטי ומשפחה" /></div>
           <div class="field"><label>טלפון *</label><input type="tel" id="f-phone" required placeholder="050-0000000" /></div>
           <div class="field"><label>אימייל</label><input type="email" id="f-email" placeholder="you@example.com" /></div>
-          <div class="field"><label>תחום עיסוק *</label>
-            <select id="f-field" required>
-              <option value="">בחרו תחום…</option>
-              <option>רפואה סינית / יפנית</option>
-              <option>דיקור</option>
-              <option>נטורופתיה</option>
-              <option>עיסוי / פיזיותרפיה</option>
-              <option>פסיכותרפיה / רגשי</option>
-              <option>אחר</option>
-            </select>
-          </div>
           <button type="submit">לפנייה מהירה</button>
         </form>
       </div>
@@ -520,9 +508,8 @@
       var form=e.target,btn=form.querySelector('button');
       var n=document.getElementById('f-name').value.trim(),
           p=document.getElementById('f-phone').value.trim(),
-          m=document.getElementById('f-email').value.trim(),
-          f=document.getElementById('f-field').value;
-      var msg='תחום עיסוק: '+f+(m?' · אימייל: '+m:'');
+          m=document.getElementById('f-email').value.trim();
+      var msg=m?'אימייל: '+m:'';
       btn.disabled=true;btn.textContent='שולח…';
       fetch(LEAD_API,{
         method:'POST',
@@ -535,7 +522,7 @@
         form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'! 🌿</h3><p style="color:var(--muted);font-size:15.5px">קיבלנו את הפנייה — נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
       }).catch(function(){
         btn.disabled=false;btn.textContent='לפנייה מהירה';
-        var body='שם: '+encodeURIComponent(n)+'%0Aטלפון: '+encodeURIComponent(p)+'%0Aאימייל: '+encodeURIComponent(m)+'%0Aתחום: '+encodeURIComponent(f);
+        var body='שם: '+encodeURIComponent(n)+'%0Aטלפון: '+encodeURIComponent(p)+'%0Aאימייל: '+encodeURIComponent(m);
         window.location.href='mailto:hello@klinical.co.il?subject='+encodeURIComponent('פנייה חדשה מהאתר — '+n)+'&body='+body;
       });
       return false;
