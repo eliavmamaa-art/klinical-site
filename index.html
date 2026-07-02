@@ -9,6 +9,10 @@
   <meta property="og:title" content="קליניקל — ניהול קליניקה חכם" />
   <meta property="og:description" content="תזכורות ואישורי הגעה אוטומטיים בוואטסאפ, סיכומי טיפול וניהול קליניקה — במקום אחד." />
   <meta property="og:type" content="website" />
+  <meta property="og:url" content="https://klinical.co.il/" />
+  <meta property="og:image" content="https://klinical.co.il/logo.png" />
+  <meta property="og:locale" content="he_IL" />
+  <link rel="canonical" href="https://klinical.co.il/" />
   <link rel="icon" type="image/png" href="logo.png" />
   <link rel="apple-touch-icon" href="apple-touch-icon.png" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -70,6 +74,13 @@
     .bubble.me{align-self:flex-start;background:#DCF6D8;border-top-right-radius:14px;border-top-left-radius:4px}
     .reply-btns{display:flex;gap:8px}
     .reply-btns span{flex:1;text-align:center;background:#fff;color:var(--teal);font-weight:600;font-size:13.5px;padding:9px;border-radius:10px;border:1px solid var(--line)}
+    .demo-body>*{opacity:0;animation:chatIn .45s ease forwards}
+    .demo-body>*:nth-child(1){animation-delay:.4s}
+    .demo-body>*:nth-child(2){animation-delay:1.2s}
+    .demo-body>*:nth-child(3){animation-delay:2s}
+    .demo-body>*:nth-child(4){animation-delay:2.8s}
+    @keyframes chatIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
+    @media(prefers-reduced-motion:reduce){.demo-body>*{animation:none;opacity:1}}
 
     /* Sections */
     section{padding:66px 0}
@@ -113,27 +124,39 @@
     .browser-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F1ECE3;border-bottom:1px solid var(--line)}
     .browser-bar i{width:11px;height:11px;border-radius:50%;background:#d9cfc0;display:block}
     .browser-bar .url{margin-right:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 14px;font-size:12.5px;color:var(--muted);flex:1;max-width:280px;text-align:center;direction:ltr}
+    .browser{--side:var(--teal-dark);--appbg:#FBFAF7;--acc:var(--teal);--accsoft:var(--teal-soft);--r2:#D98C4A;--cardline:var(--line)}
+    .browser.skin-real{--side:#0f2742;--appbg:#faf8f4;--acc:#1e3a5f;--accsoft:#e8edf3;--r2:#b83a2d;--cardline:#e5e0d5}
     .app{display:grid;grid-template-columns:186px 1fr;min-height:380px}
-    .app-side{background:var(--teal-dark);color:#fff;padding:18px 14px}
+    .app-side{background:var(--side);color:#fff;padding:18px 14px}
     .app-side .logo{display:flex;align-items:center;gap:9px;font-weight:800;margin-bottom:24px;font-size:16px}
     .app-side .logo .d{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.16);display:grid;place-items:center}
-    .app-nav a{display:flex;align-items:center;gap:11px;padding:10px 11px;border-radius:9px;font-size:14px;color:rgba(255,255,255,.82);margin-bottom:3px;text-decoration:none}
+    .app-nav{display:block;padding:0}
+    .app-nav a{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:9px;font-size:13.5px;color:rgba(255,255,255,.82);margin-bottom:3px;text-decoration:none}
     .app-nav a.on{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
-    .app-nav a .dot{width:7px;height:7px;border-radius:50%;background:currentColor;opacity:.75}
-    .app-main{padding:20px 22px;background:#FBFAF7}
-    .app-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;flex-wrap:wrap;gap:8px}
+    .app-nav a .ni{font-size:13px;flex:0 0 auto}
+    .app-main{padding:20px 22px;background:var(--appbg)}
+    .app-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
     .app-h b{font-size:16.5px}
-    .app-h .chip{background:var(--teal-soft);color:var(--teal-dark);font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px}
-    .slot{display:flex;gap:12px;margin-bottom:10px}
-    .slot .time{width:44px;color:var(--muted);font-size:12.5px;padding-top:13px;direction:ltr;text-align:left}
-    .appt{flex:1;background:#fff;border:1px solid var(--line);border-right:3px solid var(--teal);border-radius:10px;padding:10px 13px;display:flex;justify-content:space-between;align-items:center;gap:10px}
-    .appt .who{display:flex;align-items:center;gap:10px}
-    .appt .ava{width:30px;height:30px;border-radius:50%;background:var(--teal-soft);color:var(--teal-dark);display:grid;place-items:center;font-size:11.5px;font-weight:700;flex:0 0 auto}
-    .appt .nm{font-size:14px;font-weight:600}
-    .appt .ty{font-size:12px;color:var(--muted)}
-    .appt .ok{background:#E4F6E4;color:#1a7a3a;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
-    .appt .wait{background:#FBF0E0;color:#9a6a1e;font-size:11.5px;font-weight:700;padding:4px 10px;border-radius:999px;white-space:nowrap}
-    @media(max-width:620px){.app{grid-template-columns:1fr}.app-side{display:none}}
+    .app-h .chip{background:var(--accsoft);color:var(--acc);font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px}
+    .rooms{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
+    .room-h{font-size:13px;font-weight:700;margin-bottom:9px;padding-bottom:7px;border-bottom:2px solid var(--cardline)}
+    .room-h.r1{color:var(--acc);border-color:var(--acc)}
+    .room-h.r2{color:var(--r2);border-color:var(--r2)}
+    .appt{background:#fff;border:1px solid var(--cardline);border-right:4px solid var(--acc);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
+    .appt.new{border-right-color:#d97706}
+    .appt.ret{border-right-color:#059669}
+    .appt .who{display:flex;align-items:center;gap:9px;min-width:0}
+    .appt .ava{width:30px;height:30px;border-radius:50%;background:var(--accsoft);color:var(--acc);display:grid;place-items:center;font-size:11.5px;font-weight:700;flex:0 0 auto}
+    .appt .nm{font-size:13.5px;font-weight:600;white-space:nowrap}
+    .appt .nm .tm{color:var(--muted);font-weight:500;font-size:11px;direction:ltr;display:inline-block;margin-right:4px}
+    .appt .ty{font-size:11.5px;color:var(--muted)}
+    .badges{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex:0 0 auto}
+    .appt .ok{background:#E4F6E4;color:#1a7a3a;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+    .appt .pay{background:var(--accsoft);color:var(--acc);font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
+    .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
+    .legend i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-left:5px}
+    .legend .lg-fu{background:var(--acc)}
+    @media(max-width:620px){.app{grid-template-columns:1fr}.app-side{display:none}.rooms{grid-template-columns:1fr}}
 
     /* FAQ */
     .faq{max-width:770px;margin:0 auto}
@@ -247,7 +270,7 @@
         </div>
         <div class="demo-body">
           <div class="bubble">שלום דנה 🌿<br>מזכירים לך את התור מחר, יום שלישי בשעה 14:00, בקליניקה.<br>נגיע?</div>
-          <div class="reply-btns"><span>✅ מאשרת הגעה</span><span>לא אוכל</span></div>
+          <div class="reply-btns"><span>✅ מאשרת הגעה</span></div>
           <div class="bubble me">✅ מאשרת הגעה</div>
           <div class="bubble">מעולה, נתראה מחר 🌿</div>
         </div>
@@ -302,25 +325,35 @@
         <h2>הכול במסך אחד, ברור ופשוט</h2>
         <p>יומן, מטופלים ואישורי הגעה — נגיש מהמחשב ומהנייד</p>
       </div>
-      <div class="browser">
+      <div class="browser skin-real">
         <div class="browser-bar"><i></i><i></i><i></i><div class="url">app.klinical.co.il</div></div>
         <div class="app">
           <aside class="app-side">
             <div class="logo"><div class="d"><img src="logo.png" alt="קליניקל" /></div> קליניקל</div>
             <nav class="app-nav">
-              <a class="on"><span class="dot"></span> יומן</a>
-              <a><span class="dot"></span> מטופלים</a>
-              <a><span class="dot"></span> תזכורות</a>
-              <a><span class="dot"></span> חשבוניות</a>
-              <a><span class="dot"></span> דוחות</a>
+              <a><span class="ni">🏠</span> לוח בקרה</a>
+              <a class="on"><span class="ni">📅</span> יומן</a>
+              <a><span class="ni">📥</span> לידים</a>
+              <a><span class="ni">👤</span> מטופלים</a>
+              <a><span class="ni">📤</span> הודעות לשליחה</a>
+              <a><span class="ni">📚</span> מאגר ידע</a>
             </nav>
           </aside>
           <main class="app-main">
-            <div class="app-h"><b>היומן שלי · יום שלישי, 14.7</b><span class="chip">4 תורים מחר</span></div>
-            <div class="slot"><div class="time">09:00</div><div class="appt"><div class="who"><div class="ava">ד.כ</div><div><div class="nm">דנה כהן</div><div class="ty">דיקור · חדר 1</div></div></div><div class="ok">✓ אישרה הגעה</div></div></div>
-            <div class="slot"><div class="time">10:30</div><div class="appt"><div class="who"><div class="ava">י.ל</div><div><div class="nm">יוסי לוי</div><div class="ty">רפואה סינית · חדר 2</div></div></div><div class="ok">✓ אישר הגעה</div></div></div>
-            <div class="slot"><div class="time">12:00</div><div class="appt"><div class="who"><div class="ava">ר.א</div><div><div class="nm">רונית אברהם</div><div class="ty">מעקב · חדר 1</div></div></div><div class="wait">⏳ ממתין לאישור</div></div></div>
-            <div class="slot"><div class="time">14:00</div><div class="appt"><div class="who"><div class="ava">מ.ש</div><div><div class="nm">מיכל שרון</div><div class="ty">טיפול ראשון · חדר 2</div></div></div><div class="ok">✓ אישרה הגעה</div></div></div>
+            <div class="app-h"><b>היומן שלי · יום שלישי, 14.7</b><span class="chip">4 תורים · 3 אישרו הגעה</span></div>
+            <div class="rooms">
+              <div class="room">
+                <div class="room-h r1">🔵 חדר 1</div>
+                <div class="appt"><div class="who"><div class="ava">ד.כ</div><div><div class="nm">דנה כהן <span class="tm">09:00</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span><span class="pay">🧾 קבלה</span></div></div>
+                <div class="appt new"><div class="who"><div class="ava">ר.א</div><div><div class="nm">רונית אברהם <span class="tm">12:00</span></div><div class="ty">מטופלת חדשה</div></div></div><div class="badges"></div></div>
+              </div>
+              <div class="room">
+                <div class="room-h r2">🟣 חדר 2</div>
+                <div class="appt"><div class="who"><div class="ava">י.ל</div><div><div class="nm">יוסי לוי <span class="tm">10:30</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישר הגעה</span><span class="pay">💵 שולם</span></div></div>
+                <div class="appt ret"><div class="who"><div class="ava">מ.ש</div><div><div class="nm">מיכל שרון <span class="tm">14:00</span></div><div class="ty">טיפול ראשון</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span></div></div>
+              </div>
+            </div>
+            <div class="legend"><span><i style="background:#d97706"></i> מטופל חדש</span><span><i style="background:#059669"></i> טיפול ראשון — חזר</span><span><i class="lg-fu"></i> פגישת המשך</span></div>
           </main>
         </div>
       </div>
@@ -481,16 +514,33 @@
   </footer>
 
   <script>
+    var LEAD_API='https://clinic-app-eta.vercel.app/api/landing-submit';
     function sendLead(e){
       e.preventDefault();
-      var n=document.getElementById('f-name').value,
-          p=document.getElementById('f-phone').value,
-          m=document.getElementById('f-email').value,
+      var form=e.target,btn=form.querySelector('button');
+      var n=document.getElementById('f-name').value.trim(),
+          p=document.getElementById('f-phone').value.trim(),
+          m=document.getElementById('f-email').value.trim(),
           f=document.getElementById('f-field').value;
-      var body='שם: '+n+'%0Aטלפון: '+p+'%0Aאימייל: '+m+'%0Aתחום: '+f;
-      window.location.href='mailto:hello@klinical.co.il?subject='+encodeURIComponent('פנייה חדשה מהאתר — '+n)+'&body='+body;
+      var msg='תחום עיסוק: '+f+(m?' · אימייל: '+m:'');
+      btn.disabled=true;btn.textContent='שולח…';
+      fetch(LEAD_API,{
+        method:'POST',
+        headers:{'Content-Type':'application/json'},
+        body:JSON.stringify({name:n,phone:p,source:'klinical.co.il',form_id:'klinical-contact',message:msg})
+      }).then(function(r){
+        if(!r.ok) throw new Error('bad status');
+        return r.json();
+      }).then(function(){
+        form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'! 🌿</h3><p style="color:var(--muted);font-size:15.5px">קיבלנו את הפנייה — נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
+      }).catch(function(){
+        btn.disabled=false;btn.textContent='לפנייה מהירה';
+        var body='שם: '+encodeURIComponent(n)+'%0Aטלפון: '+encodeURIComponent(p)+'%0Aאימייל: '+encodeURIComponent(m)+'%0Aתחום: '+encodeURIComponent(f);
+        window.location.href='mailto:hello@klinical.co.il?subject='+encodeURIComponent('פנייה חדשה מהאתר — '+n)+'&body='+body;
+      });
       return false;
     }
+    function escHtml(s){var d=document.createElement('div');d.textContent=s;return d.innerHTML;}
   </script>
 </body>
 </html>
