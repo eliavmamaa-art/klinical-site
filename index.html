@@ -269,8 +269,10 @@
     .plan .vat{font-size:13px;color:var(--muted);margin:8px 0 22px}
     .plan .save-line{display:none;align-items:center;gap:8px;margin:10px 0 0;font-size:14px;color:var(--muted)}
     .plan .save-line .strike{text-decoration:line-through;opacity:.7}
-    .plan .btn{text-align:center;width:100%}
+    .plan .btn{text-align:center;width:100%;line-height:1.2}
+    .plan .btn .btn-sub{display:block;font-weight:500;font-size:12.5px;opacity:.75;margin-top:3px}
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .plan.pop .btn-ghost:hover{background:var(--teal-dark);box-shadow:0 0 0 2px #fff,var(--shadow)}
     .plan .incl-label{font-weight:700;color:var(--ink);font-size:15px;margin:26px 0 6px}
     .plan ul{list-style:none}
     .plan li{padding:9px 0;font-size:15px;display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line)}
@@ -328,12 +330,15 @@
           <div class="mark"><img src="logo.png" alt="קליניקל" /></div>
           <div class="brand-name">קליניקל</div>
         </div>
-        <div class="nav-links">
-          <a href="#features">יכולות</a>
-          <a href="#about">אודות</a>
-          <a href="#pricing">מחירים</a>
-          <a href="#contact">צור קשר</a>
-          <a href="https://app.klinical.co.il/signup" class="nav-cta">3 חודשים חינם</a>
+        <button class="menu-toggle" aria-label="פתיחת תפריט" aria-expanded="false" aria-controls="navLinks" onclick="toggleMenu()">
+          <svg viewBox="0 0 24 24" fill="none"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+        <div class="nav-links" id="navLinks">
+          <a href="#features" onclick="closeMenu()">יכולות</a>
+          <a href="#about" onclick="closeMenu()">אודות</a>
+          <a href="#pricing" onclick="closeMenu()">מחירים</a>
+          <a href="#contact" onclick="closeMenu()">צור קשר</a>
+          <a href="https://app.klinical.co.il/signup" class="nav-cta" onclick="closeMenu()">3 חודשים חינם</a>
         </div>
       </nav>
     </div>
@@ -492,7 +497,7 @@
           <div class="price" data-month="₪99" data-year="₪990"><span class="amt">₪99</span> <small>/ לחודש</small></div>
           <div class="save-line" data-full="₪1,188" data-save="₪198"></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
-          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
+          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם<span class="btn-sub">ללא כרטיס אשראי</span></a>
           <div class="incl-label">מה כלול:</div>
           <ul>
             <li>תזכורות ואישורי הגעה אוטומטיים בוואטסאפ</li>
@@ -511,7 +516,7 @@
           <div class="price" data-month="₪149" data-year="₪1,490"><span class="amt">₪149</span> <small>/ לחודש</small></div>
           <div class="save-line" data-full="₪1,788" data-save="₪298"></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
-          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
+          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם<span class="btn-sub">ללא כרטיס אשראי</span></a>
           <div class="incl-label">כל מה שבמסלול קליניקל, ובנוסף:</div>
           <ul>
             <li>הקלטת טיפול ותמלול ללא הגבלה</li>
