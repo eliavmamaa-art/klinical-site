@@ -140,6 +140,7 @@
     .bubble.me{align-self:flex-start;background:var(--wa-green);border-top-right-radius:14px;border-top-left-radius:4px}
     .reply-btns{display:flex;gap:8px}
     .reply-btns span{flex:1;text-align:center;background:#fff;color:var(--teal);font-weight:600;font-size:14px;padding:9px;border-radius:10px;border:1px solid var(--line)}
+    .chk{width:14px;height:14px;display:inline-block;vertical-align:-2px;margin-left:5px;stroke:currentColor;fill:none;stroke-width:2.4;stroke-linecap:round;stroke-linejoin:round}
     .demo-body>*{opacity:0;animation:chatIn .45s ease forwards}
     .demo-body>*:nth-child(1){animation-delay:.4s}
     .demo-body>*:nth-child(2){animation-delay:1.2s}
@@ -332,7 +333,7 @@
 
   <header>
     <div class="wrap">
-      <span class="eyebrow">✦ נבנתה על ידי מטפל, למטפלים</span>
+      <span class="eyebrow">נבנתה על ידי מטפל, למטפלים</span>
       <h1>שהמטופלים <span class="hl">יגיעו</span>.<br>שהקליניקה תנהל <span class="hl">את עצמה</span>.</h1>
       <p class="sub">קליניקל שולחת תזכורות בוואטסאפ, אוספת אישורי הגעה, כותבת את סיכומי הטיפול לבד ומרכזת יומן, מטופלים וקבלות - כדי שהראש שלכם יהיה בטיפול, לא בניהול.</p>
       <div class="cta-row">
@@ -348,7 +349,7 @@
         </div>
         <div class="demo-body">
           <div class="bubble">שלום דנה 🌿<br>מזכירים לך את התור מחר, יום שלישי בשעה 14:00, בקליניקה.<br>נגיע?</div>
-          <div class="reply-btns"><span>✅ מאשרת הגעה</span></div>
+          <div class="reply-btns"><span><svg class="chk" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>מאשרת הגעה</span></div>
           <div class="bubble me">✅ מאשרת הגעה</div>
           <div class="bubble">מעולה, נתראה מחר 🌿</div>
         </div>
@@ -382,7 +383,7 @@
         <div class="mitem"><div class="mi"><img src="icons/files.png" alt="" /></div><div><b>קבצים ומסמכים</b><span>בדיקות, תמונות ומסמכים - ישר בתיק המטופל.</span></div></div>
         <div class="mitem"><div class="mi"><img src="icons/security.png" alt="" /></div><div><b>אבטחה וגיבוי</b><span>המידע מוצפן, מגובה בענן ומאוחסן על שרתים מאובטחים באיחוד האירופי, ומופרד לכל מטפל בנפרד.</span></div></div>
         <div class="mitem"><div class="mi"><img src="icons/reports.png" alt="" /></div><div><b>דוחות ותובנות</b><span>הכנסות, מטופלים חוזרים ותנועה - במבט אחד.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/billing.png" alt="" /></div><div><b>כרטיסיות טיפולים</b><span>מוכרים כרטיסייה למספר טיפולים מראש, והמערכת מנכה אוטומטית עם כל תור.</span></div></div>
+        <div class="mitem"><div class="mi"><img src="icons/payment.png" alt="" /></div><div><b>כרטיסיות טיפולים</b><span>מוכרים כרטיסייה למספר טיפולים מראש, והמערכת מנכה אוטומטית עם כל תור.</span></div></div>
         <div class="mitem"><div class="mi"><img src="icons/rooms.png" alt="" /></div><div><b>השכרת חדרים</b><span>עוקבים מי שוכר כל חדר ומתי שולם - הכול על לוח אחד.</span></div></div>
         <div class="mitem"><div class="mi"><img src="icons/reports.png" alt="" /></div><div><b>סריקת קבלות + דוח לרו"ח</b><span>מצלמים קבלת הוצאה, קליניקל מזהה ומסכמת - ומכינה דוח מוכן לרואה החשבון.</span></div></div>
       </div>
@@ -589,7 +590,7 @@
         if(!r.ok) throw new Error('bad status');
         return r.json();
       }).then(function(){
-        form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'! 🌿</h3><p class="form-thanks">קיבלנו את הפנייה - נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
+        form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'!</h3><p class="form-thanks">קיבלנו את הפנייה - נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
       }).catch(function(){
         btn.disabled=false;btn.textContent='לפנייה מהירה';
         var body='שם: '+encodeURIComponent(n)+'%0Aטלפון: '+encodeURIComponent(p)+'%0Aאימייל: '+encodeURIComponent(m);
