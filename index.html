@@ -267,6 +267,9 @@
     .plan .price{font-size:46px;font-weight:900;letter-spacing:-1.5px;line-height:1}
     .plan .price small{font-size:16px;font-weight:600;color:var(--muted)}
     .plan .vat{font-size:13px;color:var(--muted);margin:8px 0 22px}
+    .plan .save-line{display:none;align-items:center;gap:8px;margin:10px 0 0;font-size:14px;color:var(--muted)}
+    .plan .save-line .strike{text-decoration:line-through;opacity:.7}
+    .plan .save-line .save-badge{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:12.5px;padding:3px 10px;border-radius:999px}
     .plan .btn{text-align:center;width:100%}
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
     .plan .incl-label{font-weight:700;color:var(--ink);font-size:15px;margin:26px 0 6px}
@@ -488,6 +491,7 @@
           <div class="headline">כל מה שצריך כדי לנהל קליניקה.</div>
           <h3>קליניקל</h3>
           <div class="price" data-month="₪99" data-year="₪990"><span class="amt">₪99</span> <small>/ לחודש</small></div>
+          <div class="save-line" data-full="₪1,188" data-save="₪198"></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
           <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
           <div class="incl-label">מה כלול:</div>
@@ -506,6 +510,7 @@
           <div class="headline">הקליניקה שנכתבת לבד, אחרי כל טיפול.</div>
           <h3>קליניקל מאסטר</h3>
           <div class="price" data-month="₪149" data-year="₪1,490"><span class="amt">₪149</span> <small>/ לחודש</small></div>
+          <div class="save-line" data-full="₪1,788" data-save="₪298"></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
           <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
           <div class="incl-label">כל מה שבמסלול קליניקל, ובנוסף:</div>
@@ -592,6 +597,12 @@
       document.querySelectorAll('.price').forEach(function(p){
         p.querySelector('.amt').textContent = p.dataset[mode];
         p.querySelector('small').textContent = mode==='year' ? '/ לשנה' : '/ לחודש';
+      });
+      document.querySelectorAll('.save-line').forEach(function(s){
+        if(mode==='year'){
+          s.style.display='flex';
+          s.innerHTML='<span class="save-badge">חסכון '+s.dataset.save+'</span><span class="strike">'+s.dataset.full+' לשנה</span>';
+        } else { s.style.display='none'; s.innerHTML=''; }
       });
       var note=document.getElementById('billNote');
       if(note) note.innerHTML = mode==='year'
