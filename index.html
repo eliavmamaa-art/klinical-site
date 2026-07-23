@@ -89,6 +89,7 @@
       --teal:#12756B; --teal-dark:#0C554E; --teal-soft:#E7F1EF;
       --accent:#D98C4A; --line:#E8E2D8; --card:#FFFFFF;
       --sand:#F2ECE3; --wa-green:#DCF6D8;
+      --chk-m:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='white' stroke-width='3' stroke-linecap='round' stroke-linejoin='round'><path d='M4 12.5l5.5 5.5L20 6.5'/></svg>");
       --shadow:0 6px 24px rgba(18,117,107,.08); --shadow-lg:0 16px 44px rgba(18,117,107,.14);
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -168,17 +169,14 @@
     .ci svg{width:46px;height:46px;display:block}
     .card h3{font-size:20px;font-weight:700;margin-bottom:8px}
     .card p{color:var(--muted);font-size:16px}
-    .more-head{text-align:center;margin:52px 0 22px;font-size:20px;font-weight:700;color:var(--ink)}
-    .more-head span{color:var(--teal)}
-    .more{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-    .mitem{display:flex;gap:13px;align-items:flex-start;background:#fff;border:1px solid var(--line);border-radius:14px;padding:17px 16px;transition:.2s}
-    .mitem:hover{box-shadow:var(--shadow);transform:translateY(-2px)}
-    .mitem .mi{width:38px;height:38px;border-radius:10px;background:var(--teal-soft);display:grid;place-items:center;flex:0 0 auto}
-    .mitem .mi svg{width:20px;height:20px;stroke:var(--teal);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-    .mitem b{font-size:15px;display:block;margin-bottom:3px}
-    .mitem span{color:var(--muted);font-size:13px;line-height:1.45}
-    @media(max-width:900px){.more{grid-template-columns:1fr 1fr}}
-    @media(max-width:560px){.more{grid-template-columns:1fr}}
+    .more-panel{margin-top:24px;background:var(--teal-soft);border-radius:20px;padding:34px 36px}
+    .more-panel h3{font-size:19px;font-weight:700;margin-bottom:6px}
+    .more-panel .lead{color:var(--muted);font-size:15px;margin-bottom:22px}
+    .more-list{display:grid;grid-template-columns:1fr 1fr;gap:12px 32px}
+    .more-list li{list-style:none;display:flex;gap:11px;align-items:flex-start;font-size:16px}
+    .more-list li::before{content:"";width:20px;height:20px;flex:0 0 auto;margin-top:2px;border-radius:6px;background:var(--teal);-webkit-mask:var(--chk-m) center/13px no-repeat;mask:var(--chk-m) center/13px no-repeat}
+    .more-list b{font-weight:600}
+    @media(max-width:640px){.more-list{grid-template-columns:1fr}.more-panel{padding:26px 22px}}
 
     /* Positioning band */
     .band{background:var(--teal);color:#fff;border-radius:26px;padding:54px 40px;text-align:center}
@@ -374,18 +372,19 @@
         <div class="card"><div class="ico"><img src="icons/billing.png" alt="" /></div><h3>חשבוניות וקבלות</h3><p>הפקת קבלות וחשבוניות ומעקב תשלומים - ישירות מהמערכת, בלי אקסלים.</p></div>
       </div>
 
-      <div class="more-head">וזה <span>עוד לא הכול</span> - מערכת קליניקה מלאה</div>
-      <div class="more">
-        <div class="mitem"><div class="mi"><img src="icons/booking.png" alt="" /></div><div><b>זימון תורים אונליין</b><span>המטופלים קובעים תור לבד, דרך קישור אישי לקליניקה.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/leads.png" alt="" /></div><div><b>ניהול לידים</b><span>עוקבים אחרי פניות חדשות עד שהופכות למטופלים.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/tasks.png" alt="" /></div><div><b>ניהול משימות</b><span>רשימת מטלות לקליניקה, שכלום לא נופל בין הכיסאות.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/rooms.png" alt="" /></div><div><b>יומן מרובה חדרים</b><span>מנהלים כמה חדרי טיפול במקביל, בלי התנגשויות.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/files.png" alt="" /></div><div><b>קבצים ומסמכים</b><span>בדיקות, תמונות ומסמכים - ישר בתיק המטופל.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/security.png" alt="" /></div><div><b>אבטחה וגיבוי</b><span>המידע מוצפן, מגובה בענן ומאוחסן על שרתים מאובטחים באיחוד האירופי, ומופרד לכל מטפל בנפרד.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/reports.png" alt="" /></div><div><b>דוחות ותובנות</b><span>הכנסות, מטופלים חוזרים ותנועה - במבט אחד.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/payment.png" alt="" /></div><div><b>כרטיסיות טיפולים</b><span>מוכרים כרטיסייה למספר טיפולים מראש, והמערכת מנכה אוטומטית עם כל תור.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/rooms.png" alt="" /></div><div><b>השכרת חדרים</b><span>עוקבים מי שוכר כל חדר ומתי שולם - הכול על לוח אחד.</span></div></div>
-        <div class="mitem"><div class="mi"><img src="icons/reports.png" alt="" /></div><div><b>סריקת קבלות + דוח לרו"ח</b><span>מצלמים קבלת הוצאה, קליניקל מזהה ומסכמת - ומכינה דוח מוכן לרואה החשבון.</span></div></div>
+      <div class="more-panel">
+        <h3>וזה עוד לא הכול</h3>
+        <p class="lead">כל הכלים כלולים, בלי תוספת מחיר:</p>
+        <ul class="more-list">
+          <li><b>זימון תורים אונליין</b> - המטופלים קובעים תור לבד דרך קישור אישי</li>
+          <li><b>ניהול לידים ומשימות</b> - שום פנייה לא נופלת בין הכיסאות</li>
+          <li><b>ניהול חדרים והשכרות</b> - כמה חדרים במקביל, ומעקב תשלומי שכירות</li>
+          <li><b>כרטיסיות טיפולים</b> - נמכרות מראש והמערכת מנכה עם כל תור</li>
+          <li><b>קבצים ומסמכים בתיק</b> - בדיקות ותמונות ישר אצל המטופל</li>
+          <li><b>סריקת קבלות + דוח לרו"ח</b> - מצלמים הוצאה, קליניקל מסכמת</li>
+          <li><b>דוחות ותובנות</b> - הכנסות, מטופלים חוזרים ותנועה במבט אחד</li>
+          <li><b>אבטחה וגיבוי</b> - מוצפן ומגובה בענן, בהפרדה מלאה לכל מטפל</li>
+        </ul>
       </div>
     </div>
   </section>
