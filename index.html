@@ -114,7 +114,8 @@
     .nav-links a:hover{opacity:1;color:var(--teal)}
     .nav-cta{background:var(--teal)!important;color:#fff!important;opacity:1!important;padding:10px 20px;border-radius:10px;font-weight:600!important}
     .nav-cta:hover{background:var(--teal-dark)}
-    .menu-toggle{display:none}
+    .menu-toggle{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink);border-radius:8px}
+    .menu-toggle svg{width:26px;height:26px;display:block;stroke:currentColor;stroke-width:2;stroke-linecap:round}
 
     /* Hero */
     header{padding:92px 0 52px;text-align:center}
@@ -255,27 +256,25 @@
     .bt{border:none;background:transparent;font-family:inherit;font-weight:600;font-size:15px;color:var(--muted);padding:9px 22px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap}
     .bt.on{background:var(--teal);color:#fff}
     .bt .save{font-size:12px;opacity:.9}
-    .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch;max-width:760px;margin:0 auto}
-    .price-annual{text-align:center;margin-top:16px;color:var(--muted);font-size:15px}
-    .plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:.2s}
+    .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:start;max-width:900px;margin:0 auto}
+    .price-annual{text-align:center;margin-top:20px;color:var(--muted);font-size:15px}
+    .plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;position:relative;transition:.2s}
     .plan:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-    .plan.pop{border:2px solid var(--teal);box-shadow:var(--shadow-lg);background:var(--teal-soft)}
-    .plan.pop .desc{color:var(--teal-dark)}
-    .plan .incl-head{font-weight:700;color:var(--ink);padding:8px 0 4px;font-size:15px}
-    .plan .tag{position:absolute;top:-13px;right:50%;transform:translateX(50%);background:var(--teal);color:#fff;font-size:13px;font-weight:700;padding:5px 16px;border-radius:999px;white-space:nowrap}
-    .plan h3{font-size:21px;font-weight:800;margin-bottom:6px}
-    .plan .desc{color:var(--muted);font-size:15px;margin-bottom:18px;min-height:42px}
-    .plan .price{font-size:44px;font-weight:900;letter-spacing:-1.5px;line-height:1}
+    .plan.pop{border:1px solid var(--teal-soft);box-shadow:var(--shadow-lg);background:var(--teal-soft)}
+    .plan .headline{font-size:clamp(24px,2.4vw,31px);font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-bottom:30px;min-height:2.3em}
+    .plan .tag{position:absolute;top:-13px;right:36px;background:var(--teal);color:#fff;font-size:13px;font-weight:700;padding:5px 16px;border-radius:999px;white-space:nowrap}
+    .plan h3{font-size:19px;font-weight:700;margin-bottom:10px}
+    .plan .price{font-size:46px;font-weight:900;letter-spacing:-1.5px;line-height:1}
     .plan .price small{font-size:16px;font-weight:600;color:var(--muted)}
-    .plan .vat{font-size:13px;color:var(--muted);margin:6px 0 20px}
-    .plan ul{list-style:none;margin-bottom:26px;flex:1}
-    .plan li{padding:8px 0;font-size:15px;display:flex;gap:9px;align-items:flex-start;border-top:1px solid var(--line)}
-    .plan li:first-child{border-top:none}
-    .plan li::before{content:"✓";color:var(--teal);font-weight:800;flex:0 0 auto}
-    .plan li.incl-head{border-top:none}
-    .plan li.incl-head::before{content:none}
-    .plan .btn{text-align:center;margin-top:auto}
+    .plan .vat{font-size:13px;color:var(--muted);margin:8px 0 22px}
+    .plan .btn{text-align:center;width:100%}
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
+    .plan .incl-label{font-weight:700;color:var(--ink);font-size:15px;margin:26px 0 6px}
+    .plan ul{list-style:none}
+    .plan li{padding:9px 0;font-size:15px;display:flex;gap:10px;align-items:flex-start;border-top:1px solid var(--line)}
+    .plan.pop li{border-top-color:rgba(12,85,78,.12)}
+    .plan li:first-child{border-top:none}
+    .plan li::before{content:"";width:19px;height:19px;flex:0 0 auto;margin-top:1px;background:var(--teal);-webkit-mask:var(--chk-m) center/12px no-repeat;mask:var(--chk-m) center/12px no-repeat}
     .price-note{text-align:center;margin-top:26px;color:var(--muted);font-size:15px}
     .price-note b{color:var(--teal)}
     .price-note .pn-ico{display:inline-block;vertical-align:-4px;margin-left:6px;color:var(--teal)}
@@ -486,10 +485,12 @@
       </div>
       <div class="price-grid">
         <div class="plan">
+          <div class="headline">כל מה שצריך כדי לנהל קליניקה.</div>
           <h3>קליניקל</h3>
-          <div class="desc">מערכת ניהול הקליניקה המלאה - כל מה שצריך כדי שהיום-יום יתנהל לבד.</div>
           <div class="price" data-month="₪99" data-year="₪990"><span class="amt">₪99</span> <small>/ לחודש</small></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
+          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
+          <div class="incl-label">מה כלול:</div>
           <ul>
             <li>תזכורות ואישורי הגעה אוטומטיים בוואטסאפ</li>
             <li>יומן חכם + סנכרון דו-כיווני עם Google</li>
@@ -499,21 +500,20 @@
             <li>ניהול חדרים והשכרות</li>
             <li>סריקת קבלות + דוח מוכן לרואה חשבון</li>
           </ul>
-          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
         </div>
         <div class="plan pop">
           <div class="tag">המסלול המומלץ</div>
+          <div class="headline">הקליניקה שנכתבת לבד, אחרי כל טיפול.</div>
           <h3>קליניקל מאסטר</h3>
-          <div class="desc">כל מה שבקליניקל, ובנוסף: הקליניקה שנכתבת לבד אחרי כל טיפול.</div>
           <div class="price" data-month="₪149" data-year="₪1,490"><span class="amt">₪149</span> <small>/ לחודש</small></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
+          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
+          <div class="incl-label">כל מה שבמסלול קליניקל, ובנוסף:</div>
           <ul>
-            <li class="incl-head">כל מה שבמסלול קליניקל, ובנוסף:</li>
             <li>הקלטת טיפול ותמלול ללא הגבלה</li>
             <li>סיכום קליני אוטומטי ישר לתיק המטופל</li>
             <li>טיוטת הודעה אישית למטופל אחרי הטיפול</li>
           </ul>
-          <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
         </div>
       </div>
       <div class="price-annual" id="billNote">רוצים לחסוך? במעבר לתשלום שנתי מקבלים <b>חודשיים מתנה</b> בכל מסלול.</div>
