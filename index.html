@@ -317,7 +317,12 @@
     @media(max-width:900px){
       .about-grid,.contact-grid{grid-template-columns:1fr}
       .grid,.price-grid{grid-template-columns:1fr}
-      .nav-links{display:none}
+      .menu-toggle{display:grid;place-items:center}
+      .nav-links{display:none;position:absolute;top:100%;right:0;left:0;flex-direction:column;align-items:stretch;gap:4px;background:var(--cream);border-bottom:1px solid var(--line);box-shadow:var(--shadow-lg);padding:12px 24px 18px}
+      .nav-links.open{display:flex}
+      .nav-links a{padding:12px 6px;font-size:17px;border-bottom:1px solid var(--line)}
+      .nav-links a:last-child{border-bottom:none}
+      .nav-cta{text-align:center;margin-top:8px;padding:14px!important}
     }
   </style>
 </head>
@@ -603,6 +608,16 @@
   </footer>
 
   <script>
+    function toggleMenu(){
+      var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');
+      var open=n.classList.toggle('open');
+      t.setAttribute('aria-expanded',open?'true':'false');
+    }
+    function closeMenu(){
+      var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');
+      n.classList.remove('open');
+      t.setAttribute('aria-expanded','false');
+    }
     function setBilling(mode){
       document.querySelectorAll('.bt').forEach(function(b){ b.classList.toggle('on', b.dataset.mode===mode); });
       document.querySelectorAll('.price').forEach(function(p){
