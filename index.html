@@ -269,7 +269,6 @@
     .plan .vat{font-size:13px;color:var(--muted);margin:8px 0 22px}
     .plan .save-line{display:none;align-items:center;gap:8px;margin:10px 0 0;font-size:14px;color:var(--muted)}
     .plan .save-line .strike{text-decoration:line-through;opacity:.7}
-    .plan .save-line .save-badge{display:inline-block;background:var(--teal);color:#fff;font-weight:700;font-size:12.5px;padding:3px 10px;border-radius:999px}
     .plan .btn{text-align:center;width:100%}
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
     .plan .incl-label{font-weight:700;color:var(--ink);font-size:15px;margin:26px 0 6px}
@@ -601,7 +600,7 @@
       document.querySelectorAll('.save-line').forEach(function(s){
         if(mode==='year'){
           s.style.display='flex';
-          s.innerHTML='<span class="save-badge">חסכון '+s.dataset.save+'</span><span class="strike">'+s.dataset.full+' לשנה</span>';
+          s.innerHTML='<span class="strike">'+s.dataset.full+' לשנה</span>';
         } else { s.style.display='none'; s.innerHTML=''; }
       });
       var note=document.getElementById('billNote');
