@@ -250,11 +250,18 @@
     .founder p{color:var(--muted);font-size:15px}
 
     /* Pricing */
+    .bill-wrap{text-align:center;margin-bottom:34px}
+    .bill-toggle{display:inline-flex;background:#fff;border:1px solid var(--line);border-radius:999px;padding:4px;gap:2px}
+    .bt{border:none;background:transparent;font-family:inherit;font-weight:600;font-size:15px;color:var(--muted);padding:9px 22px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap}
+    .bt.on{background:var(--teal);color:#fff}
+    .bt .save{font-size:12px;opacity:.9}
     .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch;max-width:760px;margin:0 auto}
     .price-annual{text-align:center;margin-top:16px;color:var(--muted);font-size:15px}
     .plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:.2s}
     .plan:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
-    .plan.pop{border:2px solid var(--teal);box-shadow:var(--shadow-lg)}
+    .plan.pop{border:2px solid var(--teal);box-shadow:var(--shadow-lg);background:var(--teal-soft)}
+    .plan.pop .desc{color:var(--teal-dark)}
+    .plan .incl-head{font-weight:700;color:var(--ink);padding:8px 0 4px;font-size:15px}
     .plan .tag{position:absolute;top:-13px;right:50%;transform:translateX(50%);background:var(--teal);color:#fff;font-size:13px;font-weight:700;padding:5px 16px;border-radius:999px;white-space:nowrap}
     .plan h3{font-size:21px;font-weight:800;margin-bottom:6px}
     .plan .desc{color:var(--muted);font-size:15px;margin-bottom:18px;min-height:42px}
@@ -265,6 +272,8 @@
     .plan li{padding:8px 0;font-size:15px;display:flex;gap:9px;align-items:flex-start;border-top:1px solid var(--line)}
     .plan li:first-child{border-top:none}
     .plan li::before{content:"✓";color:var(--teal);font-weight:800;flex:0 0 auto}
+    .plan li.incl-head{border-top:none}
+    .plan li.incl-head::before{content:none}
     .plan .btn{text-align:center;margin-top:auto}
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
     .price-note{text-align:center;margin-top:26px;color:var(--muted);font-size:15px}
@@ -469,11 +478,17 @@
         <h2>שני מסלולים, שניהם קליניקה שלמה</h2>
         <p>כל כלי הניהול כלולים בשני המסלולים, ללא הגבלה. בוחרים לפי סגנון העבודה שלכם - ואפשר לשדרג בכל רגע.</p>
       </div>
+      <div class="bill-wrap">
+        <div class="bill-toggle" role="tablist">
+          <button type="button" class="bt on" data-mode="month" onclick="setBilling('month')">חודשי</button>
+          <button type="button" class="bt" data-mode="year" onclick="setBilling('year')">שנתי <span class="save">· חודשיים מתנה</span></button>
+        </div>
+      </div>
       <div class="price-grid">
         <div class="plan">
           <h3>קליניקל</h3>
           <div class="desc">מערכת ניהול הקליניקה המלאה - כל מה שצריך כדי שהיום-יום יתנהל לבד.</div>
-          <div class="price">₪99 <small>/ לחודש</small></div>
+          <div class="price" data-month="₪99" data-year="₪990"><span class="amt">₪99</span> <small>/ לחודש</small></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
           <ul>
             <li>תזכורות ואישורי הגעה אוטומטיים בוואטסאפ</li>
@@ -490,10 +505,10 @@
           <div class="tag">המסלול המומלץ</div>
           <h3>קליניקל מאסטר</h3>
           <div class="desc">כל מה שבקליניקל, ובנוסף: הקליניקה שנכתבת לבד אחרי כל טיפול.</div>
-          <div class="price">₪149 <small>/ לחודש</small></div>
+          <div class="price" data-month="₪149" data-year="₪1,490"><span class="amt">₪149</span> <small>/ לחודש</small></div>
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
           <ul>
-            <li>כל מה שבמסלול קליניקל</li>
+            <li class="incl-head">כל מה שבמסלול קליניקל, ובנוסף:</li>
             <li>הקלטת טיפול ותמלול ללא הגבלה</li>
             <li>סיכום קליני אוטומטי ישר לתיק המטופל</li>
             <li>טיוטת הודעה אישית למטופל אחרי הטיפול</li>
@@ -501,7 +516,7 @@
           <a href="https://app.klinical.co.il/signup" class="btn btn-ghost">מתחילים 3 חודשים חינם</a>
         </div>
       </div>
-      <div class="price-annual">משלמים שנתי? 12 חודשים במחיר 10 - <b>₪990 לשנה</b> (קליניקל) או <b>₪1,490 לשנה</b> (קליניקל מאסטר).</div>
+      <div class="price-annual" id="billNote">רוצים לחסוך? במעבר לתשלום שנתי מקבלים <b>חודשיים מתנה</b> בכל מסלול.</div>
       <div class="price-note"><span class="pn-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5zM12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5z"/></svg></span><b>3 חודשים ראשונים חינם - לגמרי.</b> בלי כרטיס אשראי בהרשמה; קישור לתשלום נשלח רק בחודש השלישי.</div>
     </div>
   </section>
@@ -572,6 +587,17 @@
   </footer>
 
   <script>
+    function setBilling(mode){
+      document.querySelectorAll('.bt').forEach(function(b){ b.classList.toggle('on', b.dataset.mode===mode); });
+      document.querySelectorAll('.price').forEach(function(p){
+        p.querySelector('.amt').textContent = p.dataset[mode];
+        p.querySelector('small').textContent = mode==='year' ? '/ לשנה' : '/ לחודש';
+      });
+      var note=document.getElementById('billNote');
+      if(note) note.innerHTML = mode==='year'
+        ? 'תשלום שנתי: 12 חודשים במחיר 10 - <b>חודשיים מתנה</b> בכל מסלול.'
+        : 'רוצים לחסוך? במעבר לתשלום שנתי מקבלים <b>חודשיים מתנה</b> בכל מסלול.';
+    }
     var LEAD_API='https://clinic-app-eta.vercel.app/api/landing-submit';
     function sendLead(e){
       e.preventDefault();
