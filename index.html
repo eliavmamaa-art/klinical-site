@@ -88,6 +88,7 @@
       --cream:#FAF7F2; --ink:#1E2A2C; --muted:#5C6B6C;
       --teal:#12756B; --teal-dark:#0C554E; --teal-soft:#E7F1EF;
       --accent:#D98C4A; --line:#E8E2D8; --card:#FFFFFF;
+      --sand:#F2ECE3; --wa-green:#DCF6D8;
       --shadow:0 6px 24px rgba(18,117,107,.08); --shadow-lg:0 16px 44px rgba(18,117,107,.14);
     }
     *{box-sizing:border-box;margin:0;padding:0}
@@ -108,7 +109,7 @@
     .app-side .logo .d{overflow:hidden}
     .brand-name{font-weight:800;font-size:24px;letter-spacing:-.5px}
     .nav-links{display:flex;align-items:center;gap:26px}
-    .nav-links a{text-decoration:none;font-weight:500;font-size:15.5px;color:var(--ink);opacity:.8;transition:.2s}
+    .nav-links a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink);opacity:.8;transition:.2s}
     .nav-links a:hover{opacity:1;color:var(--teal)}
     .nav-cta{background:var(--teal)!important;color:#fff!important;opacity:1!important;padding:10px 20px;border-radius:10px;font-weight:600!important}
     .nav-cta:hover{background:var(--teal-dark)}
@@ -134,11 +135,11 @@
     .demo-top .mark svg{width:20px;height:20px}
     .demo-top b{font-size:16px}
     .demo-top small{opacity:.85;font-size:12px;display:block;font-weight:400}
-    .demo-body{padding:18px;background:#F2ECE3;display:flex;flex-direction:column;gap:10px}
-    .bubble{background:#fff;padding:11px 14px;border-radius:14px;border-top-right-radius:4px;font-size:14.5px;box-shadow:0 1px 2px rgba(0,0,0,.06);max-width:88%}
-    .bubble.me{align-self:flex-start;background:#DCF6D8;border-top-right-radius:14px;border-top-left-radius:4px}
+    .demo-body{padding:18px;background:var(--sand);display:flex;flex-direction:column;gap:10px}
+    .bubble{background:#fff;padding:11px 14px;border-radius:14px;border-top-right-radius:4px;font-size:15px;box-shadow:0 1px 2px rgba(0,0,0,.06);max-width:88%}
+    .bubble.me{align-self:flex-start;background:var(--wa-green);border-top-right-radius:14px;border-top-left-radius:4px}
     .reply-btns{display:flex;gap:8px}
-    .reply-btns span{flex:1;text-align:center;background:#fff;color:var(--teal);font-weight:600;font-size:13.5px;padding:9px;border-radius:10px;border:1px solid var(--line)}
+    .reply-btns span{flex:1;text-align:center;background:#fff;color:var(--teal);font-weight:600;font-size:14px;padding:9px;border-radius:10px;border:1px solid var(--line)}
     .demo-body>*{opacity:0;animation:chatIn .45s ease forwards}
     .demo-body>*:nth-child(1){animation-delay:.4s}
     .demo-body>*:nth-child(2){animation-delay:1.2s}
@@ -165,7 +166,7 @@
     .ico svg,.founder .avatar svg{stroke:var(--teal);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
     .ci svg{width:46px;height:46px;display:block}
     .card h3{font-size:20px;font-weight:700;margin-bottom:8px}
-    .card p{color:var(--muted);font-size:15.5px}
+    .card p{color:var(--muted);font-size:16px}
     .more-head{text-align:center;margin:52px 0 22px;font-size:20px;font-weight:700;color:var(--ink)}
     .more-head span{color:var(--teal)}
     .more{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
@@ -174,7 +175,7 @@
     .mitem .mi{width:38px;height:38px;border-radius:10px;background:var(--teal-soft);display:grid;place-items:center;flex:0 0 auto}
     .mitem .mi svg{width:20px;height:20px;stroke:var(--teal);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
     .mitem b{font-size:15px;display:block;margin-bottom:3px}
-    .mitem span{color:var(--muted);font-size:12.5px;line-height:1.45}
+    .mitem span{color:var(--muted);font-size:13px;line-height:1.45}
     @media(max-width:900px){.more{grid-template-columns:1fr 1fr}}
     @media(max-width:560px){.more{grid-template-columns:1fr}}
 
@@ -231,7 +232,7 @@
     .faq{max-width:770px;margin:0 auto}
     .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 20px}
     .faq details[open]{box-shadow:var(--shadow)}
-    .faq summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:600;font-size:16.5px;display:flex;justify-content:space-between;align-items:center;gap:12px}
+    .faq summary{list-style:none;cursor:pointer;padding:18px 0;font-weight:600;font-size:17px;display:flex;justify-content:space-between;align-items:center;gap:12px}
     .faq summary::-webkit-details-marker{display:none}
     .faq summary::after{content:"+";color:var(--teal);font-size:24px;font-weight:400;transition:.2s;line-height:1}
     .faq details[open] summary::after{transform:rotate(45deg)}
@@ -246,18 +247,18 @@
     .founder .avatar{width:94px;height:94px;border-radius:50%;background:var(--teal-soft);display:grid;place-items:center;margin-bottom:16px;overflow:hidden;border:3px solid #fff;box-shadow:var(--shadow)}
     .founder .avatar img{width:100%;height:100%;object-fit:cover;object-position:center 30%}
     .founder h4{font-size:19px;font-weight:700;margin-bottom:4px}
-    .founder .role{color:var(--teal);font-weight:600;font-size:14.5px;margin-bottom:14px}
+    .founder .role{color:var(--teal);font-weight:600;font-size:15px;margin-bottom:14px}
     .founder p{color:var(--muted);font-size:15px}
 
     /* Pricing */
     .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:22px;align-items:stretch;max-width:760px;margin:0 auto}
-    .price-annual{text-align:center;margin-top:16px;color:var(--muted);font-size:14.5px}
+    .price-annual{text-align:center;margin-top:16px;color:var(--muted);font-size:15px}
     .plan{background:#fff;border:1px solid var(--line);border-radius:20px;padding:32px 28px;display:flex;flex-direction:column;position:relative;transition:.2s}
     .plan:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
     .plan.pop{border:2px solid var(--teal);box-shadow:var(--shadow-lg)}
     .plan .tag{position:absolute;top:-13px;right:50%;transform:translateX(50%);background:var(--teal);color:#fff;font-size:13px;font-weight:700;padding:5px 16px;border-radius:999px;white-space:nowrap}
     .plan h3{font-size:21px;font-weight:800;margin-bottom:6px}
-    .plan .desc{color:var(--muted);font-size:14.5px;margin-bottom:18px;min-height:42px}
+    .plan .desc{color:var(--muted);font-size:15px;margin-bottom:18px;min-height:42px}
     .plan .price{font-size:44px;font-weight:900;letter-spacing:-1.5px;line-height:1}
     .plan .price small{font-size:16px;font-weight:600;color:var(--muted)}
     .plan .vat{font-size:13px;color:var(--muted);margin:6px 0 20px}
@@ -269,6 +270,7 @@
     .plan.pop .btn-ghost{background:var(--teal);color:#fff;border-color:var(--teal)}
     .price-note{text-align:center;margin-top:26px;color:var(--muted);font-size:15px}
     .price-note b{color:var(--teal)}
+    .price-note .pn-ico{display:inline-block;vertical-align:-4px;margin-left:6px;color:var(--teal)}
 
     /* Contact */
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:start}
@@ -286,14 +288,20 @@
     .field input:focus,.field select:focus{outline:none;border-color:var(--teal)}
     form button{width:100%;background:var(--teal);color:#fff;border:none;padding:14px;border-radius:12px;font-family:inherit;font-weight:700;font-size:17px;cursor:pointer;transition:.2s}
     form button:hover{background:var(--teal-dark)}
+    .form-thanks{color:var(--muted);font-size:16px}
 
     /* Footer */
-    footer{border-top:1px solid var(--line);padding:40px 0 28px;color:var(--muted);font-size:14.5px;margin-top:30px}
+    footer{border-top:1px solid var(--line);padding:40px 0 28px;color:var(--muted);font-size:15px;margin-top:30px}
     .foot-top{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:20px;margin-bottom:24px}
     .foot-links{display:flex;gap:24px;flex-wrap:wrap}
     .foot-links a{text-decoration:none;opacity:.8}
     .foot-links a:hover{opacity:1;color:var(--teal)}
     .foot-bottom{border-top:1px solid var(--line);padding-top:18px;text-align:center}
+    .brand.sm .mark{width:34px;height:34px;border-radius:9px}
+    .brand.sm .brand-name{font-size:20px}
+    .foot-legal{margin-bottom:10px}
+    .foot-legal a{text-decoration:none;color:var(--teal);font-weight:500}
+    .foot-fine{opacity:.75}
 
     @media(max-width:900px){
       .about-grid,.contact-grid{grid-template-columns:1fr}
@@ -494,7 +502,7 @@
         </div>
       </div>
       <div class="price-annual">משלמים שנתי? 12 חודשים במחיר 10 - <b>₪990 לשנה</b> (קליניקל) או <b>₪1,490 לשנה</b> (קליניקל מאסטר).</div>
-      <div class="price-note"><span style="display:inline-block;vertical-align:-4px;margin-left:6px"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="#12756B" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5zM12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5z"/></svg></span><b>3 חודשים ראשונים חינם - לגמרי.</b> בלי כרטיס אשראי בהרשמה; קישור לתשלום נשלח רק בחודש השלישי.</div>
+      <div class="price-note"><span class="pn-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5zM12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5z"/></svg></span><b>3 חודשים ראשונים חינם - לגמרי.</b> בלי כרטיס אשראי בהרשמה; קישור לתשלום נשלח רק בחודש השלישי.</div>
     </div>
   </section>
 
@@ -544,9 +552,9 @@
   <footer>
     <div class="wrap">
       <div class="foot-top">
-        <div class="brand">
-          <div class="mark" style="width:34px;height:34px;border-radius:9px"><img src="logo.png" alt="קליניקל" /></div>
-          <div class="brand-name" style="font-size:20px">קליניקל</div>
+        <div class="brand sm">
+          <div class="mark"><img src="logo.png" alt="קליניקל" /></div>
+          <div class="brand-name">קליניקל</div>
         </div>
         <div class="foot-links">
           <a href="#features">יכולות</a>
@@ -556,9 +564,9 @@
         </div>
       </div>
       <div class="foot-bottom">
-        <div style="margin-bottom:10px"><a href="privacy.html" style="text-decoration:none;color:var(--teal);font-weight:500">מדיניות פרטיות</a> · <a href="terms.html" style="text-decoration:none;color:var(--teal);font-weight:500">תנאי שימוש</a></div>
+        <div class="foot-legal"><a href="privacy.html">מדיניות פרטיות</a> · <a href="terms.html">תנאי שימוש</a></div>
         קליניקל · מערכת ניהול קליניקה למטפלים · klinical.co.il · כל הזכויות שמורות ©<br />
-        <span style="opacity:.75">מופעל על ידי מאמא אליהו אליאב · עוסק 302462874</span>
+        <span class="foot-fine">מופעל על ידי מאמא אליהו אליאב · עוסק 302462874</span>
       </div>
     </div>
   </footer>
@@ -581,7 +589,7 @@
         if(!r.ok) throw new Error('bad status');
         return r.json();
       }).then(function(){
-        form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'! 🌿</h3><p style="color:var(--muted);font-size:15.5px">קיבלנו את הפנייה - נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
+        form.innerHTML='<h3>תודה, '+escHtml(n.split(' ')[0])+'! 🌿</h3><p class="form-thanks">קיבלנו את הפנייה - נחזור אליכם ממש בקרוב לתיאום התנסות חינם.</p>';
       }).catch(function(){
         btn.disabled=false;btn.textContent='לפנייה מהירה';
         var body='שם: '+encodeURIComponent(n)+'%0Aטלפון: '+encodeURIComponent(p)+'%0Aאימייל: '+encodeURIComponent(m);
