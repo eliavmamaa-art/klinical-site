@@ -107,6 +107,12 @@
     .rv.in{opacity:1;transform:none}
     @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
 
+    /* Sumi-e accents */
+    .sumi-divider{display:block;width:150px;height:14px;margin:0 auto 26px;opacity:.5}
+    .final-cta{position:relative;overflow:hidden}
+    .final-cta .wrap{position:relative;z-index:1}
+    .enso{position:absolute;top:50%;right:50%;transform:translate(50%,-50%);width:520px;height:520px;opacity:.055;pointer-events:none}
+
     /* Nav */
     .nav-outer{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
@@ -353,6 +359,29 @@
 </head>
 <body>
 
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <defs>
+      <filter id="brushTx" x="-10%" y="-60%" width="120%" height="220%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.09 0.45" numOctaves="2" seed="7" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="5"/>
+      </filter>
+      <filter id="brushTxBig" x="-15%" y="-15%" width="130%" height="130%">
+        <feTurbulence type="fractalNoise" baseFrequency="0.035" numOctaves="2" seed="11" result="n"/>
+        <feDisplacementMap in="SourceGraphic" in2="n" scale="14"/>
+      </filter>
+      <symbol id="brushline" viewBox="0 0 300 24">
+        <g filter="url(#brushTx)">
+          <path d="M6,14 C55,8 115,6 168,9 C220,12 262,10 294,12 C262,15 214,18 162,16 C112,14 52,17 6,14 Z" fill="currentColor"/>
+          <circle cx="286" cy="8" r="1.6" fill="currentColor"/>
+          <circle cx="278" cy="17" r="1.1" fill="currentColor"/>
+        </g>
+      </symbol>
+      <symbol id="enso" viewBox="0 0 200 200">
+        <path d="M 148 40 A 78 78 0 1 0 166 86" fill="none" stroke="currentColor" stroke-width="17" stroke-linecap="round" filter="url(#brushTxBig)"/>
+      </symbol>
+    </defs>
+  </svg>
+
   <div class="nav-outer">
     <div class="wrap">
       <nav>
@@ -448,6 +477,7 @@
       <div class="sec-head">
         <span class="eyebrow">המערכת מבפנים</span>
         <h2>הכול במסך אחד, ברור ופשוט</h2>
+        <svg class="sumi-divider" aria-hidden="true"><use href="#brushline"/></svg>
         <p>יומן, מטופלים ואישורי הגעה - נגיש מהמחשב ומהנייד</p>
       </div>
       <div class="browser skin-real">
@@ -613,6 +643,7 @@
 
   <!-- FINAL CTA -->
   <section class="final-cta">
+    <svg class="enso" aria-hidden="true"><use href="#enso"/></svg>
     <div class="wrap">
       <h2>מוכנים שהקליניקה<br>תתנהל <span class="hl">את עצמה</span>?</h2>
       <p>3 חודשים חינם, בלי כרטיס אשראי. הקמה בדקות, ואנחנו כאן לכל שאלה.</p>
