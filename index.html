@@ -102,6 +102,11 @@
     .eyebrow{display:inline-block;background:var(--teal-soft);color:var(--teal-dark);font-weight:600;font-size:13px;letter-spacing:.3px;padding:6px 15px;border-radius:999px;margin-bottom:20px}
     .mark-hl{background:linear-gradient(180deg,transparent 58%,rgba(217,140,74,.28) 58%,rgba(217,140,74,.28) 86%,transparent 86%);padding:0 2px;border-radius:2px;box-decoration-break:clone;-webkit-box-decoration-break:clone}
 
+    /* Scroll reveal */
+    .rv{opacity:0;transform:translateY(18px);transition:opacity .55s ease,transform .55s ease;transition-delay:var(--rvd,0s)}
+    .rv.in{opacity:1;transform:none}
+    @media(prefers-reduced-motion:reduce){.rv{opacity:1;transform:none;transition:none}}
+
     /* Nav */
     .nav-outer{position:sticky;top:0;z-index:50;background:rgba(250,247,242,.85);backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
     nav{display:flex;align-items:center;justify-content:space-between;padding:16px 0}
@@ -659,6 +664,24 @@
   </footer>
 
   <script>
+    (function(){
+      if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var els=document.querySelectorAll('.sec-head, .card, .more-panel, .band, .browser, .about-text, .founder, .plan, .bill-wrap, .price-annual, .price-note, .faq details, .chan, form, .final-cta .wrap');
+      els.forEach(function(el){
+        el.classList.add('rv');
+        var p=el.parentElement;
+        if(p && (p.classList.contains('grid')||p.classList.contains('price-grid')||p.classList.contains('channels')||p.classList.contains('faq'))){
+          var i=Array.prototype.indexOf.call(p.children, el);
+          el.style.setProperty('--rvd',(Math.min(i,5)*70)+'ms');
+        }
+      });
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.isIntersecting){ e.target.classList.add('in'); io.unobserve(e.target); }
+        });
+      },{rootMargin:'0px 0px -8% 0px',threshold:.08});
+      els.forEach(function(el){ io.observe(el); });
+    })();
     function toggleMenu(){
       var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');
       var open=n.classList.toggle('open');
