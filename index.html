@@ -114,8 +114,7 @@
     .mark{width:40px;height:40px;border-radius:11px;background:var(--teal);display:grid;place-items:center;flex:0 0 auto;box-shadow:var(--shadow)}
     .mark svg{width:24px;height:24px}
     .mark{overflow:hidden}
-    .mark img,.app-side .logo .d img{width:100%;height:100%;object-fit:cover;display:block}
-    .app-side .logo .d{overflow:hidden}
+    .mark img{width:100%;height:100%;object-fit:cover;display:block}
     .brand-name{font-weight:800;font-size:24px;letter-spacing:-.5px}
     .nav-links{display:flex;align-items:center;gap:26px}
     .nav-links a{text-decoration:none;font-weight:500;font-size:16px;color:var(--ink);opacity:.8;transition:.2s}
@@ -193,49 +192,37 @@
     .band h2{font-size:clamp(24px,3.5vw,34px);font-weight:800;margin-bottom:14px;letter-spacing:-.5px}
     .band p{opacity:.92;font-size:18px;max-width:680px;margin:0 auto}
 
-    /* Product showcase */
+    /* Product showcase - real screenshots */
     .showcase{background:var(--cream)}
-    .browser{max-width:940px;margin:0 auto;background:#fff;border:1px solid var(--line);border-radius:16px;box-shadow:var(--shadow-lg);overflow:hidden}
-    .browser-bar{display:flex;align-items:center;gap:8px;padding:12px 16px;background:#F1ECE3;border-bottom:1px solid var(--line)}
-    .browser-bar i{width:11px;height:11px;border-radius:50%;background:#d9cfc0;display:block}
-    .browser-bar .url{margin-right:14px;background:#fff;border:1px solid var(--line);border-radius:8px;padding:5px 14px;font-size:12.5px;color:var(--muted);flex:1;max-width:280px;text-align:center;direction:ltr}
-    .browser{--side:var(--teal-dark);--appbg:#FBFAF7;--acc:var(--teal);--accsoft:var(--teal-soft);--r2:#D98C4A;--cardline:var(--line)}
-    .browser.skin-real{--side:#0f2742;--appbg:#faf8f4;--acc:#1e3a5f;--accsoft:#e8edf3;--r2:#b83a2d;--cardline:#e5e0d5}
-    .app{display:grid;grid-template-columns:186px 1fr;min-height:380px}
-    .app-side{background:var(--side);color:#fff;padding:18px 14px}
-    .app-side .logo{display:flex;align-items:center;gap:9px;font-weight:800;margin-bottom:24px;font-size:16px}
-    .app-side .logo .d{width:28px;height:28px;border-radius:8px;background:rgba(255,255,255,.16);display:grid;place-items:center}
-    .app-nav{display:block;padding:0}
-    .app-nav a{display:flex;align-items:center;gap:10px;padding:9px 11px;border-radius:9px;font-size:13.5px;color:rgba(255,255,255,.82);margin-bottom:3px;text-decoration:none}
-    .app-nav a.on{background:rgba(255,255,255,.16);color:#fff;font-weight:600}
-    .app-nav a{position:relative}
-    .app-nav a .nvi{width:16px;height:16px;flex:0 0 auto;background:rgba(255,255,255,.85);-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
-    .app-nav a.on .nvi{background:var(--teal)}
-    .app-nav a.on::before{content:"";position:absolute;right:-14px;top:6px;bottom:6px;width:3px;border-radius:99px;background:var(--teal)}
-    .room-dot{display:inline-block;width:10px;height:10px;border-radius:50%;margin-left:7px;vertical-align:middle}
-    .bdg-i{display:inline-block;width:13px;height:13px;margin-left:4px;vertical-align:-2.5px;background:currentColor;-webkit-mask:var(--m) center/contain no-repeat;mask:var(--m) center/contain no-repeat}
-    .app-main{padding:20px 22px;background:var(--appbg)}
-    .app-h{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;flex-wrap:wrap;gap:8px}
-    .app-h b{font-size:16.5px}
-    .app-h .chip{background:var(--accsoft);color:var(--acc);font-size:12px;font-weight:600;padding:5px 12px;border-radius:999px}
-    .rooms{display:grid;grid-template-columns:1fr 1fr;gap:14px;align-items:start}
-    .room-h{font-size:13px;font-weight:700;margin-bottom:9px;padding-bottom:7px;border-bottom:2px solid var(--cardline)}
-    .room-h.r1{color:var(--acc);border-color:var(--acc)}
-    .room-h.r2{color:var(--r2);border-color:var(--r2)}
-    .appt{background:#fff;border:1px solid var(--cardline);border-right:4px solid var(--acc);border-radius:10px;padding:10px 12px;display:flex;justify-content:space-between;align-items:center;gap:8px;margin-bottom:10px}
-    .appt.new{border-right-color:#d97706}
-    .appt.ret{border-right-color:#059669}
-    .appt .who{display:flex;align-items:center;gap:9px;min-width:0}
-    .appt .nm{font-size:13.5px;font-weight:600;white-space:nowrap}
-    .appt .nm .tm{color:var(--muted);font-weight:500;font-size:11px;direction:ltr;display:inline-block;margin-right:4px}
-    .appt .ty{font-size:11.5px;color:var(--muted)}
-    .badges{display:flex;flex-direction:column;gap:4px;align-items:flex-end;flex:0 0 auto}
-    .appt .ok{background:#E4F6E4;color:#1a7a3a;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
-    .appt .pay{background:#D1FAE5;color:#047857;font-size:10.5px;font-weight:700;padding:3px 9px;border-radius:999px;white-space:nowrap}
-    .legend{display:flex;gap:16px;flex-wrap:wrap;margin-top:14px;font-size:12px;color:var(--muted)}
-    .legend i{width:9px;height:9px;border-radius:3px;display:inline-block;margin-left:5px}
-    .legend .lg-fu{background:var(--acc)}
-    @media(max-width:620px){.app{grid-template-columns:1fr}.app-side{display:none}.rooms{grid-template-columns:1fr}}
+    .prod-grid{display:grid;grid-template-columns:1fr 1fr;gap:22px;max-width:1120px;margin:0 auto}
+    .prod-card{background:#fff;border:1px solid var(--line);border-radius:24px;overflow:hidden;display:flex;flex-direction:column;transition:.25s}
+    .prod-card:hover{box-shadow:var(--shadow-lg);transform:translateY(-3px)}
+    .prod-card.wide{grid-column:1 / -1}
+    .pc-text{padding:34px 34px 26px}
+    .pc-label{font-size:13px;font-weight:600;color:var(--teal);letter-spacing:.3px;margin-bottom:8px}
+    .pc-text h3{font-size:clamp(21px,2.2vw,27px);font-weight:800;letter-spacing:-.7px;line-height:1.25;margin-bottom:8px}
+    .pc-text p{color:var(--muted);font-size:16px;max-width:52ch}
+    .pc-shot{background:var(--teal-soft);padding:26px 26px 0;margin-top:auto;overflow:hidden}
+    .pc-shot.sand{background:var(--sand)}
+    .pc-shot img{width:100%;display:block;border-radius:12px 12px 0 0;border:1px solid rgba(30,42,44,.10);border-bottom:none;box-shadow:0 -2px 30px rgba(30,42,44,.10)}
+    .prod-card.wide .pc-shot{padding:30px 40px 0}
+    /* phone strip */
+    .phone-band{max-width:1120px;margin:22px auto 0;background:var(--ink);color:var(--cream);border-radius:24px;display:grid;grid-template-columns:1.1fr .9fr;align-items:center;gap:20px;overflow:hidden}
+    .phone-band .pb-text{padding:52px 44px}
+    .phone-band h3{font-size:clamp(22px,2.4vw,30px);font-weight:800;letter-spacing:-.8px;margin-bottom:10px}
+    .phone-band h3 .hl{color:#8FD0C8}
+    .phone-band p{color:rgba(250,247,242,.72);font-size:16px;max-width:44ch}
+    .pb-shot{padding:40px 44px;display:flex;justify-content:center}
+    .pb-shot img{width:100%;max-width:400px;display:block;border-radius:22px;box-shadow:0 18px 50px rgba(0,0,0,.35);border:1px solid rgba(250,247,242,.12)}
+    @media(max-width:900px){
+      .prod-grid{grid-template-columns:1fr}
+      .pc-text{padding:28px 24px 22px}
+      .pc-shot,.prod-card.wide .pc-shot{padding:20px 20px 0}
+      .phone-band{grid-template-columns:1fr;text-align:center}
+      .phone-band .pb-text{padding:36px 24px 4px}
+      .phone-band p{margin:0 auto}
+      .pb-shot{padding:6px 24px 30px}
+    }
 
     /* FAQ */
     .faq{max-width:770px;margin:0 auto}
@@ -450,37 +437,52 @@
         <h2>הכול במסך אחד, ברור ופשוט</h2>
         <p>יומן, מטופלים ואישורי הגעה - נגיש מהמחשב ומהנייד</p>
       </div>
-      <div class="browser skin-real">
-        <div class="browser-bar"><i></i><i></i><i></i><div class="url">app.klinical.co.il</div></div>
-        <div class="app">
-          <aside class="app-side">
-            <div class="logo"><div class="d"><img src="logo.png" alt="קליניקל" /></div> קליניקל</div>
-            <nav class="app-nav">
-              <a><span class="nvi" style="--m:url('icons/reports.png')"></span> לוח בקרה</a>
-              <a class="on"><span class="nvi" style="--m:url('icons/calendar.png')"></span> יומן</a>
-              <a><span class="nvi" style="--m:url('icons/leads.png')"></span> לידים</a>
-              <a><span class="nvi" style="--m:url('icons/patients.png')"></span> מטופלים</a>
-              <a><span class="nvi" style="--m:url('icons/reminders.png')"></span> הודעות לשליחה</a>
-              <a><span class="nvi" style="--m:url('icons/kb.png')"></span> מאגר ידע</a>
-            </nav>
-          </aside>
-          <main class="app-main">
-            <div class="app-h"><b>היומן שלי · יום שלישי, 14.7</b><span class="chip">4 תורים · 3 אישרו הגעה</span></div>
-            <div class="rooms">
-              <div class="room">
-                <div class="room-h r1"><span class="room-dot" style="background:#3b82f6"></span>חדר 1</div>
-                <div class="appt"><div class="who"><div><div class="nm">דנה כהן <span class="tm">09:00</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span><span class="pay"><span class="bdg-i" style="--m:url('icons/billing.png')"></span>קבלה</span></div></div>
-                <div class="appt new"><div class="who"><div><div class="nm">רונית אברהם <span class="tm">12:00</span></div><div class="ty">מטופלת חדשה</div></div></div><div class="badges"></div></div>
-              </div>
-              <div class="room">
-                <div class="room-h r2"><span class="room-dot" style="background:#a855f7"></span>חדר 2</div>
-                <div class="appt"><div class="who"><div><div class="nm">יוסי לוי <span class="tm">10:30</span></div><div class="ty">פגישת המשך</div></div></div><div class="badges"><span class="ok">✅ אישר הגעה</span><span class="pay"><span class="bdg-i" style="--m:url('icons/payment.png')"></span>שולם</span></div></div>
-                <div class="appt ret"><div class="who"><div><div class="nm">מיכל שרון <span class="tm">14:00</span></div><div class="ty">טיפול ראשון</div></div></div><div class="badges"><span class="ok">✅ אישרה הגעה</span></div></div>
-              </div>
-            </div>
-            <div class="legend"><span><i style="background:#d97706"></i> מטופל חדש</span><span><i style="background:#059669"></i> טיפול ראשון - חזר</span><span><i class="lg-fu"></i> פגישת המשך</span></div>
-          </main>
+      <div class="prod-grid">
+
+        <div class="prod-card wide">
+          <div class="pc-text">
+            <div class="pc-label">היומן</div>
+            <h3>כל היום שלך במסך אחד</h3>
+            <p>שני חדרים במקביל, מי אישר הגעה, מי כבר קיבל קבלה, ומה סוג הטיפול. גוררים תור למשבצת אחרת והכול מתעדכן לבד.</p>
+          </div>
+          <div class="pc-shot"><img src="images/calendar.webp" alt="היומן של קליניקל - יום עבודה מלא בשני חדרים" loading="lazy" width="1800" height="1060" /></div>
         </div>
+
+        <div class="prod-card">
+          <div class="pc-text">
+            <div class="pc-label">תיק המטופל</div>
+            <h3>התיעוד נכתב בזמן הטיפול</h3>
+            <p>תלונה, מה נעשה, והערות שרק אתם רואים. ההיסטוריה של כל הטיפולים הקודמים פתוחה לידכם.</p>
+          </div>
+          <div class="pc-shot sand"><img src="images/log.webp" alt="לוג טיפול בתיק המטופל" loading="lazy" width="1400" height="962" /></div>
+        </div>
+
+        <div class="prod-card">
+          <div class="pc-text">
+            <div class="pc-label">זימון אונליין</div>
+            <h3>המטופלים קובעים בעצמם</h3>
+            <p>שולחים קישור אחד, והם בוחרים יום ושעה מהזמנים שפתחתם. בלי הלוך ושוב בהודעות.</p>
+          </div>
+          <div class="pc-shot"><img src="images/booking.webp" alt="דף זימון התורים שהמטופלת רואה" loading="lazy" width="1100" height="1196" /></div>
+        </div>
+
+        <div class="prod-card wide">
+          <div class="pc-text">
+            <div class="pc-label">אחרי הטיפול</div>
+            <h3>מילה אישית לכל מטופל, בלי לכתוב אותה</h3>
+            <p>קליניקל מכינה טיוטת הודעת מעקב לפי מה שנעשה בטיפול. קוראים, מתקנים אם צריך, ושולחים בלחיצה.</p>
+          </div>
+          <div class="pc-shot sand"><img src="images/outbox.webp" alt="הודעות מעקב אישיות מוכנות לשליחה" loading="lazy" width="1500" height="982" /></div>
+        </div>
+
+      </div>
+
+      <div class="phone-band">
+        <div class="pb-text">
+          <h3>וגם בטלפון, <span class="hl">כמו אפליקציה</span></h3>
+          <p>מוסיפים את קליניקל למסך הבית והיא יושבת שם ליד שאר האפליקציות. בלי חנות אפליקציות, בלי התקנה, תמיד מעודכנת.</p>
+        </div>
+        <div class="pb-shot"><img src="images/phone.webp" alt="קליניקל על מסך הבית של האייפון" loading="lazy" width="900" height="741" /></div>
       </div>
     </div>
   </section>
@@ -666,7 +668,7 @@
   <script>
     (function(){
       if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var els=document.querySelectorAll('.sec-head, .card, .more-panel, .band, .browser, .about-text, .founder, .plan, .bill-wrap, .price-annual, .price-note, .faq details, .chan, form, .final-cta .wrap');
+      var els=document.querySelectorAll('.sec-head, .card, .more-panel, .band, .prod-card, .phone-band, .about-text, .founder, .plan, .bill-wrap, .price-annual, .price-note, .faq details, .chan, form, .final-cta .wrap');
       els.forEach(function(el){
         el.classList.add('rv');
         var p=el.parentElement;
