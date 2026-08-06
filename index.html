@@ -195,10 +195,10 @@
     /* Product showcase - horizontal gallery */
     .showcase{background:var(--cream);overflow:hidden}
     .gal-wrap{position:relative}
-    .gallery{display:flex;gap:26px;overflow-x:auto;scroll-snap-type:x mandatory;scroll-behavior:smooth;padding:6px 0 30px;
+    .gallery{display:flex;gap:26px;overflow-x:auto;padding:6px 0 30px;
       -ms-overflow-style:none;scrollbar-width:none}
     .gallery::-webkit-scrollbar{display:none}
-    .slide{flex:0 0 auto;scroll-snap-align:center;width:min(720px,82vw);display:flex;flex-direction:column}
+    .slide{flex:0 0 auto;width:min(720px,82vw);display:flex;flex-direction:column}
     .slide.tall{width:min(340px,62vw)}
     .shot-box{height:440px;border-radius:20px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
     .shot-box.sand{background:var(--sand)}
@@ -688,12 +688,28 @@
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       els.forEach(function(el){ io.observe(el); });
     })();
-    var galIdx=0;
     function galMove(dir){
       var g=document.getElementById('gallery'); if(!g) return;
-      var slides=g.querySelectorAll('.slide');
-      galIdx=Math.max(0,Math.min(slides.length-1,galIdx+dir));
-      slides[galIdx].scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+      var slides=[].slice.call(g.querySelectorAll('.slide'));
+      var gr=g.getBoundingClientRect(), mid=gr.left+gr.width/2;
+      var cur=0,best=Infinity;
+      slides.forEach(function(s,i){
+        var r=s.getBoundingClientRect(), d=Math.abs((r.left+r.width/2)-mid);
+        if(d<best){best=d;cur=i;}
+      });
+      var next=Math.max(0,Math.min(slides.length-1,cur+dir));
+      var nr=slides[next].getBoundingClientRect();
+      var from=g.scrollLeft, dist=(nr.left+nr.width/2)-mid;
+      if(!dist) return;
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ g.scrollLeft=from+dist; return; }
+      clearInterval(g._anim);
+      var i=0, steps=22;
+      g._anim=setInterval(function(){
+        i++;
+        var p=i/steps, e=p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
+        g.scrollLeft=from+dist*e;
+        if(i>=steps) clearInterval(g._anim);
+      },16);
     }
     function toggleMenu(){
       var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');
