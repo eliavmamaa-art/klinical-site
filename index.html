@@ -198,13 +198,18 @@
     .gallery{display:flex;gap:26px;overflow-x:auto;padding:6px 0 30px;
       -ms-overflow-style:none;scrollbar-width:none}
     .gallery::-webkit-scrollbar{display:none}
-    .slide{flex:0 0 auto;width:min(720px,82vw);display:flex;flex-direction:column}
-    .slide.tall{width:min(340px,62vw)}
-    .shot-box{height:440px;border-radius:20px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
+    .slide{flex:0 0 auto;width:min(820px,84vw);display:flex;flex-direction:column}
+    .slide.tall{width:min(360px,62vw)}
+    .shot-box{height:540px;border-radius:20px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
     .shot-box.sand{background:var(--sand)}
-    .shot-box.dark{background:var(--ink)}
-    .shot-box img{max-width:100%;max-height:100%;object-fit:contain;border-radius:10px;box-shadow:0 10px 34px rgba(30,42,44,.16)}
-    .shot-box.dark img{border-radius:18px;box-shadow:0 14px 40px rgba(0,0,0,.4)}
+    .shot-box.device{background:linear-gradient(160deg,#EEF4F3,var(--teal-soft));padding:22px}
+    /* iPhone frame */
+    .phone-frame{position:relative;height:100%;aspect-ratio:9/19.5;background:#111214;border-radius:38px;padding:7px;overflow:hidden;
+      box-shadow:0 22px 48px rgba(30,42,44,.32), 0 0 0 1.5px #2c2f33, inset 0 0 0 1px rgba(255,255,255,.06)}
+    .phone-frame::after{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);
+      width:31%;height:20px;background:#0a0b0c;border-radius:99px;z-index:2}
+    .shot-box img{max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain;border-radius:10px;box-shadow:0 10px 34px rgba(30,42,44,.16)}
+    .shot-box .phone-frame img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:31px;display:block;box-shadow:none}
     .slide figcaption{padding:20px 4px 0}
     .slide .cap-label{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:5px}
     .slide h3{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
@@ -215,7 +220,7 @@
     .gal-nav button:hover{border-color:var(--teal);color:var(--teal);box-shadow:var(--shadow)}
     .gal-hint{text-align:center;color:var(--muted);font-size:14px;margin-top:12px}
     @media(max-width:700px){
-      .shot-box{height:330px;padding:16px}
+      .shot-box{height:400px;padding:14px}
       .slide{width:86vw}
       .slide.tall{width:66vw}
     }
@@ -437,7 +442,7 @@
         <div class="gallery" id="gallery">
 
           <figure class="slide tall">
-            <div class="shot-box dark"><img src="images/phone.webp" alt="קליניקל על מסך הבית של האייפון" loading="lazy" width="760" height="768" /></div>
+            <div class="shot-box device"><div class="phone-frame"><img src="images/phone.webp" alt="קליניקל על מסך הבית של האייפון" loading="lazy" width="560" height="1213" /></div></div>
             <figcaption>
               <div class="cap-label">בטלפון</div>
               <h3>יושבת במסך הבית, כמו אפליקציה</h3>
