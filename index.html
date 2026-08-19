@@ -242,6 +242,103 @@
       .win-phone{left:calc(50% - 108px);top:262px}
     }
 
+    /* How-it-works: sticky stage + trigger headlines */
+    .how{background:#fff}
+    .how-grid{display:grid;grid-template-columns:1fr 1.35fr;gap:48px;align-items:start}
+    .how-item{min-height:300px;display:flex;flex-direction:column;justify-content:center;padding:20px 0;border-bottom:1px solid var(--line)}
+    .how-item:last-child{border-bottom:none}
+    .how-item h3{font-size:24px;font-weight:800;letter-spacing:-.5px;color:var(--muted);transition:color .3s var(--ease-out)}
+    .how-item p{font-size:15px;color:var(--muted);opacity:.55;margin-top:8px;transition:opacity .3s var(--ease-out)}
+    .how-item.on h3{color:var(--ink)}
+    .how-item.on p{opacity:1}
+    .how-stage-wrap{position:relative;height:100%}
+    .how-stage{position:sticky;top:110px;height:430px}
+    .ch{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s var(--ease-out),visibility .35s}
+    .ch.on{opacity:1;visibility:visible}
+    .w-main{top:0;right:0;left:16%;height:330px;box-shadow:0 10px 30px rgba(30,42,44,.08)}
+    .w-float{left:0;top:150px;width:250px;box-shadow:0 18px 44px rgba(30,42,44,.17);z-index:2;border-radius:14px}
+    /* ch1 */
+    .list-body{background:#faf8f4;height:calc(100% - 33px);padding:12px}
+    .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:9px;font-size:13px}
+    .lrow b{color:var(--indigo)}
+    .lrow span{color:var(--muted);font-size:11px}
+    .rem{margin-inline-start:auto;font-style:normal;font-size:10px;font-weight:700;color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:999px;padding:3px 9px}
+    .sms-body{padding:14px;background:#faf8f4;border-radius:0 0 14px 14px}
+    .sms-b{background:#fff;border:1px solid var(--line);border-radius:12px;border-top-right-radius:4px;padding:10px 12px;font-size:13px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
+    /* ch2 */
+    .rec-body{position:relative;background:#faf8f4;height:calc(100% - 33px)}
+    .rec-st{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink);opacity:0}
+    .rec-done{opacity:1;color:#047857}
+    .rec-dot{width:11px;height:11px;border-radius:50%;background:#ef4444}
+    .rec-st b{font-weight:700;color:var(--indigo)}
+    .sum-win{top:64px;width:280px}
+    .sum-body{padding:12px 14px;background:#fff;border-radius:0 0 14px 14px}
+    .sf{margin-bottom:10px}
+    .sf small{display:block;font-size:9px;color:var(--muted);margin-bottom:3px}
+    .sf .tw{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;font-size:12px;border-bottom:1px solid var(--line);padding-bottom:3px}
+    .tw1{width:10.5em}.tw2{width:11.5em}.tw3{width:7.5em}
+    /* ch3 */
+    .pay-body{background:#faf8f4;height:calc(100% - 33px);padding:14px}
+    .appt-done{position:static;height:auto;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:4px;padding:10px 12px;margin-bottom:12px}
+    .chip-paid{display:inline-block;margin-top:5px;font-style:normal;font-size:9px;padding:2px 7px;border-radius:4px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0}
+    .pay-btns{display:flex;gap:8px}
+    .pb{flex:1;text-align:center;border:1px solid var(--line);background:#fff;border-radius:4px;padding:9px 0;font-size:12px;color:var(--ink)}
+    .pb-hot{background:var(--indigo);border-color:var(--indigo);color:#fff;font-weight:700}
+    .rc-win{width:300px;top:170px}
+    .rc-body{padding:10px 12px;background:#fff;border-radius:0 0 14px 14px}
+    .rc-row{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:8px 4px;border-bottom:1px solid var(--line)}
+    .rc-row b{color:var(--indigo);font-weight:600}
+    .rc-new{background:#ecfdf5;border-radius:4px;padding:8px 6px}
+    .rc-total{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:9px 4px 2px;color:var(--ink)}
+    .rt-wrap{position:relative;display:inline-block;min-width:4.8em;text-align:left}
+    .rt-a,.rt-b{display:block}
+    .rt-a{position:absolute;inset:0;opacity:0}
+    /* ch4 */
+    .file-body{background:#faf8f4;height:calc(100% - 33px);padding:12px}
+    .frow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:8px;font-size:12px;color:var(--ink)}
+    .pill{font-style:normal;font-size:9px;font-weight:700;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:3px 9px}
+    .pill-ok{color:#047857;background:#ecfdf5;border-color:#a7f3d0}
+    .s-toast{position:absolute;bottom:24px;left:6%;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 20px rgba(30,42,44,.14);padding:8px 13px;font-size:12px;font-weight:600;color:#065f46;z-index:2}
+    /* chapter timelines (gated by .play, set by the driver) */
+    @keyframes recPulse{50%{opacity:.35}}
+    @keyframes holdOn{from{opacity:1}to{opacity:1}}
+    .ch.play .w-main{animation:scnIn .5s var(--ease-out) both}
+    .ch.play .w-float{animation:scnIn .5s var(--ease-out) .15s both}
+    .ch1.play .sms-b{animation:popIn .35s var(--ease-out) 1s both}
+    .ch1.play .rem1{animation:popIn .3s var(--ease-out) 1.9s both}
+    .ch1.play .rem2{animation:popIn .3s var(--ease-out) 2.25s both}
+    .ch1.play .rem3{animation:popIn .3s var(--ease-out) 2.5s both}
+    .ch2.play .rec-live{animation:stepOn .3s var(--ease-out) .4s both,stepOff .3s ease 2.6s forwards}
+    .ch2.play .rec-dot{animation:recPulse 1s ease-in-out 4}
+    .ch2.play .rec-proc{animation:stepOn .3s var(--ease-out) 2.9s both,stepOff .3s ease 4.4s forwards}
+    .ch2.play .rec-done{animation:stepOn .3s var(--ease-out) 4.7s both}
+    .ch2.play .sum-win{animation:scnIn .5s var(--ease-out) 4.9s both}
+    .ch2.play .tw1{animation:typeIn .9s steps(14,end) 5.5s both}
+    .ch2.play .tw2{animation:typeIn 1s steps(16,end) 6.6s both}
+    .ch2.play .tw3{animation:typeIn .7s steps(10,end) 7.8s both}
+    .ch3.play .pb-hot{animation:pressBtn .3s ease 1.1s}
+    .ch3.play .rc-win{animation:scnIn .5s var(--ease-out) 1.5s both}
+    .ch3.play .rc-new{animation:stepOn .35s var(--ease-out) 2.3s both}
+    .ch3.play .chip-paid{animation:popIn .3s var(--ease-out) 2.9s both}
+    .ch3.play .rt-a{animation:holdOn 3.1s step-end both,fadeOut .25s ease 3.1s forwards}
+    .ch3.play .rt-b{animation:selOn .25s 3.1s both}
+    .ch4.play .fr1{animation:stepOn .3s var(--ease-out) .5s both}
+    .ch4.play .fr2{animation:stepOn .3s var(--ease-out) .8s both}
+    .ch4.play .fr3{animation:stepOn .3s var(--ease-out) 1.1s both}
+    .ch4.play .fr4{animation:stepOn .3s var(--ease-out) 1.4s both}
+    .ch4.play .s-toast{animation:stepOn .3s var(--ease-out) 2s both}
+    @media(prefers-reduced-motion:reduce){.ch.play *{animation:none !important}}
+    @media(max-width:900px){
+      .how-grid{display:block}
+      .how-stage-wrap{position:sticky;top:64px;z-index:5;margin-bottom:26px}
+      .how-stage{position:static;height:390px}
+      .how-item{min-height:230px}
+      .w-main{left:0;height:300px}
+      .w-float{width:230px;top:170px}
+      .sum-win{top:96px;width:250px}
+      .rc-win{top:180px;width:260px}
+    }
+
     /* Sections */
     section{padding:94px 0}
     #features,#about,#faq{background:#fff}
@@ -565,6 +662,99 @@
     </div>
   </div>
 
+  <!-- HOW IT WORKS: sticky stage + trigger headlines (Attio-style).
+       The stage pins while the headline list scrolls; each headline entering
+       the middle band activates its chapter (.on shows it, .play runs its
+       timeline). Chapters' base styles are their FINAL frame - no-JS shows
+       chapter 1 complete, reduced-motion swaps chapters without timelines. -->
+  <section id="how" class="how">
+    <div class="wrap">
+      <div class="sec-head rv">
+        <span class="eyebrow">ככה זה עובד</span>
+        <h2>יום עבודה שמנהל את עצמו</h2>
+        <p>גללו - וראו את המערכת עובדת <span class="mark-hl">בשבילכם</span></p>
+      </div>
+      <div class="how-grid">
+        <div class="how-list">
+          <div class="how-item"><h3>התזכורת יוצאת לבד</h3><p>בערב שלפני, כל מטופל מקבל SMS עם שעת התור שלו. בלי שנגעתם בכלום.</p></div>
+          <div class="how-item"><h3>הטיפול מתעד את עצמו</h3><p>מקליטים את הטיפול - וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</p></div>
+          <div class="how-item"><h3>הקבלה יוצאת מהיומן</h3><p>לחיצה אחת על התור - והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</p></div>
+          <div class="how-item"><h3>הכל נאסף לתיק אחד</h3><p>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</p></div>
+        </div>
+        <div class="how-stage-wrap" aria-hidden="true">
+          <div class="how-stage">
+
+            <div class="ch ch1">
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התורים של מחר · יום שלישי 14/9</span></div>
+                <div class="list-body">
+                  <div class="lrow"><b>דנה לוי</b><span dir="ltr">14:00</span><i class="rem rem1">נשלחה ✓</i></div>
+                  <div class="lrow"><b>יוסי כהן</b><span dir="ltr">15:00</span><i class="rem rem2">נשלחה ✓</i></div>
+                  <div class="lrow"><b>רות אלון</b><span dir="ltr">16:30</span><i class="rem rem3">נשלחה ✓</i></div>
+                </div>
+              </div>
+              <div class="win w-float">
+                <div class="ph-top"><span class="ph-dot"></span>SMS מ-Klinical</div>
+                <div class="sms-body"><div class="sms-b">היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</div></div>
+              </div>
+            </div>
+
+            <div class="ch ch2">
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
+                <div class="rec-body">
+                  <div class="rec-st rec-live"><i class="rec-dot"></i>מקליט דיבור... <b dir="ltr">31:20</b></div>
+                  <div class="rec-st rec-proc">מתמלל את הפגישה...</div>
+                  <div class="rec-st rec-done">✓ הסיכום מוכן</div>
+                </div>
+              </div>
+              <div class="win w-float sum-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">סיכום לתיק</span></div>
+                <div class="sum-body">
+                  <div class="sf"><small>תלונה עיקרית</small><span class="tw tw1">כאב גב תחתון, שבועיים</span></div>
+                  <div class="sf"><small>מה נעשה בטיפול</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
+                  <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע</span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ch ch3">
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התור של דנה לוי · 14:00</span></div>
+                <div class="pay-body">
+                  <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
+                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                </div>
+              </div>
+              <div class="win w-float rc-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
+                <div class="rc-body">
+                  <div class="rc-row rc-old"><span>יוסי כהן</span><span dir="ltr">₪350</span><b>#1041</b></div>
+                  <div class="rc-row rc-new"><span>דנה לוי</span><span dir="ltr">₪350</span><b>#1042</b></div>
+                  <div class="rc-total">סה"כ החודש<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
+                </div>
+              </div>
+            </div>
+
+            <div class="ch ch4">
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">תיק מטופלת · דנה לוי</span></div>
+                <div class="file-body">
+                  <div class="frow fr1"><span>פגישה · שלישי 14/9</span><i class="pill pill-ok">בוצעה</i></div>
+                  <div class="frow fr2"><span>סיכום טיפול · כאב גב תחתון</span><i class="pill">בתיק</i></div>
+                  <div class="frow fr3"><span>קבלה #1042 · ₪350</span><i class="pill">PDF</i></div>
+                  <div class="frow fr4"><span>שאלון רפואי</span><i class="pill pill-ok">מולא ✓</i></div>
+                </div>
+              </div>
+              <div class="s-toast">הכל בתיק. אפס ניירת בסוף היום ✓</div>
+            </div>
+
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- PRODUCT SHOWCASE -->
   <section class="showcase" id="product">
     <div class="wrap">
@@ -846,6 +1036,28 @@
         });
       },{threshold:[0,0.35]});
       scenes.forEach(function(sc){ io.observe(sc); });
+    })();
+    /* Story driver: the headline crossing the middle band activates its chapter. */
+    (function(){
+      var items=document.querySelectorAll('.how-item');
+      var chs=document.querySelectorAll('.how-stage .ch');
+      if(!items.length||!chs.length)return;
+      var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      function act(i){
+        items.forEach(function(el,j){ el.classList.toggle('on', j===i); });
+        chs.forEach(function(el,j){
+          if(j===i){ if(!el.classList.contains('on')){ el.classList.add('on'); if(!reduce) el.classList.add('play'); } }
+          else { el.classList.remove('on'); el.classList.remove('play'); }
+        });
+      }
+      act(0);
+      if(!('IntersectionObserver' in window))return;
+      var io=new IntersectionObserver(function(es){
+        es.forEach(function(e){
+          if(e.isIntersecting) act([].indexOf.call(items,e.target));
+        });
+      },{rootMargin:'-42% 0px -42% 0px'});
+      items.forEach(function(el){ io.observe(el); });
     })();
     function galMove(dir){
       var g=document.getElementById('gallery'); if(!g) return;
