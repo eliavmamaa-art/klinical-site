@@ -195,7 +195,7 @@
     .chip-new{display:inline-block;margin-top:4px;font-style:normal;font-size:9px;padding:2px 6px;border-radius:4px;background:#fef3c7;color:#92400e;border:1px solid #fde68a}
     .fs-free{position:absolute;right:52px;left:10px;height:66px;border:2px dashed #34d399;background:#ecfdf5;color:#065f46;border-radius:4px;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:700;opacity:0}
     .fs-free small{font-weight:400;font-size:10px;opacity:.8}
-    .cal-toast{position:absolute;bottom:12px;left:12px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh-mid);padding:8px 12px;font-size:11px;font-weight:600;color:#065f46}
+    .cal-toast{display:flex;align-items:center;gap:7px;position:absolute;bottom:12px;left:12px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh-mid);padding:8px 12px;font-size:11px;font-weight:600;color:#065f46}
     /* Real device, reusing the bezel language of the product gallery. */
     .scn-phone{position:absolute;left:2%;top:26px;height:376px;aspect-ratio:9/19.5;background:#111214;border-radius:32px;padding:5px;z-index:2;
       box-shadow:var(--sh-high), 0 0 0 1.5px #2c2f33, inset 0 0 0 1px rgba(255,255,255,.06)}
@@ -241,7 +241,7 @@
     @keyframes pressBtn{50%{transform:scale(.96)}}
     @keyframes selOn{from{opacity:0}}
     .hero-scene.play .win-cal{animation:scnIn .55s var(--ease-out) both}
-    .hero-scene.play .win-phone{animation:scnIn .55s var(--ease-out) .15s both}
+    .hero-scene.play .scn-phone{animation:scnIn .55s var(--ease-out) .15s both}
     .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s var(--ease-out) 2.1s forwards}
     .hero-scene.play .ps1 .sel{animation:selOn .22s 1.4s both}
     .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s var(--ease-out) 3.7s forwards}
@@ -263,120 +263,130 @@
       .scn-phone{left:calc(50% - 87px);top:272px;height:328px}
     }
 
-    /* How-it-works: sticky stage + trigger headlines */
-    .how{background:#fff;padding-bottom:0}
-    /* Attio's story pattern: the whole block is a tall scroll rail; the grid
-       inside is pinned for its full length, and four invisible marks spaced
-       down the rail hand the baton from chapter to chapter. The headline
-       column stays compact - every chapter visible at once - because the
-       CONTRAST does the work, not the spacing: the inactive headline fades
-       almost to the hairline colour, and only the active one carries ink. */
-    .how-rail{position:relative;height:340vh}
-    .how-pin{position:sticky;top:0;height:100vh;display:flex;align-items:center}
-    .how-grid{display:grid;grid-template-columns:.85fr 1.5fr;gap:56px;align-items:center;width:100%}
-    .how-list{position:relative;padding-right:30px;border-right:1px solid var(--line)}
-    .how-item{position:relative;padding:11px 0}
-    .how-item::before{content:"";position:absolute;right:-31px;top:50%;width:3px;height:0;background:var(--teal);border-radius:99px;
-      transform:translateY(-50%);transition:height .32s cubic-bezier(.33,1,.68,1)}
-    .how-item.on::before{height:calc(100% - 12px)}
-    .how-item h3{font-size:23px;font-weight:800;letter-spacing:-.5px;line-height:1.25;color:var(--fade);
+    /* How it works.
+       Rebuilt after studying attio.com frame by frame: there is no frozen
+       stage that cross-fades. The chapters simply STACK AND SCROLL, so the
+       windows drift in under your own finger - that is the whole "quality"
+       difference. Only the headline column is pinned, and it stays compact
+       because contrast carries it, not spacing. And every scene keeps a
+       slow pulse of its own, so pausing on one never leaves a dead picture. */
+    .how{background:#fff}
+    .how-grid{display:grid;grid-template-columns:.8fr 1.55fr;gap:60px;align-items:start}
+    .how-list{position:sticky;top:44vh;padding-right:30px;border-right:1px solid var(--line)}
+    .how-item{position:relative;padding:9px 0}
+    .how-item::before{content:"";position:absolute;right:-31px;top:50%;width:3px;height:0;background:var(--teal);
+      border-radius:99px;transform:translateY(-50%);transition:height .32s cubic-bezier(.33,1,.68,1)}
+    .how-item.on::before{height:calc(100% - 10px)}
+    .how-item h3{font-size:23px;font-weight:800;letter-spacing:-.5px;line-height:1.3;color:var(--fade);
       transition:color .32s cubic-bezier(.33,1,.68,1)}
     .how-item.on h3{color:var(--ink)}
-    .how-item p{font-size:14.5px;color:var(--muted);max-height:0;opacity:0;overflow:hidden;
-      transition:max-height .4s var(--ease-out),opacity .28s var(--ease-out),margin-top .4s var(--ease-out)}
-    .how-item.on p{max-height:90px;opacity:1;margin-top:7px}
-    .how-stage{position:relative;height:430px}
-    .how-mark{position:absolute;right:0;width:1px;height:25%;pointer-events:none}
-    .how-mark:nth-of-type(1){top:0}
-    .how-mark:nth-of-type(2){top:25%}
-    .how-mark:nth-of-type(3){top:50%}
-    .how-mark:nth-of-type(4){top:75%}
-    .ch{position:absolute;inset:0;opacity:0;visibility:hidden;transition:opacity .35s var(--ease-out),visibility .35s}
-    .ch.on{opacity:1;visibility:visible}
-    .w-main{top:0;right:0;left:14%;height:340px;box-shadow:var(--sh-mid)}
-    .w-float{left:0;top:158px;width:256px;box-shadow:var(--sh-high);z-index:2;border-radius:12px 12px 0 0}
-    /* ch1 */
-    .list-body{background:#faf8f4;height:calc(100% - 33px);padding:12px}
-    .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:9px;font-size:13px}
+    .ch{padding:6vh 0 12vh}
+    .ch-h{font-size:26px;font-weight:800;letter-spacing:-.6px;line-height:1.35;margin-bottom:30px;max-width:30ch}
+    .ch-h span{color:var(--muted);font-weight:600}
+    .stage{position:relative;height:410px}
+    .w-main{position:absolute;top:0;right:0;left:12%;height:340px;box-shadow:var(--sh-mid)}
+    .w-float{position:absolute;left:0;top:150px;width:262px;box-shadow:var(--sh-high);z-index:2}
+    .app-body{background:#faf8f4;height:calc(100% - 35px);padding:14px}
+    /* shared app furniture, faithful to the real screens */
+    .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:8px;font-size:13px}
     .lrow b{color:var(--indigo)}
     .lrow span{color:var(--muted);font-size:11px}
     .rem{margin-inline-start:auto;font-style:normal;font-size:10px;font-weight:700;color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:999px;padding:3px 9px}
-    .sms-body{padding:14px;background:#faf8f4;height:calc(100% - 33px)}
-    .sms-b{background:#fff;border:1px solid var(--line);border-radius:12px;border-top-right-radius:4px;padding:10px 12px;font-size:13px;box-shadow:0 1px 2px rgba(0,0,0,.05)}
-    /* ch2 */
-    .rec-body{position:relative;background:#faf8f4;height:calc(100% - 33px)}
-    .rec-st{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink);opacity:0}
-    .rec-done{opacity:1;color:#047857}
-    .rec-dot{width:11px;height:11px;border-radius:50%;background:#ef4444}
-    .rec-st b{font-weight:700;color:var(--indigo)}
-    .sum-win{top:64px;width:280px}
+    .lfoot{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);padding:6px 2px}
+    .live-dot{width:7px;height:7px;border-radius:50%;background:#34d399;animation:breathe 2.4s ease-in-out infinite}
+    /* ch2 recording - the app really does pulse a red dot and run two counters */
+    .app-body.rec{display:flex;flex-direction:column;align-items:center;justify-content:center;gap:13px}
+    .rec-top{display:flex;align-items:center;gap:9px;font-size:14px;font-weight:600;color:var(--ink)}
+    .rec-dot{width:11px;height:11px;border-radius:50%;background:#ef4444;animation:breathe 1.4s ease-in-out infinite}
+    .wave{display:flex;align-items:center;gap:3px;height:26px}
+    .wave i{width:3px;height:6px;border-radius:2px;background:#c9c3b5;animation:wv 1.1s ease-in-out infinite}
+    .wave i:nth-child(2n){animation-duration:.9s}.wave i:nth-child(3n){animation-duration:1.35s}
+    .wave i:nth-child(1){animation-delay:0s}.wave i:nth-child(2){animation-delay:.08s}.wave i:nth-child(3){animation-delay:.16s}
+    .wave i:nth-child(4){animation-delay:.24s}.wave i:nth-child(5){animation-delay:.32s}.wave i:nth-child(6){animation-delay:.4s}
+    .wave i:nth-child(7){animation-delay:.48s}.wave i:nth-child(8){animation-delay:.56s}.wave i:nth-child(9){animation-delay:.64s}
+    .wave i:nth-child(10){animation-delay:.72s}.wave i:nth-child(11){animation-delay:.8s}.wave i:nth-child(12){animation-delay:.88s}
+    .wave i:nth-child(13){animation-delay:.96s}.wave i:nth-child(14){animation-delay:1.04s}
+    .rec-nums{display:flex;gap:34px;text-align:center}
+    .rec-nums b{display:block;font-size:22px;font-weight:700;font-variant-numeric:tabular-nums;letter-spacing:-.5px}
+    .rec-nums .ink{color:var(--indigo)}
+    .rec-nums small{font-size:11px;color:var(--muted)}
+    .rec-stop{background:#dc2626;color:#fff;border-radius:999px;padding:9px 22px;font-size:12.5px;font-weight:700}
+    .sum-win{top:56px;width:286px}
     .sum-body{padding:12px 14px;background:#fff}
-    .sf{margin-bottom:10px}
+    .sf{margin-bottom:11px}
     .sf small{display:block;font-size:9px;color:var(--muted);margin-bottom:3px}
     .sf .tw{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;font-size:12px;border-bottom:1px solid var(--line);padding-bottom:3px}
     .tw1{width:10.5em}.tw2{width:11.5em}.tw3{width:7.5em}
-    /* ch3 */
-    .pay-body{background:#faf8f4;height:calc(100% - 33px);padding:14px}
-    .appt-done{position:static;height:auto;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:4px;padding:10px 12px;margin-bottom:12px}
+    .caret{display:inline-block;width:1.5px;height:11px;background:var(--indigo);vertical-align:-1px;margin-right:2px;animation:blink 1.05s step-end infinite}
+    /* ch3 receipt */
+    .appt-done{position:relative;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:4px;padding:10px 12px;margin-bottom:12px}
+    .appt-done b{display:block;font-size:13px;color:var(--indigo)}
+    .appt-done span{display:block;font-size:11px;color:var(--indigo);opacity:.7}
     .chip-paid{display:inline-block;margin-top:5px;font-style:normal;font-size:9px;padding:2px 7px;border-radius:4px;background:#d1fae5;color:#065f46;border:1px solid #a7f3d0}
-    .pay-btns{display:flex;gap:8px}
-    .pb{flex:1;text-align:center;border:1px solid var(--line);background:#fff;border-radius:4px;padding:9px 0;font-size:12px;color:var(--ink)}
-    .pb-hot{background:var(--indigo);border-color:var(--indigo);color:#fff;font-weight:700}
-    .rc-win{width:300px;top:170px}
+    .pay-btns{display:flex;gap:7px}
+    .pb{flex:1;text-align:center;border:1px solid var(--line);background:#fff;border-radius:4px;padding:9px 0;font-size:11.5px;color:var(--ink)}
+    .pb-hot{background:var(--indigo);border-color:var(--indigo);color:#fff;font-weight:700;position:relative;overflow:hidden}
+    .pb-hot::after{content:"";position:absolute;inset:0;background:linear-gradient(105deg,transparent 35%,rgba(255,255,255,.28) 50%,transparent 65%);
+      transform:translateX(-120%);animation:sheen 3.6s ease-in-out infinite}
+    .rc-win{width:300px;top:164px}
     .rc-body{padding:10px 12px;background:#fff}
-    .rc-row{display:flex;justify-content:space-between;gap:8px;font-size:12px;padding:8px 4px;border-bottom:1px solid var(--line)}
+    .rc-head,.rc-row{display:grid;grid-template-columns:2.4em 1fr 3.1em 3em;gap:8px;font-size:11.5px;padding:7px 3px;align-items:center}
+    .rc-head{color:var(--muted);font-size:9.5px;border-bottom:1px solid var(--line)}
+    .rc-row{border-bottom:1px solid var(--line)}
+    .rc-row span:first-child{color:var(--muted)}
     .rc-row b{color:var(--indigo);font-weight:600}
-    .rc-new{background:#ecfdf5;border-radius:4px;padding:8px 6px}
-    .rc-total{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:9px 4px 2px;color:var(--ink)}
+    .rc-new{background:#ecfdf5;border-radius:4px}
+    .rc-total{display:flex;justify-content:space-between;font-size:12px;font-weight:700;padding:10px 3px 2px;color:var(--ink)}
     .rt-wrap{position:relative;display:inline-block;min-width:4.8em;text-align:left}
-    .rt-a,.rt-b{display:block}
-    .rt-a{position:absolute;inset:0;opacity:0}
-    /* ch4 */
-    .file-body{background:#faf8f4;height:calc(100% - 33px);padding:12px}
-    .frow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:8px;font-size:12px;color:var(--ink)}
+    .rt-a{position:absolute;inset:0}
+    /* ch4 patient file */
+    .pf-name{font-size:17px;font-weight:800;color:var(--indigo);letter-spacing:-.4px}
+    .pf-meta{font-size:10.5px;color:var(--muted);margin:2px 0 12px}
+    .pf-meta em{font-style:normal;color:#047857}
+    .frow{display:flex;align-items:center;justify-content:space-between;background:#fff;border:1px solid var(--line);border-radius:4px;padding:10px 12px;margin-bottom:7px;font-size:12px;color:var(--ink)}
     .pill{font-style:normal;font-size:9px;font-weight:700;border:1px solid var(--line);color:var(--muted);border-radius:999px;padding:3px 9px}
     .pill-ok{color:#047857;background:#ecfdf5;border-color:#a7f3d0}
-    .s-toast{position:absolute;bottom:26px;left:6%;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:var(--sh-mid);padding:9px 14px;font-size:12px;font-weight:600;color:#065f46;z-index:2}
-    /* chapter timelines (gated by .play, set by the driver) */
-    @keyframes recPulse{50%{opacity:.35}}
-    @keyframes holdOn{from{opacity:1}to{opacity:1}}
-    .ch.play .w-main{animation:scnIn .5s var(--ease-out) both}
-    .ch.play .w-float{animation:scnIn .5s var(--ease-out) .15s both}
-    .ch1.play .sms-b{animation:popIn .35s var(--ease-out) 1s both}
-    .ch1.play .rem1{animation:popIn .3s var(--ease-out) 1.9s both}
-    .ch1.play .rem2{animation:popIn .3s var(--ease-out) 2.25s both}
-    .ch1.play .rem3{animation:popIn .3s var(--ease-out) 2.5s both}
-    .ch2.play .rec-live{animation:stepOn .3s var(--ease-out) .4s both,stepOff .3s var(--ease-out) 2.6s forwards}
-    .ch2.play .rec-dot{animation:recPulse 1s ease-in-out 4}
-    .ch2.play .rec-proc{animation:stepOn .3s var(--ease-out) 2.9s both,stepOff .3s var(--ease-out) 4.4s forwards}
-    .ch2.play .rec-done{animation:stepOn .3s var(--ease-out) 4.7s both}
-    .ch2.play .sum-win{animation:scnIn .5s var(--ease-out) 4.9s both}
-    .ch2.play .tw1{animation:typeIn .9s steps(14,end) 5.5s both}
-    .ch2.play .tw2{animation:typeIn 1s steps(16,end) 6.6s both}
-    .ch2.play .tw3{animation:typeIn .7s steps(10,end) 7.8s both}
-    .ch3.play .pb-hot{animation:pressBtn .3s ease 1.1s}
-    .ch3.play .rc-win{animation:scnIn .5s var(--ease-out) 1.5s both}
-    .ch3.play .rc-new{animation:stepOn .35s var(--ease-out) 2.3s both}
-    .ch3.play .chip-paid{animation:popIn .3s var(--ease-out) 2.9s both}
-    .ch3.play .rt-a{animation:holdOn 3.1s step-end both,fadeOut .25s var(--ease-out) 3.1s forwards}
-    .ch3.play .rt-b{animation:selOn .25s 3.1s both}
-    .ch4.play .fr1{animation:stepOn .3s var(--ease-out) .5s both}
-    .ch4.play .fr2{animation:stepOn .3s var(--ease-out) .8s both}
-    .ch4.play .fr3{animation:stepOn .3s var(--ease-out) 1.1s both}
-    .ch4.play .fr4{animation:stepOn .3s var(--ease-out) 1.4s both}
-    .ch4.play .s-toast{animation:stepOn .3s var(--ease-out) 2s both}
-    @media(prefers-reduced-motion:reduce){.ch.play *{animation:none !important}}
+    .pill-next{color:#0369a1;background:#f0f9ff;border-color:#bae6fd}
+    .s-toast{position:absolute;bottom:22px;left:2%;display:flex;align-items:center;gap:8px;background:#fff;border:1px solid var(--line);
+      border-radius:8px;box-shadow:var(--sh-mid);padding:9px 14px;font-size:12px;font-weight:600;color:#065f46;z-index:2}
+    /* ambient loops - a paused scene must never look like a dead picture */
+    @keyframes breathe{0%,100%{opacity:1;transform:scale(1)}50%{opacity:.4;transform:scale(.86)}}
+    @keyframes wv{0%,100%{height:6px}50%{height:20px}}
+    @keyframes blink{50%{opacity:0}}
+    @keyframes sheen{0%,62%{transform:translateX(-120%)}88%,100%{transform:translateX(120%)}}
+    /* one story beat per chapter, played the first time it is reached */
+    .ch.seen .rem{animation:popIn .34s var(--ease-out) both}
+    .ch.seen .lrow:nth-child(1) .rem{animation-delay:.15s}
+    .ch.seen .lrow:nth-child(2) .rem{animation-delay:.42s}
+    .ch.seen .lrow:nth-child(3) .rem{animation-delay:.66s}
+    .ch.seen .sms-b{animation:popIn .4s var(--ease-out) .9s both}
+    .ch.seen .tw1{animation:typeIn .85s steps(14,end) .35s both}
+    .ch.seen .tw2{animation:typeIn .95s steps(16,end) 1.3s both}
+    .ch.seen .tw3{animation:typeIn .65s steps(10,end) 2.35s both}
+    .ch.seen .rc-new{animation:stepOn .38s var(--ease-out) .5s both}
+    .ch.seen .rt-a{animation:holdOn 1.15s step-end both,fadeOut .3s var(--ease-out) 1.15s forwards}
+    .ch.seen .rt-b{animation:selOn .3s 1.15s both}
+    .ch.seen .fr1{animation:stepOn .32s var(--ease-out) .25s both}
+    .ch.seen .fr2{animation:stepOn .32s var(--ease-out) .5s both}
+    .ch.seen .fr3{animation:stepOn .32s var(--ease-out) .75s both}
+    .ch.seen .fr4{animation:stepOn .32s var(--ease-out) 1s both}
+    .ch.seen .s-toast{animation:stepOn .34s var(--ease-out) 1.35s both}
+    @media(prefers-reduced-motion:reduce){
+      .ch *,.ch.seen *{animation:none !important}
+    }
     @media(max-width:900px){
-      .how-pin{align-items:flex-start;padding-top:76px}
       .how-grid{display:block}
-      .how-stage{height:330px;margin-bottom:26px}
-      .how-list{border-right:none;padding-right:22px}
-      .how-item::before{right:0}
-      .how-item h3{font-size:20px}
-      .w-main{left:0;height:270px}
-      .w-float{width:220px;top:132px}
-      .sum-win{top:78px;width:238px}
-      .rc-win{top:146px;width:244px}
+      .how-list{position:sticky;top:60px;z-index:6;background:#fff;border-right:none;padding:10px 0 12px;
+        display:flex;gap:16px;overflow:hidden;border-bottom:1px solid var(--line)}
+      .how-item{padding:0}
+      .how-item::before{display:none}
+      .how-item h3{font-size:13px;white-space:nowrap}
+      .ch-h{font-size:21px;margin-bottom:22px}
+      .stage{height:330px}
+      .w-main{left:0;height:280px}
+      .w-float{width:224px;top:140px}
+      .sum-win{top:66px;width:238px}
+      .rc-win{top:150px;width:248px}
     }
 
     /* Sections */
@@ -616,7 +626,7 @@
             <div class="appt appt-new" style="top:94px">
               <b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-new">מטופל חדש</i>
             </div>
-            <div class="cal-toast">✓ בקשה חדשה מדנה לוי</div>
+            <div class="cal-toast"><span class="live-dot"></span>בקשה חדשה מדנה לוי</div>
           </div>
         </div>
         <div class="scn-phone">
@@ -707,9 +717,8 @@
 
   <!-- HOW IT WORKS: sticky stage + trigger headlines (Attio-style).
        The stage pins while the headline list scrolls; each headline entering
-       the middle band activates its chapter (.on shows it, .play runs its
-       timeline). Chapters' base styles are their FINAL frame - no-JS shows
-       chapter 1 complete, reduced-motion swaps chapters without timelines. -->
+       the middle of the screen owns the pinned headline column. The scenes
+       themselves are moved by the page scroll, not by a timer. -->
   <section id="how" class="how">
     <div class="wrap">
       <div class="sec-head rv">
@@ -717,86 +726,103 @@
         <h2>יום עבודה שמנהל את עצמו</h2>
         <p>גללו - וראו את המערכת עובדת <span class="mark-hl">בשבילכם</span></p>
       </div>
-      <div class="how-rail">
-        <div class="how-pin">
-        <div class="how-grid">
-        <div class="how-list">
-          <div class="how-item"><h3>התזכורת יוצאת לבד</h3><p>בערב שלפני, כל מטופל מקבל SMS עם שעת התור שלו. בלי שנגעתם בכלום.</p></div>
-          <div class="how-item"><h3>הטיפול מתעד את עצמו</h3><p>מקליטים את הטיפול - וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</p></div>
-          <div class="how-item"><h3>הקבלה יוצאת מהיומן</h3><p>לחיצה אחת על התור - והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</p></div>
-          <div class="how-item"><h3>הכל נאסף לתיק אחד</h3><p>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</p></div>
+      <div class="how-grid">
+        <div class="how-list" aria-hidden="true">
+          <div class="how-item"><h3>התזכורת יוצאת לבד</h3></div>
+          <div class="how-item"><h3>הטיפול מתעד את עצמו</h3></div>
+          <div class="how-item"><h3>הקבלה יוצאת מהיומן</h3></div>
+          <div class="how-item"><h3>הכל נאסף לתיק אחד</h3></div>
         </div>
-        <div class="how-stage" aria-hidden="true">
 
-            <div class="ch ch1">
+        <div class="how-flow">
+          <article class="ch" data-ch>
+            <h3 class="ch-h">התזכורת יוצאת לבד. <span>בערב שלפני, כל מטופל מקבל הודעה עם שעת התור. בלי שנגעתם בכלום.</span></h3>
+            <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התורים של מחר · יום שלישי 14/9</span></div>
-                <div class="list-body">
-                  <div class="lrow"><b>דנה לוי</b><span dir="ltr">14:00</span><i class="rem rem1">נשלחה ✓</i></div>
-                  <div class="lrow"><b>יוסי כהן</b><span dir="ltr">15:00</span><i class="rem rem2">נשלחה ✓</i></div>
-                  <div class="lrow"><b>רות אלון</b><span dir="ltr">16:30</span><i class="rem rem3">נשלחה ✓</i></div>
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הודעות לשליחה</span></div>
+                <div class="app-body">
+                  <div class="lrow"><b>דנה לוי</b><span dir="ltr">14:00</span><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><b>יוסי כהן</b><span dir="ltr">15:00</span><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><b>רות אלון</b><span dir="ltr">16:30</span><i class="rem">נשלחה ✓</i></div>
+                  <div class="lfoot"><span class="live-dot"></span>נשלחות אוטומטית בערב שלפני</div>
                 </div>
               </div>
-              <div class="win w-float">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">SMS מ-Klinical</span></div>
-                <div class="sms-body"><div class="sms-b">היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</div></div>
+              <div class="scn-phone sml">
+                <div class="ph-screen">
+                  <div class="ph-status" dir="ltr"><span>21:04</span><span class="ph-bars"><i></i><i></i><i></i></span></div>
+                  <div class="sms-head">Klinical</div>
+                  <div class="sms-body"><div class="sms-b">היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</div></div>
+                </div>
               </div>
             </div>
+          </article>
 
-            <div class="ch ch2">
+          <article class="ch" data-ch>
+            <h3 class="ch-h">הטיפול מתעד את עצמו. <span>מקליטים, וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</span></h3>
+            <div class="stage" aria-hidden="true">
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
-                <div class="rec-body">
-                  <div class="rec-st rec-live"><i class="rec-dot"></i>מקליט דיבור... <b dir="ltr">31:20</b></div>
-                  <div class="rec-st rec-proc">מתמלל את הפגישה...</div>
-                  <div class="rec-st rec-done">✓ הסיכום מוכן</div>
+                <div class="app-body rec">
+                  <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
+                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="rec-nums">
+                    <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
+                    <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
+                  </div>
+                  <div class="rec-stop">⏹ עצור והפק סיכום</div>
                 </div>
               </div>
               <div class="win w-float sum-win">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">סיכום לתיק</span></div>
                 <div class="sum-body">
                   <div class="sf"><small>תלונה עיקרית</small><span class="tw tw1">כאב גב תחתון, שבועיים</span></div>
-                  <div class="sf"><small>מה נעשה בטיפול</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
-                  <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע</span></div>
+                  <div class="sf"><small>מה נעשה בטיפול (כולל נקודות)</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
+                  <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע<i class="caret"></i></span></div>
                 </div>
               </div>
             </div>
+          </article>
 
-            <div class="ch ch3">
+          <article class="ch" data-ch>
+            <h3 class="ch-h">הקבלה יוצאת מהיומן. <span>לחיצה אחת על התור, והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</span></h3>
+            <div class="stage" aria-hidden="true">
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התור של דנה לוי · 14:00</span></div>
-                <div class="pay-body">
+                <div class="app-body">
                   <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
-                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">סמן נוכחות</span><span class="pb pb-hot">הנפק קבלה</span></div>
                 </div>
               </div>
               <div class="win w-float rc-win">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
                 <div class="rc-body">
-                  <div class="rc-row rc-old"><span>יוסי כהן</span><span dir="ltr">₪350</span><b>#1041</b></div>
-                  <div class="rc-row rc-new"><span>דנה לוי</span><span dir="ltr">₪350</span><b>#1042</b></div>
+                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>סכום</span><span>קבלה</span></div>
+                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span dir="ltr">₪350</span><b>#1041</b></div>
+                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span dir="ltr">₪350</span><b>#1042</b></div>
                   <div class="rc-total">סה"כ החודש<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
                 </div>
               </div>
             </div>
+          </article>
 
-            <div class="ch ch4">
+          <article class="ch" data-ch>
+            <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
+            <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">תיק מטופלת · דנה לוי</span></div>
-                <div class="file-body">
-                  <div class="frow fr1"><span>פגישה · שלישי 14/9</span><i class="pill pill-ok">בוצעה</i></div>
-                  <div class="frow fr2"><span>סיכום טיפול · כאב גב תחתון</span><i class="pill">בתיק</i></div>
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">תיק מטופלת</span></div>
+                <div class="app-body">
+                  <div class="pf-name">דנה לוי</div>
+                  <div class="pf-meta">050-1234567 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
+                  <div class="frow fr1"><span>פגישה · יום ג׳ 14/9</span><i class="pill pill-ok">בוצעה</i></div>
+                  <div class="frow fr2"><span>לוג טיפול · כאב גב תחתון</span><i class="pill">בתיק</i></div>
                   <div class="frow fr3"><span>קבלה #1042 · ₪350</span><i class="pill">PDF</i></div>
-                  <div class="frow fr4"><span>שאלון רפואי</span><i class="pill pill-ok">מולא ✓</i></div>
+                  <div class="frow fr4"><span>פגישה הבאה · יום ג׳ 21/9</span><i class="pill pill-next">מתוכננת</i></div>
                 </div>
               </div>
-              <div class="s-toast">הכל בתיק. אפס ניירת בסוף היום ✓</div>
+              <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
             </div>
-
+          </article>
         </div>
-        </div>
-        </div>
-        <span class="how-mark"></span><span class="how-mark"></span><span class="how-mark"></span><span class="how-mark"></span>
       </div>
     </div>
   </section>
@@ -1083,29 +1109,40 @@
       },{threshold:[0,0.35]});
       scenes.forEach(function(sc){ io.observe(sc); });
     })();
-    /* Story driver: the headline crossing the middle band activates its chapter. */
+    /* Story driver: the chapter crossing the middle of the screen owns the
+       headline column. Nothing is played on a timer - the scenes move because
+       the page moves - so this only marks which one is current, and arms each
+       chapter's single story beat the first time it is reached. */
     (function(){
-      var marks=document.querySelectorAll('.how-mark');
       var items=document.querySelectorAll('.how-item');
-      var chs=document.querySelectorAll('.how-stage .ch');
-      if(!items.length||!chs.length||!marks.length)return;
+      var chs=document.querySelectorAll('.how-flow .ch');
+      if(!items.length||!chs.length)return;
       var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-      function act(i){
-        items.forEach(function(el,j){ el.classList.toggle('on', j===i); });
-        chs.forEach(function(el,j){
-          if(j===i){ if(!el.classList.contains('on')){ el.classList.add('on'); if(!reduce) el.classList.add('play'); } }
-          else { el.classList.remove('on'); el.classList.remove('play'); }
-        });
-      }
+      function act(i){ items.forEach(function(el,j){ el.classList.toggle('on', j===i); }); }
       act(0);
-      if(!('IntersectionObserver' in window))return;
+      if(!('IntersectionObserver' in window)){ chs.forEach(function(c){c.classList.add('seen');}); return; }
       var io=new IntersectionObserver(function(es){
         es.forEach(function(e){
-          if(e.isIntersecting) act([].indexOf.call(marks,e.target));
+          if(!e.isIntersecting) return;
+          var i=[].indexOf.call(chs,e.target);
+          act(i);
+          if(!reduce) e.target.classList.add('seen');
         });
-      },{rootMargin:'-50% 0px -50% 0px'});
-      marks.forEach(function(el){ io.observe(el); });
-      items.forEach(function(el,i){ el.addEventListener('click',function(){ act(i); }); });
+      },{rootMargin:'-45% 0px -45% 0px'});
+      chs.forEach(function(c){ io.observe(c); });
+      /* the recording counters really tick, but only while that scene is on screen */
+      var rec=document.querySelector('.app-body.rec');
+      if(rec && !reduce){
+        var sess=rec.querySelector('.t-sess'), rc=rec.querySelector('.t-rec'), t=1880, r=1446, id=null;
+        function fmt(n){ return Math.floor(n/60)+':'+('0'+(n%60)).slice(-2); }
+        var vis=new IntersectionObserver(function(es){
+          es.forEach(function(e){
+            if(e.isIntersecting && !id){ id=setInterval(function(){ t++; r++; sess.textContent=fmt(t); rc.textContent=fmt(r); },1000); }
+            else if(!e.isIntersecting && id){ clearInterval(id); id=null; }
+          });
+        },{threshold:0.2});
+        vis.observe(rec);
+      }
     })();
     function galMove(dir){
       var g=document.getElementById('gallery'); if(!g) return;
