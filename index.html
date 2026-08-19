@@ -221,15 +221,15 @@
     @keyframes selOn{from{opacity:0}}
     .hero-scene.play .win-cal{animation:scnIn .55s var(--ease-out) both}
     .hero-scene.play .win-phone{animation:scnIn .55s var(--ease-out) .15s both}
-    .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s ease 2.1s forwards}
+    .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s var(--ease-out) 2.1s forwards}
     .hero-scene.play .ps1 .sel{animation:selOn .22s 1.4s both}
-    .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s ease 3.7s forwards}
+    .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s var(--ease-out) 3.7s forwards}
     .hero-scene.play .ps2 .sel{animation:selOn .22s 3.1s both}
-    .hero-scene.play .ps3{animation:stepOn .3s var(--ease-out) 3.95s both,stepOff .3s ease 5.55s forwards}
+    .hero-scene.play .ps3{animation:stepOn .3s var(--ease-out) 3.95s both,stepOff .3s var(--ease-out) 5.55s forwards}
     .hero-scene.play .type-name{animation:typeIn .8s steps(7,end) 4.4s both}
     .hero-scene.play .pbtn{animation:pressBtn .28s ease 5.25s}
     .hero-scene.play .ps4{animation:popIn .35s var(--ease-out) 5.85s both}
-    .hero-scene.play .fs-free{animation:stepOn .25s var(--ease-out) .8s both,fadeOut .3s ease 6.1s forwards}
+    .hero-scene.play .fs-free{animation:stepOn .25s var(--ease-out) .8s both,fadeOut .3s var(--ease-out) 6.1s forwards}
     .hero-scene.play .appt-new{animation:popIn .38s var(--ease-out) 6.25s both}
     .hero-scene.play .cal-toast{animation:stepOn .3s var(--ease-out) 6.7s both}
     @media(prefers-reduced-motion:reduce){
@@ -308,9 +308,9 @@
     .ch1.play .rem1{animation:popIn .3s var(--ease-out) 1.9s both}
     .ch1.play .rem2{animation:popIn .3s var(--ease-out) 2.25s both}
     .ch1.play .rem3{animation:popIn .3s var(--ease-out) 2.5s both}
-    .ch2.play .rec-live{animation:stepOn .3s var(--ease-out) .4s both,stepOff .3s ease 2.6s forwards}
+    .ch2.play .rec-live{animation:stepOn .3s var(--ease-out) .4s both,stepOff .3s var(--ease-out) 2.6s forwards}
     .ch2.play .rec-dot{animation:recPulse 1s ease-in-out 4}
-    .ch2.play .rec-proc{animation:stepOn .3s var(--ease-out) 2.9s both,stepOff .3s ease 4.4s forwards}
+    .ch2.play .rec-proc{animation:stepOn .3s var(--ease-out) 2.9s both,stepOff .3s var(--ease-out) 4.4s forwards}
     .ch2.play .rec-done{animation:stepOn .3s var(--ease-out) 4.7s both}
     .ch2.play .sum-win{animation:scnIn .5s var(--ease-out) 4.9s both}
     .ch2.play .tw1{animation:typeIn .9s steps(14,end) 5.5s both}
@@ -320,7 +320,7 @@
     .ch3.play .rc-win{animation:scnIn .5s var(--ease-out) 1.5s both}
     .ch3.play .rc-new{animation:stepOn .35s var(--ease-out) 2.3s both}
     .ch3.play .chip-paid{animation:popIn .3s var(--ease-out) 2.9s both}
-    .ch3.play .rt-a{animation:holdOn 3.1s step-end both,fadeOut .25s ease 3.1s forwards}
+    .ch3.play .rt-a{animation:holdOn 3.1s step-end both,fadeOut .25s var(--ease-out) 3.1s forwards}
     .ch3.play .rt-b{animation:selOn .25s 3.1s both}
     .ch4.play .fr1{animation:stepOn .3s var(--ease-out) .5s both}
     .ch4.play .fr2{animation:stepOn .3s var(--ease-out) .8s both}
@@ -550,7 +550,7 @@
       <p class="sub">קליניקל שולחת תזכורות למטופלים, אוספת אישורי הגעה, כותבת את סיכומי הטיפול לבד ומרכזת יומן, מטופלים וקבלות - כדי שהראש שלכם יהיה בטיפול, לא בניהול.</p>
       <div class="cta-row">
         <a href="https://app.klinical.co.il/signup?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=hero" class="btn btn-primary">מתחילים ב-3 חודשים חינם</a>
-        <a href="#features" class="btn btn-ghost">איך זה עובד</a>
+        <a href="#how" class="btn btn-ghost">איך זה עובד</a>
       </div>
       <div class="trust">3 חודשים חינם, בלי כרטיס אשראי · הקמה בדקות · תמיכה אישית בעברית · ביטול בכל רגע</div>
 
