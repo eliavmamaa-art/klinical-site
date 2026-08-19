@@ -161,6 +161,87 @@
     @keyframes chatIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:none}}
     @media(prefers-reduced-motion:reduce){.demo-body>*{animation:none;opacity:1}}
 
+    /* Hero scene — booking lands in the calendar.
+       Base styles are the FINAL frame (works with no JS / reduced motion);
+       .play runs the timeline from hidden states via keyframes. */
+    .hero-scene{position:relative;margin:60px auto 0;max-width:680px;height:396px}
+    .win{position:absolute;background:#fff;border:1px solid var(--line);border-radius:12px;overflow:hidden}
+    .win-bar{display:flex;align-items:center;gap:8px;background:#fbfaf7;border-bottom:1px solid var(--line);padding:8px 12px}
+    .win-dots{display:flex;gap:5px}
+    .win-dots i{width:9px;height:9px;border-radius:50%;background:#e4dfd4}
+    .win-title{font-size:11px;color:var(--muted);font-weight:500}
+    .win-cal{top:0;right:0;width:66%;height:346px;box-shadow:0 10px 30px rgba(30,42,44,.08)}
+    .cal-body{position:relative;background:#faf8f4;height:313px}
+    .cal-t{position:absolute;right:8px;font-size:9px;color:var(--muted)}
+    .cal-l{position:absolute;right:44px;left:0;border-top:1px solid rgba(229,224,213,.6)}
+    .appt{position:absolute;right:52px;left:10px;height:66px;border-radius:4px;padding:7px 9px;font-size:11px}
+    .appt b{display:block;font-size:12px;color:var(--indigo)}
+    .appt span{display:block;font-size:10px;color:var(--indigo);opacity:.7;text-align:right}
+    .appt-old{background:rgba(30,58,95,.08);border-right:3px solid rgba(30,58,95,.45)}
+    .appt-new{background:rgba(30,58,95,.13);border-right:3px solid #1e3a5f}
+    .chip-new{display:inline-block;margin-top:4px;font-style:normal;font-size:9px;padding:2px 6px;border-radius:4px;background:#fef3c7;color:#92400e;border:1px solid #fde68a}
+    .fs-free{position:absolute;right:52px;left:10px;height:66px;border:2px dashed #34d399;background:#ecfdf5;color:#065f46;border-radius:4px;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:700;opacity:0}
+    .fs-free small{font-weight:400;font-size:10px;opacity:.8}
+    .cal-toast{position:absolute;bottom:10px;left:10px;background:#fff;border:1px solid var(--line);border-radius:8px;box-shadow:0 8px 20px rgba(30,42,44,.14);padding:7px 11px;font-size:11px;font-weight:600;color:#065f46}
+    .win-phone{left:4%;top:34px;width:216px;height:352px;border-radius:20px;box-shadow:0 18px 44px rgba(30,42,44,.17);z-index:2}
+    .ph-top{display:flex;align-items:center;gap:6px;background:#fbfaf7;border-bottom:1px solid var(--line);padding:9px 12px;font-size:11px;font-weight:600;color:var(--ink)}
+    .ph-dot{width:8px;height:8px;border-radius:50%;background:var(--teal)}
+    .ph-body{position:relative;height:calc(100% - 34px)}
+    .ps{position:absolute;inset:0;padding:14px 12px;opacity:0;pointer-events:none}
+    .ps4{opacity:1}
+    .ph-h{font-size:10px;color:var(--muted);margin-bottom:9px;text-align:center}
+    .day-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .day{position:relative;border:1px solid var(--line);border-radius:4px;padding:8px;text-align:right}
+    .day small{display:block;font-size:9px;color:var(--muted)}
+    .day b{display:block;font-size:15px;color:var(--indigo)}
+    .day em{font-style:normal;font-size:8px;color:var(--muted)}
+    .sel{position:absolute;inset:-1px;border:2px solid var(--indigo);border-radius:4px;background:rgba(30,58,95,.05)}
+    .slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+    .slot{position:relative;border:1px solid var(--line);border-radius:4px;padding:9px 0;text-align:center;font-size:12px;font-family:ui-monospace,monospace;color:var(--ink)}
+    .ph-sum{background:rgba(30,58,95,.05);border:1px solid rgba(30,58,95,.2);border-radius:4px;padding:8px 10px;font-size:9px;color:var(--muted);margin-bottom:10px}
+    .ph-sum b{display:block;font-size:12px;color:var(--indigo);margin-top:2px}
+    .ph-f{margin-bottom:9px}
+    .ph-f small{display:block;font-size:9px;color:var(--muted);margin-bottom:3px}
+    .ph-in{border:1px solid var(--line);border-radius:4px;padding:7px 9px;font-size:12px;min-height:31px}
+    .type-name{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;width:3.9em}
+    .pbtn{margin-top:12px;background:var(--indigo);color:#fff;border-radius:4px;text-align:center;font-size:12px;font-weight:700;padding:9px 0}
+    .ps4{display:grid;place-content:center;text-align:center}
+    .ph-ok{font-size:36px;margin-bottom:8px}
+    .ph-ok-t{font-size:15px;font-weight:700;color:#047857;margin-bottom:4px}
+    .ph-ok-s{font-size:11px;color:var(--muted)}
+    .scene-cap{text-align:center;font-size:14px;color:var(--muted);margin-top:18px}
+    /* timeline */
+    @keyframes scnIn{from{opacity:0;transform:translateY(16px)}}
+    @keyframes stepOn{from{opacity:0;transform:translateY(8px)}to{opacity:1;transform:none}}
+    @keyframes stepOff{to{opacity:0;transform:translateY(-6px)}}
+    @keyframes popIn{from{opacity:0;transform:scale(.94)}}
+    @keyframes fadeOut{to{opacity:0}}
+    @keyframes typeIn{from{width:0}}
+    @keyframes pressBtn{50%{transform:scale(.96)}}
+    @keyframes selOn{from{opacity:0}}
+    .hero-scene.play .win-cal{animation:scnIn .55s var(--ease-out) both}
+    .hero-scene.play .win-phone{animation:scnIn .55s var(--ease-out) .15s both}
+    .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s ease 2.1s forwards}
+    .hero-scene.play .ps1 .sel{animation:selOn .22s 1.4s both}
+    .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s ease 3.7s forwards}
+    .hero-scene.play .ps2 .sel{animation:selOn .22s 3.1s both}
+    .hero-scene.play .ps3{animation:stepOn .3s var(--ease-out) 3.95s both,stepOff .3s ease 5.55s forwards}
+    .hero-scene.play .type-name{animation:typeIn .8s steps(7,end) 4.4s both}
+    .hero-scene.play .pbtn{animation:pressBtn .28s ease 5.25s}
+    .hero-scene.play .ps4{animation:popIn .35s var(--ease-out) 5.85s both}
+    .hero-scene.play .fs-free{animation:stepOn .25s var(--ease-out) .8s both,fadeOut .3s ease 6.1s forwards}
+    .hero-scene.play .appt-new{animation:popIn .38s var(--ease-out) 6.25s both}
+    .hero-scene.play .cal-toast{animation:stepOn .3s var(--ease-out) 6.7s both}
+    @media(prefers-reduced-motion:reduce){
+      .hero-scene.play *{animation:none !important}
+      html{scroll-behavior:auto}
+    }
+    @media(max-width:620px){
+      .hero-scene{max-width:340px;height:560px}
+      .win-cal{width:100%}
+      .win-phone{left:calc(50% - 108px);top:262px}
+    }
+
     /* Sections */
     section{padding:94px 0}
     #features,#about,#faq{background:#fff}
@@ -376,18 +457,69 @@
       </div>
       <div class="trust">3 חודשים חינם, בלי כרטיס אשראי · הקמה בדקות · תמיכה אישית בעברית · ביטול בכל רגע</div>
 
-      <div class="demo" aria-hidden="true">
-        <div class="demo-top">
-          <div class="mark"><img src="logo.png" alt="קליניקל" /></div>
-          <div><b>קליניקל</b><small>הודעה עסקית</small></div>
+      <!-- Hero scene: a patient books online, the appointment lands in the calendar.
+           Attio-style window collage - back window is the practitioner's calendar,
+           the floating phone in front is the patient's booking page. Pure CSS
+           keyframes chained with animation-delay; the [data-scene] observer adds
+           .play on scroll-in and removes it on scroll-out so the scene replays.
+           Base styles ARE the final frame, so no-JS and reduced-motion users see
+           a complete static composition. -->
+      <div class="hero-scene" data-scene aria-hidden="true">
+        <div class="win win-cal">
+          <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">היומן שלך · יום שלישי 14/9</span></div>
+          <div class="cal-body">
+            <span class="cal-t" style="top:10px">13:00</span><span class="cal-l" style="top:16px"></span>
+            <span class="cal-t" style="top:84px">14:00</span><span class="cal-l" style="top:90px"></span>
+            <span class="cal-t" style="top:158px">15:00</span><span class="cal-l" style="top:164px"></span>
+            <span class="cal-t" style="top:232px">16:00</span><span class="cal-l" style="top:238px"></span>
+            <div class="appt appt-old" style="top:20px">
+              <b>יוסי כהן</b><span dir="ltr">13:00–13:55</span>
+            </div>
+            <div class="fs-free" style="top:94px">✓ פנוי<small>14:00</small></div>
+            <div class="appt appt-new" style="top:94px">
+              <b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-new">מטופל חדש</i>
+            </div>
+            <div class="cal-toast">✓ בקשה חדשה מדנה לוי</div>
+          </div>
         </div>
-        <div class="demo-body">
-          <div class="bubble">שלום דנה 🌿<br>מזכירים לך את התור מחר, יום שלישי בשעה 14:00, בקליניקה.<br>נגיע?</div>
-          <div class="reply-btns"><span><svg class="chk" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>מאשרת הגעה</span></div>
-          <div class="bubble me">✅ מאשרת הגעה</div>
-          <div class="bubble">מעולה, נתראה מחר 🌿</div>
+        <div class="win win-phone">
+          <div class="ph-top"><span class="ph-dot"></span>קביעת תור אונליין</div>
+          <div class="ph-body">
+            <div class="ps ps1">
+              <div class="ph-h">בחרי יום מהזמנים הבאים:</div>
+              <div class="day-grid">
+                <div class="day"><small>ראשון</small><b>12/9</b><em>3 זמינים</em></div>
+                <div class="day"><small>שני</small><b>13/9</b><em>5 זמינים</em></div>
+                <div class="day day-on"><small>שלישי</small><b>14/9</b><em>6 זמינים</em><i class="sel"></i></div>
+                <div class="day"><small>רביעי</small><b>15/9</b><em>2 זמינים</em></div>
+              </div>
+            </div>
+            <div class="ps ps2">
+              <div class="ph-h">בחרי שעה · שלישי 14/9</div>
+              <div class="slot-grid">
+                <div class="slot" dir="ltr">13:00</div>
+                <div class="slot slot-on" dir="ltr">14:00<i class="sel"></i></div>
+                <div class="slot" dir="ltr">15:00</div>
+                <div class="slot" dir="ltr">16:30</div>
+                <div class="slot" dir="ltr">17:30</div>
+                <div class="slot" dir="ltr">18:30</div>
+              </div>
+            </div>
+            <div class="ps ps3">
+              <div class="ph-sum">המועד שבחרת<b>שלישי 14/9 · 14:00</b></div>
+              <div class="ph-f"><small>שם מלא *</small><div class="ph-in"><span class="type-name">דנה לוי</span></div></div>
+              <div class="ph-f"><small>טלפון נייד *</small><div class="ph-in" dir="ltr">050-1234567</div></div>
+              <div class="pbtn">שלחי בקשת הזמנה</div>
+            </div>
+            <div class="ps ps4">
+              <div class="ph-ok">✅</div>
+              <div class="ph-ok-t">הבקשה התקבלה!</div>
+              <div class="ph-ok-s">שלישי 14/9 · בשעה 14:00</div>
+            </div>
+          </div>
         </div>
       </div>
+      <div class="scene-cap">המטופלת קבעה לבד. אתם רק מאשרים - והיומן מתמלא.</div>
     </div>
   </header>
 
@@ -701,6 +833,19 @@
         });
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       els.forEach(function(el){ io.observe(el); });
+    })();
+    /* Scene player: .play in view -> timeline runs; fully out -> reset, so it replays. */
+    (function(){
+      var scenes=document.querySelectorAll('[data-scene]');
+      if(!scenes.length || !('IntersectionObserver' in window)) return;
+      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          if(e.intersectionRatio>=0.35) e.target.classList.add('play');
+          else if(e.intersectionRatio===0) e.target.classList.remove('play');
+        });
+      },{threshold:[0,0.35]});
+      scenes.forEach(function(sc){ io.observe(sc); });
     })();
     function galMove(dir){
       var g=document.getElementById('gallery'); if(!g) return;
