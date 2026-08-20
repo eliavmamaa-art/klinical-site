@@ -172,17 +172,17 @@
     /* Hero scene — booking lands in the calendar.
        Base styles are the FINAL frame (works with no JS / reduced motion);
        .play runs the timeline from hidden states via keyframes. */
-    /* Hero exit, taken from Attio's opening: as you scroll away the words
-       recede - fading, blurring and drifting up - while the product rises and
-       fans open in their place. --p is the scroll progress out of the hero
-       (0 at rest, 1 once it has left), written by the driver below. */
-    header{--p:0}
-    .hero-copy{opacity:calc(1 - var(--p) * .92);filter:blur(calc(var(--p) * 5px));
-      transform:translate3d(0,calc(var(--p) * -46px),0);will-change:opacity,filter,transform}
+    /* Parallax on the floating windows - the thing Eliav actually pointed at in
+       the recording. They are never "played in": every window is offset by where
+       its scene sits relative to the middle of the screen, so it drifts in as you
+       approach and keeps drifting out as you pass. --q is that position, -1 (well
+       above) to 1 (well below), 0 dead centre. The front window travels further
+       than the one behind it - that difference IS the depth. */
+    .hero-scene,.stage{--q:0}
     .hero-scene{position:relative;margin:64px auto 0;max-width:700px;height:410px}
     .fan{position:absolute;inset:0;will-change:transform}
-    .fan-r{transform:translate3d(0,calc((1 - var(--p)) * 34px),0)}
-    .fan-l{transform:translate3d(calc(var(--p) * -26px),calc((1 - var(--p)) * 62px),0)}
+    .fan-r{transform:translate3d(0,calc(var(--q) * 20px),0)}
+    .fan-l{transform:translate3d(calc(var(--q) * -18px),calc(var(--q) * 58px),0)}
     /* App window. Rounded on top only and cut off at the bottom, so it reads as
        a real window standing on the surface rather than a floating rectangle. */
     .win{position:absolute;background:#fff;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;overflow:hidden}
@@ -250,8 +250,8 @@
     @keyframes typeIn{from{width:0}}
     @keyframes pressBtn{50%{transform:scale(.96)}}
     @keyframes selOn{from{opacity:0}}
-    .hero-scene.play .win-cal{animation:scnIn .55s var(--ease-out) both}
-    .hero-scene.play .scn-phone{animation:scnIn .55s var(--ease-out) .15s both}
+
+    /* no entry keyframe on the phone - .fan-l already carries it on the scroll */
     .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s var(--ease-out) 2.1s forwards}
     .hero-scene.play .ps1 .sel{animation:selOn .22s 1.4s both}
     .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s var(--ease-out) 3.7s forwards}
@@ -264,14 +264,12 @@
     .hero-scene.play .appt-new{animation:popIn .38s var(--ease-out) 6.25s both}
     .hero-scene.play .cal-toast{animation:stepOn .3s var(--ease-out) 6.7s both}
     @media(prefers-reduced-motion:reduce){
-      .hero-copy{opacity:1;filter:none;transform:none}
-      .fan{transform:none}
+      .fan,.w-main,.stage .w-float,.stage .scn-phone,.stage .s-toast{transform:none !important}
       .hero-scene.play *{animation:none !important}
       html{scroll-behavior:auto}
     }
     @media(max-width:620px){
-      .hero-copy{filter:none}
-      .fan-l{transform:translate3d(0,calc((1 - var(--p)) * 40px),0)}
+      .fan-l{transform:translate3d(0,calc(var(--q) * 34px),0)}
       .hero-scene{max-width:340px;height:600px}
       .win-cal{width:100%}
       .scn-phone{left:calc(50% - 87px);top:272px;height:328px}
@@ -298,8 +296,18 @@
     .ch-h{font-size:26px;font-weight:800;letter-spacing:-.6px;line-height:1.35;margin-bottom:30px;max-width:30ch}
     .ch-h span{color:var(--muted);font-weight:600}
     .stage{position:relative;height:410px}
-    .w-main{position:absolute;top:0;right:0;left:12%;height:340px;box-shadow:var(--sh-mid)}
+    .w-main{position:absolute;top:0;right:0;left:12%;height:340px;box-shadow:var(--sh-mid);
+      transform:translate3d(0,calc(var(--q) * 20px),0);will-change:transform}
     .w-float{position:absolute;left:0;top:150px;width:262px;box-shadow:var(--sh-high);z-index:2}
+    /* Every object floating in front of the main window drifts on the scroll -
+       window, phone or toast alike. Keep this selector in step with the markup:
+       a float left out of it just sits still and reads as broken next to the
+       others. (Chapter 1 floats a phone and chapter 4 a toast, not a .w-float.) */
+    .stage .w-float,.stage .scn-phone,.stage .s-toast{
+      transform:translate3d(calc(var(--q) * -16px),calc(var(--q) * 58px),0);will-change:transform}
+    .stage .scn-phone{left:0;top:104px;height:300px}
+    .stage .s-toast{transform:translate3d(calc(var(--q) * -10px),calc(var(--q) * 34px),0)}
+    .sms-head{flex:0 0 auto;border-bottom:1px solid var(--line);padding:7px 13px 9px;font-size:10.5px;font-weight:700;color:var(--ink)}
     .app-body{background:#faf8f4;height:calc(100% - 35px);padding:14px}
     /* shared app furniture, faithful to the real screens */
     .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:8px;font-size:13px}
@@ -387,6 +395,7 @@
     .ch.seen .s-toast{animation:stepOn .34s var(--ease-out) 1.35s both}
     @media(prefers-reduced-motion:reduce){
       .ch *,.ch.seen *{animation:none !important}
+      .w-main,.stage .w-float,.stage .scn-phone,.stage .s-toast{transform:none !important}
     }
     @media(max-width:900px){
       .how-grid{display:block}
@@ -399,6 +408,8 @@
       .stage{height:330px}
       .w-main{left:0;height:280px}
       .w-float{width:224px;top:140px}
+      .stage .w-float,.stage .scn-phone,.stage .s-toast{transform:translate3d(0,calc(var(--q) * 32px),0)}
+      .stage .scn-phone{top:98px;height:252px}
       .sum-win{top:66px;width:238px}
       .rc-win{top:150px;width:248px}
     }
@@ -1116,18 +1127,23 @@
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       els.forEach(function(el){ io.observe(el); });
     })();
-    /* Hero scroll link: turn "how far out of the hero are we" into --p, once per
-       frame. Reads layout in the rAF, writes one custom property - the compositor
-       does the rest, so nothing here forces a re-layout while scrolling. */
+    /* Parallax driver. One rAF pass per scroll: measure each scene once, write a
+       single custom property, let the compositor move the windows. Reads are all
+       inside the frame, so scrolling never triggers a synchronous layout. */
     (function(){
-      var h=document.querySelector('header');
-      if(!h||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      var scenes=[].slice.call(document.querySelectorAll('.hero-scene,.stage'));
+      if(!scenes.length||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
       var ticking=false;
       function update(){
         ticking=false;
-        var span=Math.max(1,h.offsetHeight*0.62);
-        var p=Math.min(1,Math.max(0,window.scrollY/span));
-        h.style.setProperty('--p',p.toFixed(3));
+        var vh=window.innerHeight, mid=vh/2;
+        scenes.forEach(function(el){
+          var r=el.getBoundingClientRect();
+          var c=r.top+r.height/2;
+          var q=(c-mid)/(mid+r.height/2);
+          if(q>1)q=1; else if(q<-1)q=-1;
+          el.style.setProperty('--q',q.toFixed(3));
+        });
       }
       window.addEventListener('scroll',function(){
         if(!ticking){ ticking=true; requestAnimationFrame(update); }
