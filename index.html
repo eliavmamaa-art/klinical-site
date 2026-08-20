@@ -404,17 +404,6 @@
     .rec-win{top:120px;width:280px}
     .rec-win .app-body.rec{height:auto;padding:14px 12px;gap:10px}
     .rec-win .sum-body{border-top:1px solid var(--line)}
-    /* Real screenshots inside the window frames. The scenes were hand-drawn
-       before, which could never win a fidelity race against the product - these
-       ARE the product, captured from a tenant with fictional data. The frames,
-       the depth and the scroll drift are unchanged; only the content is real. */
-    figure.win{margin:0}
-    .shot{background:#faf8f4;overflow:hidden;line-height:0}
-    .shot img{width:100%;height:auto;display:block}
-    .w-main .shot{height:calc(100% - 35px)}
-    .w-main .shot img{height:100%;object-fit:cover;object-position:top right}
-    .shot-float{width:300px;top:172px;border-radius:12px 12px 0 0;overflow:hidden}
-    .shot-float .shot img{max-height:230px;object-fit:cover;object-position:top center}
     .w-float{position:absolute;left:0;top:162px;width:286px;box-shadow:var(--sh-high);z-index:2}
     /* Every object floating in front of the main window drifts on the scroll -
        window, phone or toast alike. Keep this selector in step with the markup:
@@ -960,18 +949,43 @@
         <div class="how-list" aria-hidden="true">
           <div class="how-item"><h3>התזכורת יוצאת לבד</h3></div>
           <div class="how-item"><h3>הטיפול מתעד את עצמו</h3></div>
+          <div class="how-item"><h3>הקבלה יוצאת מהיומן</h3></div>
           <div class="how-item"><h3>הכל נאסף לתיק אחד</h3></div>
-          <div class="how-item"><h3>המטופלים קובעים לבד</h3></div>
         </div>
 
         <div class="how-flow">
           <article class="ch" data-ch>
             <h3 class="ch-h">התזכורת יוצאת לבד. <span>בערב שלפני, כל מטופל מקבל הודעה עם שעת התור. בלי שנגעתם בכלום.</span></h3>
             <div class="stage" aria-hidden="true">
-              <figure class="win w-main">
+              <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · הודעות לשליחה</span></div>
-                <div class="shot"><img src="album/outbox.png" alt="מסך ההודעות לשליחה בקליניקל" loading="lazy" width="2440" height="1598" /></div>
-              </figure>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="ap-foot">← התנתק</div>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה <span>3 ממתינות</span></div>
+                  <div class="lrow"><div class="lmain"><b>דנה לוי <span dir="ltr">· מחר 14:00</span></b><small>היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</small></div><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><div class="lmain"><b>יוסי כהן <span dir="ltr">· מחר 15:00</span></b><small>היי יוסי, מזכיר את הפגישה שלנו מחר ב-15:00.</small></div><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><div class="lmain"><b>רות אלון <span dir="ltr">· מחר 16:30</span></b><small>היי רות, מזכיר את הפגישה שלנו מחר ב-16:30.</small></div><i class="rem">נשלחה ✓</i></div>
+                  <div class="lfoot"><span class="live-dot"></span>נשלחות אוטומטית בערב שלפני</div>
+                  </div>
+                </div>
+              </div>
               <div class="scn-phone sml">
                 <div class="ph-screen">
                   <div class="ph-status" dir="ltr"><span>21:04</span><span class="ph-bars"><i></i><i></i><i></i></span></div>
@@ -988,43 +1002,152 @@
           <article class="ch" data-ch>
             <h3 class="ch-h">הטיפול מתעד את עצמו. <span>מקליטים, וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</span></h3>
             <div class="stage" aria-hidden="true">
-              <figure class="win w-main">
+              <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
-                <div class="shot"><img src="album/calendar.png" alt="היומן היומי בקליניקל, שני חדרים במקביל" loading="lazy" width="2712" height="1598" /></div>
-              </figure>
-              <figure class="win w-float shot-float">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">לוג טיפול</span></div>
-                <div class="shot"><img src="album/log-modal.png" alt="לוג הטיפול שנכתב אוטומטית" loading="lazy" width="1535" height="1055" /></div>
-              </figure>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="ap-nav">
+                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="ap-foot">← התנתק</div>
+                  </div>
+                  <div class="app-body">
+                  <div class="cal-hd"><b>רביעי</b> · 22 ביולי 2026<small>יומן</small></div>
+                  <div class="cal-tools"><span>חסום</span><span class="t-red">+ ידני</span><span>חודש</span><span>שבוע</span></div>
+                  <div class="cal-cols"><span>שעה</span><span><i class="rdot rd1"></i>חדר 1</span><span><i class="rdot rd2"></i>חדר 2</span></div>
+                  <div class="cal-g">
+                    <span class="cg-t" style="top:4px">09:00</span><span class="cg-l" style="top:10px"></span>
+                    <span class="cg-t" style="top:58px">10:00</span><span class="cg-l" style="top:64px"></span>
+                    <span class="cg-t" style="top:112px">11:00</span><span class="cg-l" style="top:118px"></span>
+                    <span class="cg-t" style="top:166px">12:00</span><span class="cg-l" style="top:172px"></span>
+                    <div class="cg-c cg-1">
+                      <div class="cgb" style="top:12px;height:46px"><b>דנה כהן</b><span dir="ltr">09:00-09:55</span><i class="fchip ok">קבלה</i></div>
+                      <div class="cgb" style="top:120px;height:46px"><b>יוסי לוי</b><span dir="ltr">10:30-11:25</span><i class="fchip ok">קבלה</i></div>
+                    </div>
+                    <div class="cg-c cg-2">
+                      <div class="cgb" style="top:38px;height:46px"><b>נועה פרידמן</b><span dir="ltr">09:30-10:25</span><i class="fchip ok">קבלה</i></div>
+                      <div class="cgb am" style="top:120px;height:46px"><b>אבי מזרחי</b><span dir="ltr">11:00-11:55</span></div>
+                    </div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="win w-float rec-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
+                <div class="app-body rec">
+                  <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
+                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="rec-nums">
+                    <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
+                    <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
+                  </div>
+                  <div class="rec-stop">⏹️ עצור והפק סיכום</div>
+                </div>
+                <div class="sum-body">
+                  <div class="sf"><small>תלונה עיקרית</small><span class="tw tw1">כאב גב תחתון, שבועיים</span></div>
+                  <div class="sf"><small>מה נעשה בטיפול (כולל נקודות)</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
+                  <div class="sf2">
+                    <div class="sf"><small>אבחנה</small><span class="tw tw4">קור וחסימה במרידיאן</span></div>
+                    <div class="sf"><small>סימפטומים / ממצאים</small><span class="tw tw5">מתח בשרירי המותן</span></div>
+                  </div>
+                  <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע<i class="caret"></i></span></div>
+                  <div class="sum-foot"><span class="wa-dot"></span>טיוטת הודעה למטופל/ת</div>
+                </div>
+              </div>
             </div>
           </article>
 
           <article class="ch" data-ch>
-            <h3 class="ch-h">המטופלים קובעים לבד. <span>קישור אישי לקליניקה - הם בוחרים יום ושעה פנויים, והתור נוחת ביומן.</span></h3>
+            <h3 class="ch-h">הקבלה יוצאת מהיומן. <span>לחיצה אחת על התור, והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</span></h3>
             <div class="stage" aria-hidden="true">
-              <figure class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">דף ההזמנות שלך</span></div>
-                <div class="shot"><img src="album/booking.png" alt="דף ההזמנות שהמטופלת רואה" loading="lazy" width="1456" height="1584" /></div>
-              </figure>
-              <figure class="win w-float shot-float">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">בחירת שעה</span></div>
-                <div class="shot"><img src="album/booking-slots.png" alt="בחירת שעה פנויה" loading="lazy" width="1456" height="1550" /></div>
-              </figure>
-              <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · כספים</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="ap-foot">← התנתק</div>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים <span>ספטמבר 2026</span></div>
+                  <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
+                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">הקלטת טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                  <div class="pay-btns"><span class="pb">סמן כשולם במזומן</span><span class="pb">סמן נוכחות / אי-הגעה</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="win w-float rc-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
+                <div class="rc-body">
+                  <div class="rc-title">פירוט הכנסות</div>
+                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>אמצעי</span><span>סכום</span><span>קבלה</span></div>
+                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span>אשראי</span><span dir="ltr">₪350</span><b>#1041</b></div>
+                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span>מזומן</span><span dir="ltr">₪350</span><b>#1042</b></div>
+                  <div class="rc-total">סה״כ<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
+                </div>
+              </div>
             </div>
           </article>
 
           <article class="ch" data-ch>
             <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
             <div class="stage" aria-hidden="true">
-              <figure class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · תיק מטופלת</span></div>
-                <div class="shot"><img src="album/patient-log.png" alt="תיק המטופלת עם היסטוריית הטיפולים והקבלות" loading="lazy" width="2712" height="1598" /></div>
-              </figure>
-              <figure class="win w-float shot-float">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">לוג טיפול</span></div>
-                <div class="shot"><img src="album/log-modal.png" alt="לוג טיפול בתוך התיק" loading="lazy" width="1535" height="1055" /></div>
-              </figure>
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · מטופלים</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="ap-foot">← התנתק</div>
+                  </div>
+                  <div class="app-body">
+                  <div class="pf-name">דנה לוי</div>
+                  <div class="pf-meta">050-5550557 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
+                  <div class="pf-sec">היסטוריית פגישות <span>(12 סה״כ · 9 בוצעו)</span></div>
+                  <div class="frow fr1"><span>יום ג׳ 14/9 · 14:00<small>חדר 1</small></span><i class="pill pill-ok">בוצעה</i></div>
+                  <div class="frow fr2"><span>יום ג׳ 21/9 · 14:00<small>חדר 1</small></span><i class="pill pill-next">מתוכננת</i></div>
+                  <div class="pf-sec">לוג טיפולים <span>(9 טיפולים)</span></div>
+                  <div class="frow fr3"><span>יום ג׳ 14/9<small>תלונה · כאב גב תחתון</small></span></div>
+                  <div class="pf-sec">קבלות</div>
+                  <div class="frow fr4"><span>קבלה #1042 · 14/9/26<small>₪350.00 · מזומן</small></span><i class="pill">פתח PDF</i></div>
+                  </div>
+                </div>
+              </div>
               <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
             </div>
           </article>
