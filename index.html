@@ -405,6 +405,74 @@
     .rec-win .app-body.rec{height:auto;padding:14px 12px;gap:10px}
     .rec-win .sum-body{border-top:1px solid var(--line)}
     .w-float{position:absolute;left:0;top:162px;width:286px;box-shadow:var(--sh-high);z-index:2}
+    /* FLAGSHIP SCALE. Attio does not draw better - it draws BIGGER: its windows
+       are ~1150px wide with 13-16px type. Ours were 450px with 7-9px type, a
+       size at which nothing can look good. This chapter runs at their scale:
+       the scene escapes the narrow grid column to span the full wrap, the
+       sidebar is a real 172px, and every font is a size the app really uses.
+       If this one earns the look, the other chapters get the same treatment. */
+    .ch-flag{display:block}
+    .stage.flag{height:auto;min-height:520px;width:calc(100% + 33%);max-width:1160px}
+    .fg-win{position:relative;top:auto;right:auto;left:auto;width:100%;height:auto;
+      transform:translate3d(0,calc(var(--q) * 14px),0)}
+    .fg-shell{display:flex;background:#faf8f4;min-height:480px}
+    /* first flex child in an RTL row is already rightmost - order:2 flipped it
+       to the LEFT, the opposite of the real app. Natural order is correct. */
+    .fg-side{flex:0 0 172px;background:#0f2742;color:#fff;padding:12px 0 0;display:flex;flex-direction:column}
+    .fg-brand{display:flex;align-items:center;gap:8px;padding:0 12px 12px}
+    .fg-logo{width:26px;height:26px;border-radius:7px;background:var(--teal);display:grid;place-items:center;overflow:hidden;flex:0 0 auto}
+    .fg-logo img{width:18px;height:18px;object-fit:contain}
+    .fg-brand b{display:block;font-size:13px;line-height:1.2}
+    .fg-brand small{display:block;font-size:8px;color:rgba(255,255,255,.5)}
+    .fg-nav{display:flex;flex-direction:column;flex:1}
+    .fg-nav a{position:relative;display:flex;align-items:center;gap:8px;padding:6px 12px;font-size:10.5px;color:rgba(255,255,255,.82);text-decoration:none}
+    .fg-nav a .ai{width:13px;height:13px}
+    .fg-nav a span{flex:1;text-align:right}
+    .fg-nav a.on{background:rgba(255,255,255,.12);color:#fff}
+    .fg-nav a.on::before{content:"";position:absolute;right:0;top:4px;bottom:4px;width:3px;border-radius:99px;background:var(--teal)}
+    .fg-nav a.on .ai{background-color:var(--teal)}
+    .fg-b,.fg-b2{font-style:normal;font-size:8px;font-weight:700;border-radius:99px;padding:1px 6px;line-height:1.5}
+    .fg-b{background:#b83a2d;color:#fff}
+    .fg-b2{background:rgba(255,255,255,.2);color:#fff}
+    .fg-foot{padding:9px 12px 11px;font-size:9.5px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1)}
+    .fg-main{flex:1;min-width:0;padding:14px 16px 16px;overflow:hidden}
+    .fg-head{display:flex;align-items:center;justify-content:space-between;margin-bottom:10px}
+    .fg-title{font-size:17px;color:var(--ink)}
+    .fg-title b{font-size:20px;color:#1e3a5f}
+    .fg-title small{display:block;font-size:9px;color:var(--muted)}
+    .fg-tools{display:flex;gap:6px}
+    .fg-tools span{border:1px solid var(--line);border-radius:5px;padding:5px 11px;font-size:10.5px;color:#1e3a5f;background:#fff}
+    .fg-tools .tr{color:#b83a2d;border-color:#e0b8b1}
+    .fg-tools .tb{background:#1e3a5f;border-color:#1e3a5f;color:#fff}
+    .fg-cols{display:grid;grid-template-columns:52px 1fr 1fr;background:#f5f2ea;border:1px solid var(--line);border-bottom:0;border-radius:5px 5px 0 0;padding:7px 0}
+    .fg-cols span{display:flex;align-items:center;justify-content:center;gap:6px;font-size:11px;color:var(--muted)}
+    .fg-grid{position:relative;height:356px;background:#fff;border:1px solid var(--line);border-radius:0 0 5px 5px}
+    .fg-t{position:absolute;right:9px;font-size:10px;color:var(--muted)}
+    .fg-l{position:absolute;right:52px;left:0;border-top:1px solid rgba(229,224,213,.75)}
+    .fg-c{position:absolute;top:0;bottom:0}
+    .fg-c1{right:56px;left:calc(50% + 2px)}
+    .fg-c2{right:calc(50% + 4px);left:4px}
+    .fga{position:absolute;right:3px;left:3px;background:#e7eaf0;border:1px solid #1e3a5f;border-right-width:3px;border-radius:4px;padding:7px 10px;overflow:hidden;box-shadow:0 1px 2px rgba(26,26,46,.06)}
+    .fga b{display:block;font-size:12.5px;font-weight:700;color:#1e3a5f}
+    .fga>span{display:block;font-size:10.5px;color:#1e3a5f;opacity:.75;text-align:right}
+    .fga .fga-ph{opacity:.55}
+    .fga.am{background:rgba(217,119,6,.13);border-color:#d97706}
+    .fga.am b,.fga.am>span{color:#92400e}
+    .fga .fchip{margin-top:3px;font-size:9.5px;padding:2px 7px}
+    .fgs{position:absolute;right:3px;left:3px;border:2px dashed #34d399;background:#ecfdf5;color:#065f46;border-radius:4px;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:700}
+    .fgs small{font-weight:400;font-size:10px;opacity:.8}
+    .fg-now{position:absolute;right:52px;left:0;height:2px;background:#dc2626;z-index:3}
+    .fg-now i{position:absolute;right:-4px;top:-3.5px;width:9px;height:9px;border-radius:50%;background:#dc2626;animation:breathe 2.2s ease-in-out infinite}
+    .fg-rec{width:270px;top:96px;left:26px}
+    .fgr-body{display:flex;flex-direction:column;align-items:center;gap:12px;background:#faf8f4;padding:18px 14px}
+    .fgr-body .rec-top{font-size:14px}
+    @media(max-width:1200px){.stage.flag{width:100%}}
+    @media(max-width:900px){
+      .stage.flag{min-height:0}
+      .fg-side{display:none}
+      .fg-rec{top:auto;bottom:-20px;width:230px}
+    }
+
     /* Every object floating in front of the main window drifts on the scroll -
        window, phone or toast alike. Keep this selector in step with the markup:
        a float left out of it just sits still and reads as broken next to the
@@ -1114,41 +1182,65 @@
 
           <article class="ch" data-ch>
             <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
-            <div class="stage" aria-hidden="true">
-              <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · מטופלים</span></div>
-                <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
-                    <nav class="ap-nav">
-                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
-                      <a class="on"><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
-                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+            <div class="stage flag" aria-hidden="true">
+              <div class="win w-main fg-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
+                <div class="fg-shell">
+                  <div class="fg-side">
+                    <div class="fg-brand"><span class="fg-logo"><img src="logo.png" alt="" /></span><span><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="fg-nav">
+                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="fg-b2">14</em></a>
+                      <a><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="fg-b">4</em></a>
+                      <a><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
                     </nav>
-                    <div class="ap-foot">← התנתק</div>
+                    <div class="fg-foot">← התנתק</div>
                   </div>
-                  <div class="app-body">
-                  <div class="pf-name">דנה לוי</div>
-                  <div class="pf-meta">050-5550557 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
-                  <div class="pf-sec">היסטוריית פגישות <span>(12 סה״כ · 9 בוצעו)</span></div>
-                  <div class="frow fr1"><span>יום ג׳ 14/9 · 14:00<small>חדר 1</small></span><i class="pill pill-ok">בוצעה</i></div>
-                  <div class="frow fr2"><span>יום ג׳ 21/9 · 14:00<small>חדר 1</small></span><i class="pill pill-next">מתוכננת</i></div>
-                  <div class="pf-sec">לוג טיפולים <span>(9 טיפולים)</span></div>
-                  <div class="frow fr3"><span>יום ג׳ 14/9<small>תלונה · כאב גב תחתון</small></span></div>
-                  <div class="pf-sec">קבלות</div>
-                  <div class="frow fr4"><span>קבלה #1042 · 14/9/26<small>₪350.00 · מזומן</small></span><i class="pill">פתח PDF</i></div>
+                  <div class="fg-main">
+                    <div class="fg-head">
+                      <div class="fg-title"><b>רביעי</b> · 22 ביולי 2026<small>יומן</small></div>
+                      <div class="fg-tools"><span>חסום</span><span class="tr">+ ידני</span><span>חודש</span><span>שבוע</span><span class="tb">היום</span></div>
+                    </div>
+                    <div class="fg-cols"><span>שעה</span><span><i class="rdot rd1"></i>חדר 1</span><span><i class="rdot rd2"></i>חדר 2</span></div>
+                    <div class="fg-grid">
+                      <span class="fg-t" style="top:6px">09:00</span><span class="fg-l" style="top:14px"></span>
+                      <span class="fg-t" style="top:90px">10:00</span><span class="fg-l" style="top:98px"></span>
+                      <span class="fg-t" style="top:174px">11:00</span><span class="fg-l" style="top:182px"></span>
+                      <span class="fg-t" style="top:258px">12:00</span><span class="fg-l" style="top:266px"></span>
+                      <span class="fg-t" style="top:342px">13:00</span><span class="fg-l" style="top:350px"></span>
+                      <div class="fg-c fg-c1">
+                        <div class="fga" style="top:16px;height:74px"><b>דנה כהן</b><span dir="ltr">09:00–09:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga" style="top:142px;height:74px"><b>יוסי לוי</b><span dir="ltr">10:30–11:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip go">✅ אישר הגעה</i></div>
+                        <div class="fgs" style="top:268px;height:70px">✓ פנוי<small>12:00</small></div>
+                      </div>
+                      <div class="fg-c fg-c2">
+                        <div class="fga" style="top:58px;height:74px"><b>נועה פרידמן</b><span dir="ltr">09:30–10:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga am" style="top:184px;height:74px"><b>אבי מזרחי</b><span dir="ltr">11:00–11:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip tk">🎫 3/5</i></div>
+                      </div>
+                      <div class="fg-now" style="top:236px"><i></i></div>
+                    </div>
                   </div>
                 </div>
               </div>
-              <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
+              <div class="win w-float fg-rec">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
+                <div class="fgr-body">
+                  <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
+                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="rec-nums">
+                    <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
+                    <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
+                  </div>
+                  <div class="rec-stop">⏹️ עצור והפק סיכום</div>
+                </div>
+              </div>
             </div>
           </article>
         </div>
