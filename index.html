@@ -172,7 +172,17 @@
     /* Hero scene — booking lands in the calendar.
        Base styles are the FINAL frame (works with no JS / reduced motion);
        .play runs the timeline from hidden states via keyframes. */
+    /* Hero exit, taken from Attio's opening: as you scroll away the words
+       recede - fading, blurring and drifting up - while the product rises and
+       fans open in their place. --p is the scroll progress out of the hero
+       (0 at rest, 1 once it has left), written by the driver below. */
+    header{--p:0}
+    .hero-copy{opacity:calc(1 - var(--p) * .92);filter:blur(calc(var(--p) * 5px));
+      transform:translate3d(0,calc(var(--p) * -46px),0);will-change:opacity,filter,transform}
     .hero-scene{position:relative;margin:64px auto 0;max-width:700px;height:410px}
+    .fan{position:absolute;inset:0;will-change:transform}
+    .fan-r{transform:translate3d(0,calc((1 - var(--p)) * 34px),0)}
+    .fan-l{transform:translate3d(calc(var(--p) * -26px),calc((1 - var(--p)) * 62px),0)}
     /* App window. Rounded on top only and cut off at the bottom, so it reads as
        a real window standing on the surface rather than a floating rectangle. */
     .win{position:absolute;background:#fff;border:1px solid var(--line);border-bottom:0;border-radius:12px 12px 0 0;overflow:hidden}
@@ -254,10 +264,14 @@
     .hero-scene.play .appt-new{animation:popIn .38s var(--ease-out) 6.25s both}
     .hero-scene.play .cal-toast{animation:stepOn .3s var(--ease-out) 6.7s both}
     @media(prefers-reduced-motion:reduce){
+      .hero-copy{opacity:1;filter:none;transform:none}
+      .fan{transform:none}
       .hero-scene.play *{animation:none !important}
       html{scroll-behavior:auto}
     }
     @media(max-width:620px){
+      .hero-copy{filter:none}
+      .fan-l{transform:translate3d(0,calc((1 - var(--p)) * 40px),0)}
       .hero-scene{max-width:340px;height:600px}
       .win-cal{width:100%}
       .scn-phone{left:calc(50% - 87px);top:272px;height:328px}
@@ -595,6 +609,7 @@
 
   <header>
     <div class="wrap">
+      <div class="hero-copy">
       <span class="eyebrow">נבנתה על ידי מטפל, למטפלים</span>
       <h1>שהמטופלים <span class="mark-hl">יגיעו</span>.<br>שהקליניקה תנהל <span class="hl">את עצמה</span>.</h1>
       <p class="sub">קליניקל שולחת תזכורות למטופלים, אוספת אישורי הגעה, כותבת את סיכומי הטיפול לבד ומרכזת יומן, מטופלים וקבלות - כדי שהראש שלכם יהיה בטיפול, לא בניהול.</p>
@@ -603,6 +618,7 @@
         <a href="#how" class="btn btn-ghost">איך זה עובד</a>
       </div>
       <div class="trust">3 חודשים חינם, בלי כרטיס אשראי · הקמה בדקות · תמיכה אישית בעברית · ביטול בכל רגע</div>
+      </div>
 
       <!-- Hero scene: a patient books online, the appointment lands in the calendar.
            Attio-style window collage - back window is the practitioner's calendar,
@@ -612,6 +628,7 @@
            Base styles ARE the final frame, so no-JS and reduced-motion users see
            a complete static composition. -->
       <div class="hero-scene" data-scene aria-hidden="true">
+        <div class="fan fan-r">
         <div class="win win-cal">
           <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">היומן שלך · יום שלישי 14/9</span></div>
           <div class="cal-body">
@@ -629,6 +646,8 @@
             <div class="cal-toast"><span class="live-dot"></span>בקשה חדשה מדנה לוי</div>
           </div>
         </div>
+        </div>
+        <div class="fan fan-l">
         <div class="scn-phone">
           <div class="ph-screen">
             <div class="ph-status" dir="ltr"><span>9:41</span><span class="ph-bars"><i></i><i></i><i></i></span></div>
@@ -667,6 +686,7 @@
             </div>
             </div>
           </div>
+        </div>
         </div>
       </div>
       <div class="scene-cap">המטופלת קבעה לבד. אתם רק מאשרים - והיומן מתמלא.</div>
@@ -1095,6 +1115,25 @@
         });
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       els.forEach(function(el){ io.observe(el); });
+    })();
+    /* Hero scroll link: turn "how far out of the hero are we" into --p, once per
+       frame. Reads layout in the rAF, writes one custom property - the compositor
+       does the rest, so nothing here forces a re-layout while scrolling. */
+    (function(){
+      var h=document.querySelector('header');
+      if(!h||window.matchMedia('(prefers-reduced-motion: reduce)').matches)return;
+      var ticking=false;
+      function update(){
+        ticking=false;
+        var span=Math.max(1,h.offsetHeight*0.62);
+        var p=Math.min(1,Math.max(0,window.scrollY/span));
+        h.style.setProperty('--p',p.toFixed(3));
+      }
+      window.addEventListener('scroll',function(){
+        if(!ticking){ ticking=true; requestAnimationFrame(update); }
+      },{passive:true});
+      window.addEventListener('resize',update,{passive:true});
+      update();
     })();
     /* Scene player: .play in view -> timeline runs; fully out -> reset, so it replays. */
     (function(){
