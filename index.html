@@ -351,12 +351,22 @@
       transform:translate3d(calc(var(--q) * -16px),calc(var(--q) * 58px),0);will-change:transform}
     .stage .scn-phone{left:0;top:104px;height:300px}
     .stage .s-toast{transform:translate3d(calc(var(--q) * -10px),calc(var(--q) * 34px),0)}
-    .sms-head{flex:0 0 auto;border-bottom:1px solid var(--line);padding:7px 13px 9px;font-size:10.5px;font-weight:700;color:var(--ink)}
+    /* iOS Messages anatomy, mirrored for Hebrew: centered avatar+name header,
+       the gray "הודעת טקסט / היום" caption, and an incoming bubble that sits on
+       the leading (right) edge with the little tail. Faithful beats pretty. */
+    .msg-head{flex:0 0 auto;display:flex;flex-direction:column;align-items:center;gap:3px;border-bottom:1px solid var(--line);padding:4px 0 7px;background:#f8f8f8}
+    .msg-av{width:26px;height:26px;border-radius:50%;background:linear-gradient(#a8adb5,#858b94);color:#fff;font-size:12px;font-weight:600;display:grid;place-items:center}
+    .msg-name{font-size:8.5px;color:var(--ink)}
+    .sms-body{padding:12px 10px;background:#fff;flex:1}
+    .msg-cap{text-align:center;font-size:8px;color:#8e8e93;line-height:1.5;margin-bottom:9px}
+    .sms-b{position:relative;background:#e9e9eb;color:#111;border-radius:16px;border-bottom-right-radius:5px;padding:8px 11px;font-size:11.5px;line-height:1.45;max-width:88%;margin-inline-start:auto}
     .app-body{background:#faf8f4;height:calc(100% - 35px);padding:14px}
     /* shared app furniture, faithful to the real screens */
-    .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:11px 12px;margin-bottom:8px;font-size:13px}
-    .lrow b{color:var(--indigo)}
-    .lrow span{color:var(--muted);font-size:11px}
+    .lrow{display:flex;align-items:center;gap:10px;background:#fff;border:1px solid var(--line);border-radius:4px;padding:9px 12px;margin-bottom:8px;font-size:13px}
+    .lmain{flex:1;min-width:0}
+    .lrow b{display:block;color:#1e3a5f;font-size:12px}
+    .lrow b span{color:var(--muted);font-weight:400;font-size:10px}
+    .lmain small{display:block;color:var(--muted);font-size:9.5px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;margin-top:2px}
     .rem{margin-inline-start:auto;font-style:normal;font-size:10px;font-weight:700;color:#047857;background:#ecfdf5;border:1px solid #a7f3d0;border-radius:999px;padding:3px 9px}
     .lfoot{display:flex;align-items:center;gap:7px;font-size:11px;color:var(--muted);padding:6px 2px}
     .live-dot{width:7px;height:7px;border-radius:50%;background:#34d399;animation:breathe 2.4s ease-in-out infinite}
@@ -877,17 +887,20 @@
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הודעות לשליחה</span></div>
                 <div class="app-body">
-                  <div class="lrow"><b>דנה לוי</b><span dir="ltr">14:00</span><i class="rem">נשלחה ✓</i></div>
-                  <div class="lrow"><b>יוסי כהן</b><span dir="ltr">15:00</span><i class="rem">נשלחה ✓</i></div>
-                  <div class="lrow"><b>רות אלון</b><span dir="ltr">16:30</span><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><div class="lmain"><b>דנה לוי <span dir="ltr">· מחר 14:00</span></b><small>היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</small></div><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><div class="lmain"><b>יוסי כהן <span dir="ltr">· מחר 15:00</span></b><small>היי יוסי, מזכיר את הפגישה שלנו מחר ב-15:00.</small></div><i class="rem">נשלחה ✓</i></div>
+                  <div class="lrow"><div class="lmain"><b>רות אלון <span dir="ltr">· מחר 16:30</span></b><small>היי רות, מזכיר את הפגישה שלנו מחר ב-16:30.</small></div><i class="rem">נשלחה ✓</i></div>
                   <div class="lfoot"><span class="live-dot"></span>נשלחות אוטומטית בערב שלפני</div>
                 </div>
               </div>
               <div class="scn-phone sml">
                 <div class="ph-screen">
                   <div class="ph-status" dir="ltr"><span>21:04</span><span class="ph-bars"><i></i><i></i><i></i></span></div>
-                  <div class="sms-head">Klinical</div>
-                  <div class="sms-body"><div class="sms-b">היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</div></div>
+                  <div class="msg-head"><span class="msg-av">K</span><span class="msg-name">Klinical</span></div>
+                  <div class="sms-body">
+                    <div class="msg-cap">הודעת טקסט<br>היום 21:04</div>
+                    <div class="sms-b">היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</div>
+                  </div>
                 </div>
               </div>
             </div>
