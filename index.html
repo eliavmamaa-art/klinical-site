@@ -342,6 +342,43 @@
     .stage{position:relative;height:430px}
     .w-main{position:absolute;top:0;right:0;left:16%;height:360px;box-shadow:var(--sh-mid);
       transform:translate3d(0,calc(var(--q) * 20px),0);will-change:transform}
+    /* App chrome, mirrored from app/(app)/sidebar.tsx: one screen with the
+       sidebar pinned to the RIGHT (RTL leading edge) in indigo-deep, a teal bar
+       on the active item, and the app's own line icons painted through a CSS
+       mask so they take the surrounding text colour - exactly how its Icon
+       component works. The PNGs in icons/app/ are byte-identical copies.
+       The floating windows stay - they ARE real: in the product the recording
+       panel and the appointment menu are modals floating over a screen. */
+    .ap-shell{display:flex;height:calc(100% - 35px);background:#faf8f4}
+    .ap-side{flex:0 0 118px;background:#0f2742;color:#fff;padding:9px 0;order:2}
+    .ap-brand{display:flex;align-items:center;gap:6px;padding:0 9px 9px}
+    .ap-logo{width:16px;height:16px;border-radius:4px;background:var(--teal);flex:0 0 auto}
+    .ap-bt b{display:block;font-size:9px;line-height:1.2}
+    .ap-bt small{display:block;font-size:6px;color:rgba(255,255,255,.5)}
+    .ap-nav{display:flex;flex-direction:column}
+    .ap-nav a{position:relative;display:flex;align-items:center;gap:5px;padding:3.5px 9px;font-size:7.5px;color:rgba(255,255,255,.8);text-decoration:none}
+    .ap-nav a.on{background:rgba(255,255,255,.12);color:#fff}
+    .ap-nav a.on::before{content:"";position:absolute;right:0;top:2px;bottom:2px;width:2.5px;border-radius:99px;background:var(--teal)}
+    .ai{width:9px;height:9px;flex:0 0 auto;background-color:currentColor;
+      -webkit-mask-image:var(--i);mask-image:var(--i);
+      -webkit-mask-size:contain;mask-size:contain;
+      -webkit-mask-repeat:no-repeat;mask-repeat:no-repeat;
+      -webkit-mask-position:center;mask-position:center}
+    .ap-nav a.on .ai{background-color:var(--teal)}
+    .ap-shell .app-body{flex:1;min-width:0;height:auto;order:1;overflow:hidden;padding:12px}
+    .ap-h{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#1e3a5f;margin-bottom:9px}
+    .ap-h .ai{width:12px;height:12px}
+    .ap-h span{font-weight:400;font-size:9px;color:var(--muted)}
+    .mini-cal{display:flex;flex-direction:column;gap:6px}
+    .mc-row{display:flex;align-items:center;gap:7px}
+    .mc-row span{font-size:8px;color:var(--muted);width:2.6em;flex:0 0 auto}
+    .mc-b{flex:1;font-style:normal;font-size:9.5px;color:#1e3a5f;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:3px;padding:7px 8px}
+    .mc-b.live{background:rgba(30,58,95,.2)}
+    .mc-b.am{background:rgba(217,119,6,.12);border-right-color:#d97706;color:#92400e}
+    .mc-f{flex:1;font-style:normal;font-size:9px;font-weight:700;color:#065f46;background:#ecfdf5;border:2px dashed #34d399;border-radius:3px;padding:6px 8px;text-align:center}
+    .rec-win{top:120px;width:280px}
+    .rec-win .app-body.rec{height:auto;padding:14px 12px;gap:10px}
+    .rec-win .sum-body{border-top:1px solid var(--line)}
     .w-float{position:absolute;left:0;top:162px;width:286px;box-shadow:var(--sh-high);z-index:2}
     /* Every object floating in front of the main window drifts on the scroll -
        window, phone or toast alike. Keep this selector in step with the markup:
@@ -896,12 +933,28 @@
             <h3 class="ch-h">התזכורת יוצאת לבד. <span>בערב שלפני, כל מטופל מקבל הודעה עם שעת התור. בלי שנגעתם בכלום.</span></h3>
             <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הודעות לשליחה</span></div>
-                <div class="app-body">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · הודעות לשליחה</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                    </nav>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה <span>3 ממתינות</span></div>
                   <div class="lrow"><div class="lmain"><b>דנה לוי <span dir="ltr">· מחר 14:00</span></b><small>היי דנה, מזכיר את הפגישה שלנו מחר ב-14:00.</small></div><i class="rem">נשלחה ✓</i></div>
                   <div class="lrow"><div class="lmain"><b>יוסי כהן <span dir="ltr">· מחר 15:00</span></b><small>היי יוסי, מזכיר את הפגישה שלנו מחר ב-15:00.</small></div><i class="rem">נשלחה ✓</i></div>
                   <div class="lrow"><div class="lmain"><b>רות אלון <span dir="ltr">· מחר 16:30</span></b><small>היי רות, מזכיר את הפגישה שלנו מחר ב-16:30.</small></div><i class="rem">נשלחה ✓</i></div>
                   <div class="lfoot"><span class="live-dot"></span>נשלחות אוטומטית בערב שלפני</div>
+                  </div>
                 </div>
               </div>
               <div class="scn-phone sml">
@@ -921,6 +974,33 @@
             <h3 class="ch-h">הטיפול מתעד את עצמו. <span>מקליטים, וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</span></h3>
             <div class="stage" aria-hidden="true">
               <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <nav class="ap-nav">
+                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                    </nav>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/calendar.png)"></i>רביעי · 22 ביולי</div>
+                  <div class="mini-cal">
+                    <div class="mc-row"><span dir="ltr">13:00</span><i class="mc-b">יוסי כהן</i></div>
+                    <div class="mc-row"><span dir="ltr">14:00</span><i class="mc-b live">דנה לוי</i></div>
+                    <div class="mc-row"><span dir="ltr">15:00</span><i class="mc-b am">רות אלון</i></div>
+                    <div class="mc-row"><span dir="ltr">16:00</span><i class="mc-f">✓ פנוי</i></div>
+                  </div>
+                  </div>
+                </div>
+              </div>
+              <div class="win w-float rec-win">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
                 <div class="app-body rec">
                   <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
@@ -930,11 +1010,7 @@
                     <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
                   </div>
                   <div class="rec-stop">⏹️ עצור והפק סיכום</div>
-                  <div class="rec-note">ההקלטה מדלגת אוטומטית על קטעי שקט - רק הדיבור נקלט.</div>
                 </div>
-              </div>
-              <div class="win w-float sum-win">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">סיכום לתיק</span></div>
                 <div class="sum-body">
                   <div class="sf"><small>תלונה עיקרית</small><span class="tw tw1">כאב גב תחתון, שבועיים</span></div>
                   <div class="sf"><small>מה נעשה בטיפול (כולל נקודות)</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
@@ -953,11 +1029,27 @@
             <h3 class="ch-h">הקבלה יוצאת מהיומן. <span>לחיצה אחת על התור, והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</span></h3>
             <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התור של דנה לוי · 14:00</span></div>
-                <div class="app-body">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · כספים</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                    </nav>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים <span>ספטמבר 2026</span></div>
                   <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
                   <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">הקלטת טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
                   <div class="pay-btns"><span class="pb">סמן כשולם במזומן</span><span class="pb">סמן נוכחות / אי-הגעה</span></div>
+                  </div>
                 </div>
               </div>
               <div class="win w-float rc-win">
@@ -977,8 +1069,22 @@
             <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
             <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">תיק מטופלת</span></div>
-                <div class="app-body">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · מטופלים</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                    </nav>
+                  </div>
+                  <div class="app-body">
                   <div class="pf-name">דנה לוי</div>
                   <div class="pf-meta">050-5550557 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
                   <div class="pf-sec">היסטוריית פגישות <span>(12 סה״כ · 9 בוצעו)</span></div>
@@ -988,6 +1094,7 @@
                   <div class="frow fr3"><span>יום ג׳ 14/9<small>תלונה · כאב גב תחתון</small></span></div>
                   <div class="pf-sec">קבלות</div>
                   <div class="frow fr4"><span>קבלה #1042 · 14/9/26<small>₪350.00 · מזומן</small></span><i class="pill">פתח PDF</i></div>
+                  </div>
                 </div>
               </div>
               <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
