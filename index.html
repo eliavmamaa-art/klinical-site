@@ -387,12 +387,20 @@
     .rec-nums .ink{color:var(--indigo)}
     .rec-nums small{font-size:11px;color:var(--muted)}
     .rec-stop{background:#dc2626;color:#fff;border-radius:999px;padding:9px 22px;font-size:12.5px;font-weight:700}
+    .rec-note{font-size:9px;color:var(--muted);text-align:center;max-width:22em;line-height:1.4}
+    .sf2{display:grid;grid-template-columns:1fr 1fr;gap:9px}
+    .sum-foot{display:flex;align-items:center;gap:6px;border-top:1px solid var(--line);margin-top:10px;padding-top:9px;font-size:10px;font-weight:700;color:#1e3a5f}
+    .wa-dot{width:9px;height:9px;border-radius:2px;background:#25D366}
+    .rc-title{font-size:11px;font-weight:700;color:#1e3a5f;margin-bottom:7px}
+    .pf-sec{font-size:10.5px;font-weight:700;color:#1e3a5f;margin:11px 0 6px}
+    .pf-sec span{font-weight:400;font-size:8.5px;color:var(--muted)}
+    .frow span small{display:block;font-size:8.5px;color:var(--muted);margin-top:2px}
     .sum-win{top:56px;width:286px}
     .sum-body{padding:12px 14px;background:#fff}
     .sf{margin-bottom:11px}
     .sf small{display:block;font-size:9px;color:var(--muted);margin-bottom:3px}
     .sf .tw{display:inline-block;overflow:hidden;white-space:nowrap;vertical-align:bottom;font-size:12px;border-bottom:1px solid var(--line);padding-bottom:3px}
-    .tw1{width:10.5em}.tw2{width:11.5em}.tw3{width:7.5em}
+    .tw1{width:10.5em}.tw2{width:11.5em}.tw3{width:7.5em}.tw4{width:8.5em}.tw5{width:7.5em}
     .caret{display:inline-block;width:1.5px;height:11px;background:var(--indigo);vertical-align:-1px;margin-right:2px;animation:blink 1.05s step-end infinite}
     /* ch3 receipt */
     .appt-done{position:relative;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:4px;padding:10px 12px;margin-bottom:12px}
@@ -406,7 +414,7 @@
       transform:translateX(-120%);animation:sheen 3.6s ease-in-out infinite}
     .rc-win{width:300px;top:164px}
     .rc-body{padding:10px 12px;background:#fff}
-    .rc-head,.rc-row{display:grid;grid-template-columns:2.4em 1fr 3.1em 3em;gap:8px;font-size:11.5px;padding:7px 3px;align-items:center}
+    .rc-head,.rc-row{display:grid;grid-template-columns:2.3em 1fr 2.9em 2.9em 2.6em;gap:6px;font-size:10.5px;padding:6px 3px;align-items:center}
     .rc-head{color:var(--muted);font-size:9.5px;border-bottom:1px solid var(--line)}
     .rc-row{border-bottom:1px solid var(--line)}
     .rc-row span:first-child{color:var(--muted)}
@@ -438,7 +446,10 @@
     .ch.seen .sms-b{animation:popIn .4s var(--ease-out) .9s both}
     .ch.seen .tw1{animation:typeIn .85s steps(14,end) .35s both}
     .ch.seen .tw2{animation:typeIn .95s steps(16,end) 1.3s both}
-    .ch.seen .tw3{animation:typeIn .65s steps(10,end) 2.35s both}
+    .ch.seen .tw4{animation:typeIn .7s steps(12,end) 2.3s both}
+    .ch.seen .tw5{animation:typeIn .65s steps(11,end) 3.05s both}
+    .ch.seen .tw3{animation:typeIn .65s steps(10,end) 3.8s both}
+    .ch.seen .sum-foot{animation:stepOn .3s var(--ease-out) 4.5s both}
     .ch.seen .rc-new{animation:stepOn .38s var(--ease-out) .5s both}
     .ch.seen .rt-a{animation:holdOn 1.15s step-end both,fadeOut .3s var(--ease-out) 1.15s forwards}
     .ch.seen .rt-b{animation:selOn .3s 1.15s both}
@@ -918,7 +929,8 @@
                     <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
                     <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
                   </div>
-                  <div class="rec-stop">⏹ עצור והפק סיכום</div>
+                  <div class="rec-stop">⏹️ עצור והפק סיכום</div>
+                  <div class="rec-note">ההקלטה מדלגת אוטומטית על קטעי שקט - רק הדיבור נקלט.</div>
                 </div>
               </div>
               <div class="win w-float sum-win">
@@ -926,7 +938,12 @@
                 <div class="sum-body">
                   <div class="sf"><small>תלונה עיקרית</small><span class="tw tw1">כאב גב תחתון, שבועיים</span></div>
                   <div class="sf"><small>מה נעשה בטיפול (כולל נקודות)</small><span class="tw tw2">דיקור נקודות גב + מוקסה</span></div>
+                  <div class="sf2">
+                    <div class="sf"><small>אבחנה</small><span class="tw tw4">קור וחסימה במרידיאן</span></div>
+                    <div class="sf"><small>סימפטומים / ממצאים</small><span class="tw tw5">מתח בשרירי המותן</span></div>
+                  </div>
                   <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע<i class="caret"></i></span></div>
+                  <div class="sum-foot"><span class="wa-dot"></span>טיוטת הודעה למטופל/ת</div>
                 </div>
               </div>
             </div>
@@ -939,16 +956,18 @@
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">התור של דנה לוי · 14:00</span></div>
                 <div class="app-body">
                   <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
-                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">סמן נוכחות</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">הקלטת טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                  <div class="pay-btns"><span class="pb">סמן כשולם במזומן</span><span class="pb">סמן נוכחות / אי-הגעה</span></div>
                 </div>
               </div>
               <div class="win w-float rc-win">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
                 <div class="rc-body">
-                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>סכום</span><span>קבלה</span></div>
-                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span dir="ltr">₪350</span><b>#1041</b></div>
-                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span dir="ltr">₪350</span><b>#1042</b></div>
-                  <div class="rc-total">סה"כ החודש<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
+                  <div class="rc-title">פירוט הכנסות</div>
+                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>אמצעי</span><span>סכום</span><span>קבלה</span></div>
+                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span>אשראי</span><span dir="ltr">₪350</span><b>#1041</b></div>
+                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span>מזומן</span><span dir="ltr">₪350</span><b>#1042</b></div>
+                  <div class="rc-total">סה״כ<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
                 </div>
               </div>
             </div>
@@ -961,11 +980,14 @@
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">תיק מטופלת</span></div>
                 <div class="app-body">
                   <div class="pf-name">דנה לוי</div>
-                  <div class="pf-meta">050-1234567 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
-                  <div class="frow fr1"><span>פגישה · יום ג׳ 14/9</span><i class="pill pill-ok">בוצעה</i></div>
-                  <div class="frow fr2"><span>לוג טיפול · כאב גב תחתון</span><i class="pill">בתיק</i></div>
-                  <div class="frow fr3"><span>קבלה #1042 · ₪350</span><i class="pill">PDF</i></div>
-                  <div class="frow fr4"><span>פגישה הבאה · יום ג׳ 21/9</span><i class="pill pill-next">מתוכננת</i></div>
+                  <div class="pf-meta">050-5550557 · גיל 42 · נקבה · <em>✓ שאלון מולא</em></div>
+                  <div class="pf-sec">היסטוריית פגישות <span>(12 סה״כ · 9 בוצעו)</span></div>
+                  <div class="frow fr1"><span>יום ג׳ 14/9 · 14:00<small>חדר 1</small></span><i class="pill pill-ok">בוצעה</i></div>
+                  <div class="frow fr2"><span>יום ג׳ 21/9 · 14:00<small>חדר 1</small></span><i class="pill pill-next">מתוכננת</i></div>
+                  <div class="pf-sec">לוג טיפולים <span>(9 טיפולים)</span></div>
+                  <div class="frow fr3"><span>יום ג׳ 14/9<small>תלונה · כאב גב תחתון</small></span></div>
+                  <div class="pf-sec">קבלות</div>
+                  <div class="frow fr4"><span>קבלה #1042 · 14/9/26<small>₪350.00 · מזומן</small></span><i class="pill">פתח PDF</i></div>
                 </div>
               </div>
               <div class="s-toast"><span class="live-dot"></span>הכל נשמר לבד</div>
