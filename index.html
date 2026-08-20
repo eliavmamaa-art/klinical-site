@@ -415,7 +415,7 @@
     /* Never widen past the column - that is what pushed the scene off-screen at
        real zoom. The SECTION gets the extra room instead, so the scene simply
        fills its column and can never overflow the page. */
-    .stage.flag{height:auto;min-height:520px;width:100%}
+    .stage.flag{height:auto;min-height:520px;width:100%;padding-inline-end:66px;margin-inline-end:-66px}
     .fg-win{position:relative;top:auto;right:auto;left:auto;width:100%;height:auto;
       transform:translate3d(0,calc(var(--q) * 14px),0)}
     .fg-shell{display:flex;background:#faf8f4;min-height:480px}
@@ -472,14 +472,18 @@
     .fgs small{font-weight:400;font-size:10px;opacity:.8}
     .fg-now{position:absolute;right:52px;left:0;height:2px;background:#dc2626;z-index:3}
     .fg-now i{position:absolute;right:-4px;top:-3.5px;width:9px;height:9px;border-radius:50%;background:#dc2626;animation:breathe 2.2s ease-in-out infinite}
-    .fg-rec{width:270px;top:96px;left:26px}
+    /* The modal was parked over the middle of the calendar and buried it. In the
+       product a modal like this opens beside the day, not on top of it - so it
+       hangs off the window's leading edge, overlapping only the outer margin. */
+    .fg-rec{width:252px;top:150px;left:-58px}
     .fgr-body{display:flex;flex-direction:column;align-items:center;gap:12px;background:#faf8f4;padding:18px 14px}
     .fgr-body .rec-top{font-size:14px}
 
     @media(max-width:900px){
       .stage.flag{min-height:0}
       .fg-side{display:none}
-      .fg-rec{top:auto;bottom:-20px;width:230px}
+      .fg-rec{top:auto;bottom:-20px;left:8px;width:220px}
+      .stage.flag{padding-inline-end:0;margin-inline-end:0}
     }
 
     /* Every object floating in front of the main window drifts on the scroll -
