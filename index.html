@@ -320,7 +320,7 @@
        because contrast carries it, not spacing. And every scene keeps a
        slow pulse of its own, so pausing on one never leaves a dead picture. */
     .how{background:#fff}
-    .how .wrap{max-width:1280px}
+    .how .wrap{max-width:1400px}
     /* Proportions lifted off Attio: the headline column is a quarter of the width,
        not a third; it is bounded by a rule on BOTH sides; and the names sit a long
        way in from that rule (~56px, not 30) - the inset is most of what makes the
@@ -412,7 +412,10 @@
        sidebar is a real 172px, and every font is a size the app really uses.
        If this one earns the look, the other chapters get the same treatment. */
     .ch-flag{display:block}
-    .stage.flag{height:auto;min-height:520px;width:calc(100% + 33%);max-width:1160px}
+    /* Never widen past the column - that is what pushed the scene off-screen at
+       real zoom. The SECTION gets the extra room instead, so the scene simply
+       fills its column and can never overflow the page. */
+    .stage.flag{height:auto;min-height:520px;width:100%}
     .fg-win{position:relative;top:auto;right:auto;left:auto;width:100%;height:auto;
       transform:translate3d(0,calc(var(--q) * 14px),0)}
     .fg-shell{display:flex;background:#faf8f4;min-height:480px}
@@ -472,7 +475,7 @@
     .fg-rec{width:270px;top:96px;left:26px}
     .fgr-body{display:flex;flex-direction:column;align-items:center;gap:12px;background:#faf8f4;padding:18px 14px}
     .fgr-body .rec-top{font-size:14px}
-    @media(max-width:1200px){.stage.flag{width:100%}}
+
     @media(max-width:900px){
       .stage.flag{min-height:0}
       .fg-side{display:none}
@@ -1075,9 +1078,118 @@
 
           <article class="ch" data-ch>
             <h3 class="ch-h">הטיפול מתעד את עצמו. <span>מקליטים, וקליניקל מתמללת וכותבת סיכום קליני מסודר ישר לתיק.</span></h3>
+            <div class="stage flag" aria-hidden="true">
+              <div class="win w-main fg-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
+                <div class="fg-shell">
+                  <div class="fg-side">
+                    <div class="fg-brand"><span class="fg-logo"><img src="logo.png" alt="" /></span><span><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="fg-nav">
+                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="fg-b2">14✏️</em></a>
+                      <a><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="fg-b">4</em></a>
+                      <a><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="fg-foot">← התנתק</div>
+                  </div>
+                  <div class="fg-main">
+                    <div class="fg-head">
+                      <div class="fg-title"><b>רביעי</b> · 22 ביולי 2026<small>יומן</small></div>
+                      <div class="fg-tools"><span>חסום</span><span class="tr">+ ידני</span><span>חודש</span><span>שבוע</span><span class="tb">היום</span></div>
+                    </div>
+                    <div class="fg-cols"><span>שעה</span><span><i class="rdot rd1"></i>חדר 1</span><span><i class="rdot rd2"></i>חדר 2</span></div>
+                    <div class="fg-grid">
+                      <span class="fg-t" style="top:6px">09:00</span><span class="fg-l" style="top:14px"></span>
+                      <span class="fg-t" style="top:90px">10:00</span><span class="fg-l" style="top:98px"></span>
+                      <span class="fg-t" style="top:174px">11:00</span><span class="fg-l" style="top:182px"></span>
+                      <span class="fg-t" style="top:258px">12:00</span><span class="fg-l" style="top:266px"></span>
+                      <span class="fg-t" style="top:342px">13:00</span><span class="fg-l" style="top:350px"></span>
+                      <div class="fg-c fg-c1">
+                        <div class="fga" style="top:14px;height:80px"><b>דנה כהן</b><span dir="ltr">09:00–09:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga" style="top:140px;height:80px"><b>יוסי לוי</b><span dir="ltr">10:30–11:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip go">✅ אישר הגעה</i></div>
+                        <div class="fgs" style="top:268px;height:70px">✓ פנוי<small>12:00</small></div>
+                      </div>
+                      <div class="fg-c fg-c2">
+                        <div class="fga" style="top:56px;height:80px"><b>נועה פרידמן</b><span dir="ltr">09:30–10:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga am" style="top:182px;height:80px"><b>אבי מזרחי</b><span dir="ltr">11:00–11:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip tk">🎫 3/5</i></div>
+                      </div>
+                      <div class="fg-now" style="top:236px"><i></i></div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="win w-float fg-rec">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
+                <div class="fgr-body">
+                  <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
+                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+                  <div class="rec-nums">
+                    <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
+                    <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
+                  </div>
+                  <div class="rec-stop">⏹️ עצור והפק סיכום</div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ch" data-ch>
+            <h3 class="ch-h">הקבלה יוצאת מהיומן. <span>לחיצה אחת על התור, והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</span></h3>
             <div class="stage" aria-hidden="true">
               <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · כספים</span></div>
+                <div class="ap-shell"><div class="ap-side">
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
+                    <nav class="ap-nav">
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
+                    </nav>
+                    <div class="ap-foot">← התנתק</div>
+                  </div>
+                  <div class="app-body">
+                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים <span>ספטמבר 2026</span></div>
+                  <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
+                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">הקלטת טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
+                  <div class="pay-btns"><span class="pb">סמן כשולם במזומן</span><span class="pb">סמן נוכחות / אי-הגעה</span></div>
+                  </div>
+                </div>
+              </div>
+              <div class="win w-float rc-win">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
+                <div class="rc-body">
+                  <div class="rc-title">פירוט הכנסות</div>
+                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>אמצעי</span><span>סכום</span><span>קבלה</span></div>
+                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span>אשראי</span><span dir="ltr">₪350</span><b>#1041</b></div>
+                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span>מזומן</span><span dir="ltr">₪350</span><b>#1042</b></div>
+                  <div class="rc-total">סה״כ<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article class="ch" data-ch>
+            <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
+            <div class="stage" aria-hidden="true">
+              <div class="win w-main">
+                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · מטופלים</span></div>
                 <div class="ap-shell"><div class="ap-side">
                     <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
                     <nav class="ap-nav">
@@ -1137,115 +1249,6 @@
                   </div>
                   <div class="sf"><small>המשך / המלצות</small><span class="tw tw3">מעקב בעוד שבוע<i class="caret"></i></span></div>
                   <div class="sum-foot"><span class="wa-dot"></span>טיוטת הודעה למטופל/ת</div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="ch" data-ch>
-            <h3 class="ch-h">הקבלה יוצאת מהיומן. <span>לחיצה אחת על התור, והקבלה מונפקת ונרשמת בכספים. בלי אקסלים.</span></h3>
-            <div class="stage" aria-hidden="true">
-              <div class="win w-main">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · כספים</span></div>
-                <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
-                    <nav class="ap-nav">
-                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
-                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
-                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
-                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
-                    </nav>
-                    <div class="ap-foot">← התנתק</div>
-                  </div>
-                  <div class="app-body">
-                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים <span>ספטמבר 2026</span></div>
-                  <div class="appt appt-done"><b>דנה לוי</b><span dir="ltr">14:00–14:55</span><i class="chip-paid">שולם ✓</i></div>
-                  <div class="pay-btns"><span class="pb">לוג טיפול</span><span class="pb">הקלטת טיפול</span><span class="pb pb-hot">הנפק קבלה</span></div>
-                  <div class="pay-btns"><span class="pb">סמן כשולם במזומן</span><span class="pb">סמן נוכחות / אי-הגעה</span></div>
-                  </div>
-                </div>
-              </div>
-              <div class="win w-float rc-win">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">כספים · ספטמבר</span></div>
-                <div class="rc-body">
-                  <div class="rc-title">פירוט הכנסות</div>
-                  <div class="rc-head"><span>תאריך</span><span>מטופל</span><span>אמצעי</span><span>סכום</span><span>קבלה</span></div>
-                  <div class="rc-row"><span dir="ltr">13/9</span><span>יוסי כהן</span><span>אשראי</span><span dir="ltr">₪350</span><b>#1041</b></div>
-                  <div class="rc-row rc-new"><span dir="ltr">14/9</span><span>דנה לוי</span><span>מזומן</span><span dir="ltr">₪350</span><b>#1042</b></div>
-                  <div class="rc-total">סה״כ<span class="rt-wrap"><b class="rt-a" dir="ltr">₪12,050</b><b class="rt-b" dir="ltr">₪12,400</b></span></div>
-                </div>
-              </div>
-            </div>
-          </article>
-
-          <article class="ch" data-ch>
-            <h3 class="ch-h">הכל נאסף לתיק אחד. <span>פגישות, סיכומים, קבלות ושאלונים - תיק אחד ברור לכל מטופל.</span></h3>
-            <div class="stage flag" aria-hidden="true">
-              <div class="win w-main fg-win">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
-                <div class="fg-shell">
-                  <div class="fg-side">
-                    <div class="fg-brand"><span class="fg-logo"><img src="logo.png" alt="" /></span><span><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
-                    <nav class="fg-nav">
-                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="fg-b2">14✏️</em></a>
-                      <a><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="fg-b">4</em></a>
-                      <a><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
-                    </nav>
-                    <div class="fg-foot">← התנתק</div>
-                  </div>
-                  <div class="fg-main">
-                    <div class="fg-head">
-                      <div class="fg-title"><b>רביעי</b> · 22 ביולי 2026<small>יומן</small></div>
-                      <div class="fg-tools"><span>חסום</span><span class="tr">+ ידני</span><span>חודש</span><span>שבוע</span><span class="tb">היום</span></div>
-                    </div>
-                    <div class="fg-cols"><span>שעה</span><span><i class="rdot rd1"></i>חדר 1</span><span><i class="rdot rd2"></i>חדר 2</span></div>
-                    <div class="fg-grid">
-                      <span class="fg-t" style="top:6px">09:00</span><span class="fg-l" style="top:14px"></span>
-                      <span class="fg-t" style="top:90px">10:00</span><span class="fg-l" style="top:98px"></span>
-                      <span class="fg-t" style="top:174px">11:00</span><span class="fg-l" style="top:182px"></span>
-                      <span class="fg-t" style="top:258px">12:00</span><span class="fg-l" style="top:266px"></span>
-                      <span class="fg-t" style="top:342px">13:00</span><span class="fg-l" style="top:350px"></span>
-                      <div class="fg-c fg-c1">
-                        <div class="fga" style="top:14px;height:80px"><b>דנה כהן</b><span dir="ltr">09:00–09:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
-                        <div class="fga" style="top:140px;height:80px"><b>יוסי לוי</b><span dir="ltr">10:30–11:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip go">✅ אישר הגעה</i></div>
-                        <div class="fgs" style="top:268px;height:70px">✓ פנוי<small>12:00</small></div>
-                      </div>
-                      <div class="fg-c fg-c2">
-                        <div class="fga" style="top:56px;height:80px"><b>נועה פרידמן</b><span dir="ltr">09:30–10:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
-                        <div class="fga am" style="top:182px;height:80px"><b>אבי מזרחי</b><span dir="ltr">11:00–11:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip tk">🎫 3/5</i></div>
-                      </div>
-                      <div class="fg-now" style="top:236px"><i></i></div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-              <div class="win w-float fg-rec">
-                <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">הקלטת טיפול · דנה לוי</span></div>
-                <div class="fgr-body">
-                  <div class="rec-top"><span class="rec-dot"></span>מקליט דיבור...</div>
-                  <div class="wave"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
-                  <div class="rec-nums">
-                    <div><b class="t-sess" dir="ltr">31:20</b><small>בפגישה</small></div>
-                    <div><b class="t-rec ink" dir="ltr">24:06</b><small>הוקלט</small></div>
-                  </div>
-                  <div class="rec-stop">⏹️ עצור והפק סיכום</div>
                 </div>
               </div>
             </div>
