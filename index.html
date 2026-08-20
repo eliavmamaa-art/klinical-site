@@ -283,22 +283,29 @@
        because contrast carries it, not spacing. And every scene keeps a
        slow pulse of its own, so pausing on one never leaves a dead picture. */
     .how{background:#fff}
-    .how-grid{display:grid;grid-template-columns:.8fr 1.55fr;gap:60px;align-items:start}
-    .how-list{position:sticky;top:44vh;padding-right:30px;border-right:1px solid var(--line)}
-    .how-item{position:relative;padding:9px 0}
-    .how-item::before{content:"";position:absolute;right:-31px;top:50%;width:3px;height:0;background:var(--teal);
+    .how .wrap{max-width:1280px}
+    /* Proportions lifted off Attio: the headline column is a quarter of the width,
+       not a third; it is bounded by a rule on BOTH sides; and the names sit a long
+       way in from that rule (~56px, not 30) - the inset is most of what makes the
+       column read as calm. Logical properties so the rules land on the right-hand
+       side in RTL without a second set of rules. */
+    .how-grid{display:grid;grid-template-columns:1fr 3fr;gap:0;align-items:start}
+    .how-list{position:sticky;top:38vh;padding-inline:56px;border-inline:1px solid var(--line)}
+    .how-flow{padding-inline-start:56px}
+    .how-item{position:relative;padding:7px 0}
+    .how-item::before{content:"";position:absolute;inset-inline-start:-57px;top:50%;width:3px;height:0;background:var(--teal);
       border-radius:99px;transform:translateY(-50%);transition:height .32s cubic-bezier(.33,1,.68,1)}
-    .how-item.on::before{height:calc(100% - 10px)}
-    .how-item h3{font-size:23px;font-weight:800;letter-spacing:-.5px;line-height:1.3;color:var(--fade);
+    .how-item.on::before{height:calc(100% - 8px)}
+    .how-item h3{font-size:20px;font-weight:700;letter-spacing:-.4px;line-height:1.35;color:var(--fade);
       transition:color .32s cubic-bezier(.33,1,.68,1)}
     .how-item.on h3{color:var(--ink)}
     .ch{padding:6vh 0 12vh}
     .ch-h{font-size:26px;font-weight:800;letter-spacing:-.6px;line-height:1.35;margin-bottom:30px;max-width:30ch}
     .ch-h span{color:var(--muted);font-weight:600}
-    .stage{position:relative;height:410px}
-    .w-main{position:absolute;top:0;right:0;left:12%;height:340px;box-shadow:var(--sh-mid);
+    .stage{position:relative;height:430px}
+    .w-main{position:absolute;top:0;right:0;left:16%;height:360px;box-shadow:var(--sh-mid);
       transform:translate3d(0,calc(var(--q) * 20px),0);will-change:transform}
-    .w-float{position:absolute;left:0;top:150px;width:262px;box-shadow:var(--sh-high);z-index:2}
+    .w-float{position:absolute;left:0;top:162px;width:286px;box-shadow:var(--sh-high);z-index:2}
     /* Every object floating in front of the main window drifts on the scroll -
        window, phone or toast alike. Keep this selector in step with the markup:
        a float left out of it just sits still and reads as broken next to the
@@ -399,7 +406,9 @@
     }
     @media(max-width:900px){
       .how-grid{display:block}
-      .how-list{position:sticky;top:60px;z-index:6;background:#fff;border-right:none;padding:10px 0 12px;
+      .how .wrap{max-width:none}
+      .how-flow{padding-inline-start:0}
+      .how-list{position:sticky;top:60px;z-index:6;background:#fff;border-inline:none;padding:10px 0 12px;
         display:flex;gap:16px;overflow:hidden;border-bottom:1px solid var(--line)}
       .how-item{padding:0}
       .how-item::before{display:none}
