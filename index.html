@@ -350,15 +350,25 @@
        The floating windows stay - they ARE real: in the product the recording
        panel and the appointment menu are modals floating over a screen. */
     .ap-shell{display:flex;height:calc(100% - 35px);background:#faf8f4}
-    .ap-side{flex:0 0 118px;background:#0f2742;color:#fff;padding:9px 0;order:2}
+    .ap-side{flex:0 0 124px;background:#0f2742;color:#fff;padding:8px 0 0;order:2;display:flex;flex-direction:column}
     .ap-brand{display:flex;align-items:center;gap:6px;padding:0 9px 9px}
-    .ap-logo{width:16px;height:16px;border-radius:4px;background:var(--teal);flex:0 0 auto}
+    .ap-logo{width:17px;height:17px;border-radius:5px;background:var(--teal);flex:0 0 auto;display:grid;place-items:center;overflow:hidden}
+    .ap-logo img{width:12px;height:12px;object-fit:contain}
     .ap-bt b{display:block;font-size:9px;line-height:1.2}
-    .ap-bt small{display:block;font-size:6px;color:rgba(255,255,255,.5)}
-    .ap-nav{display:flex;flex-direction:column}
-    .ap-nav a{position:relative;display:flex;align-items:center;gap:5px;padding:3.5px 9px;font-size:7.5px;color:rgba(255,255,255,.8);text-decoration:none}
+    .ap-bt small{display:block;font-size:5.5px;color:rgba(255,255,255,.5);line-height:1.3}
+    .ap-nav{display:flex;flex-direction:column;flex:1}
+    /* icon on the leading (right) edge, label flexing, badge trailing - the row
+       order the real sidebar uses, not a left-icon list */
+    /* In an RTL flex row the first child already sits on the right, so
+       row-reverse pushed the icon to the WRONG side. Natural order is correct. */
+    .ap-nav a{position:relative;display:flex;align-items:center;gap:5px;padding:3.5px 9px;font-size:7.5px;color:rgba(255,255,255,.82);text-decoration:none}
+    .ap-nav a span{flex:1;text-align:right}
     .ap-nav a.on{background:rgba(255,255,255,.12);color:#fff}
     .ap-nav a.on::before{content:"";position:absolute;right:0;top:2px;bottom:2px;width:2.5px;border-radius:99px;background:var(--teal)}
+    .ap-b,.ap-b2{font-style:normal;font-size:5.5px;font-weight:700;border-radius:99px;padding:1px 4px;line-height:1.5}
+    .ap-b{background:#b83a2d;color:#fff}
+    .ap-b2{background:rgba(255,255,255,.2);color:#fff}
+    .ap-foot{padding:6px 9px 8px;font-size:6.5px;color:rgba(255,255,255,.5);border-top:1px solid rgba(255,255,255,.1)}
     .ai{width:9px;height:9px;flex:0 0 auto;background-color:currentColor;
       -webkit-mask-image:var(--i);mask-image:var(--i);
       -webkit-mask-size:contain;mask-size:contain;
@@ -369,13 +379,28 @@
     .ap-h{display:flex;align-items:center;gap:5px;font-size:11.5px;font-weight:700;color:#1e3a5f;margin-bottom:9px}
     .ap-h .ai{width:12px;height:12px}
     .ap-h span{font-weight:400;font-size:9px;color:var(--muted)}
-    .mini-cal{display:flex;flex-direction:column;gap:6px}
-    .mc-row{display:flex;align-items:center;gap:7px}
-    .mc-row span{font-size:8px;color:var(--muted);width:2.6em;flex:0 0 auto}
-    .mc-b{flex:1;font-style:normal;font-size:9.5px;color:#1e3a5f;background:rgba(30,58,95,.1);border-right:3px solid #1e3a5f;border-radius:3px;padding:7px 8px}
-    .mc-b.live{background:rgba(30,58,95,.2)}
-    .mc-b.am{background:rgba(217,119,6,.12);border-right-color:#d97706;color:#92400e}
-    .mc-f{flex:1;font-style:normal;font-size:9px;font-weight:700;color:#065f46;background:#ecfdf5;border:2px dashed #34d399;border-radius:3px;padding:6px 8px;text-align:center}
+    /* the day view as it really is: big date, tool row, two room columns with
+       their coloured dots, appointments positioned on an hour grid */
+    .cal-hd{font-size:12px;color:var(--ink);text-align:center}
+    .cal-hd b{font-size:14px}
+    .cal-hd small{display:block;font-size:6.5px;color:var(--muted)}
+    .cal-tools{display:flex;justify-content:center;gap:4px;margin:6px 0 8px}
+    .cal-tools span{border:1px solid var(--line);border-radius:3px;padding:2.5px 6px;font-size:7px;color:#1e3a5f;background:#fff}
+    .cal-tools .t-red{color:#b83a2d;border-color:#e7c3bd}
+    .cal-cols{display:grid;grid-template-columns:34px 1fr 1fr;background:#faf8f4;border:1px solid var(--line);border-bottom:0;padding:4px 0}
+    .cal-cols span{display:flex;align-items:center;justify-content:center;gap:4px;font-size:7.5px;color:var(--muted)}
+    .cal-g{position:relative;height:200px;background:#fff;border:1px solid var(--line)}
+    .cg-t{position:absolute;right:5px;font-size:7px;color:var(--muted)}
+    .cg-l{position:absolute;right:34px;left:0;border-top:1px solid rgba(229,224,213,.7)}
+    .cg-c{position:absolute;top:0;bottom:0}
+    .cg-1{right:36px;left:calc(50% + 1px)}
+    .cg-2{right:calc(50% + 1px);left:3px}
+    .cgb{position:absolute;right:2px;left:2px;background:#e6e9f0;border:1px solid #1e3a5f;border-right-width:3px;border-radius:3px;padding:4px 6px;overflow:hidden}
+    .cgb b{display:block;font-size:8px;color:#1e3a5f}
+    .cgb span{display:block;font-size:6.5px;color:#1e3a5f;opacity:.7;text-align:right}
+    .cgb.am{background:rgba(217,119,6,.12);border-color:#d97706}
+    .cgb.am b,.cgb.am span{color:#92400e}
+    .cgb .fchip{margin-top:2px;font-size:6px;padding:1px 4px}
     .rec-win{top:120px;width:280px}
     .rec-win .app-body.rec{height:auto;padding:14px 12px;gap:10px}
     .rec-win .sum-body{border-top:1px solid var(--line)}
@@ -935,18 +960,22 @@
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · הודעות לשליחה</span></div>
                 <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
                     <nav class="ap-nav">
-                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
-                      <a class="on"><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
                     </nav>
+                    <div class="ap-foot">← התנתק</div>
                   </div>
                   <div class="app-body">
                   <div class="ap-h"><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה <span>3 ממתינות</span></div>
@@ -976,26 +1005,40 @@
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · יומן</span></div>
                 <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
                     <nav class="ap-nav">
-                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
                     </nav>
+                    <div class="ap-foot">← התנתק</div>
                   </div>
                   <div class="app-body">
-                  <div class="ap-h"><i class="ai" style="--i:url(icons/app/calendar.png)"></i>רביעי · 22 ביולי</div>
-                  <div class="mini-cal">
-                    <div class="mc-row"><span dir="ltr">13:00</span><i class="mc-b">יוסי כהן</i></div>
-                    <div class="mc-row"><span dir="ltr">14:00</span><i class="mc-b live">דנה לוי</i></div>
-                    <div class="mc-row"><span dir="ltr">15:00</span><i class="mc-b am">רות אלון</i></div>
-                    <div class="mc-row"><span dir="ltr">16:00</span><i class="mc-f">✓ פנוי</i></div>
+                  <div class="cal-hd"><b>רביעי</b> · 22 ביולי 2026<small>יומן</small></div>
+                  <div class="cal-tools"><span>חסום</span><span class="t-red">+ ידני</span><span>חודש</span><span>שבוע</span></div>
+                  <div class="cal-cols"><span>שעה</span><span><i class="rdot rd1"></i>חדר 1</span><span><i class="rdot rd2"></i>חדר 2</span></div>
+                  <div class="cal-g">
+                    <span class="cg-t" style="top:4px">09:00</span><span class="cg-l" style="top:10px"></span>
+                    <span class="cg-t" style="top:58px">10:00</span><span class="cg-l" style="top:64px"></span>
+                    <span class="cg-t" style="top:112px">11:00</span><span class="cg-l" style="top:118px"></span>
+                    <span class="cg-t" style="top:166px">12:00</span><span class="cg-l" style="top:172px"></span>
+                    <div class="cg-c cg-1">
+                      <div class="cgb" style="top:12px;height:46px"><b>דנה כהן</b><span dir="ltr">09:00-09:55</span><i class="fchip ok">קבלה</i></div>
+                      <div class="cgb" style="top:120px;height:46px"><b>יוסי לוי</b><span dir="ltr">10:30-11:25</span><i class="fchip ok">קבלה</i></div>
+                    </div>
+                    <div class="cg-c cg-2">
+                      <div class="cgb" style="top:38px;height:46px"><b>נועה פרידמן</b><span dir="ltr">09:30-10:25</span><i class="fchip ok">קבלה</i></div>
+                      <div class="cgb am" style="top:120px;height:46px"><b>אבי מזרחי</b><span dir="ltr">11:00-11:55</span></div>
+                    </div>
                   </div>
                   </div>
                 </div>
@@ -1031,18 +1074,22 @@
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · כספים</span></div>
                 <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
                     <nav class="ap-nav">
-                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
-                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
                     </nav>
+                    <div class="ap-foot">← התנתק</div>
                   </div>
                   <div class="app-body">
                   <div class="ap-h"><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים <span>ספטמבר 2026</span></div>
@@ -1071,18 +1118,22 @@
               <div class="win w-main">
                 <div class="win-bar"><span class="win-dots"><i></i><i></i><i></i></span><span class="win-title">קליניקל · מטופלים</span></div>
                 <div class="ap-shell"><div class="ap-side">
-                    <div class="ap-brand"><span class="ap-logo"></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא</small></span></div>
+                    <div class="ap-brand"><span class="ap-logo"><img src="logo.png" alt="" /></span><span class="ap-bt"><b>קליניקל</b><small>אליאב מאמא · רפואה יפנית</small></span></div>
                     <nav class="ap-nav">
-                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i>חודש</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i>לוח בקרה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i>משימות</a>
-                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i>לידים</a>
-                      <a class="on"><i class="ai" style="--i:url(icons/app/patients.png)"></i>מטופלים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i>הודעות לשליחה</a>
-                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i>כספים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i>השכרת חדרים</a>
-                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i>הגדרות</a>
+                      <a ><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="ap-b2">14</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
+                      <a class="on"><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="ap-b">4</em></a>
+                      <a ><i class="ai" style="--i:url(icons/app/newsletter.png)"></i><span>ניוזלטר</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/kb.png)"></i><span>מאגר מידע רפואה יפנית</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a ><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
                     </nav>
+                    <div class="ap-foot">← התנתק</div>
                   </div>
                   <div class="app-body">
                   <div class="pf-name">דנה לוי</div>
