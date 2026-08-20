@@ -221,14 +221,36 @@
     .ps{position:absolute;inset:0;padding:11px 10px;opacity:0;pointer-events:none}
     .ps4{opacity:1}
     .ph-h{font-size:9px;color:var(--muted);margin-bottom:9px;text-align:center}
-    .day-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .day{position:relative;border:1px solid var(--line);border-radius:6px;padding:6px 7px;text-align:right}
-    .day small{display:block;font-size:9px;color:var(--muted)}
-    .day b{display:block;font-size:13px;color:var(--indigo)}
-    .day em{font-style:normal;font-size:8px;color:var(--muted)}
-    .sel{position:absolute;inset:-1px;border:2px solid var(--indigo);border-radius:4px;background:rgba(30,58,95,.05)}
-    .slot-grid{display:grid;grid-template-columns:1fr 1fr;gap:6px}
-    .slot{position:relative;border:1px solid var(--line);border-radius:6px;padding:7px 0;text-align:center;font-size:11px;font-family:ui-monospace,monospace;color:var(--ink)}
+    /* Booking screens, rebuilt against app/book/booking-flow.tsx as it stands on
+       main - a month grid where free days are circles with a teal dot, then the
+       day's hours split into בוקר / אחר הצהריים / ערב. The three-step wizard this
+       replaced only ever existed on a feature branch; no patient has seen it. */
+    .bk-mon{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+    .bk-mon b{font-size:12px;color:var(--ink)}
+    .bk-nav{display:flex;gap:4px}
+    .bk-nav i{width:16px;height:16px;border:1px solid var(--line);border-radius:3px;display:grid;place-items:center;
+      font-style:normal;font-size:10px;color:var(--indigo);line-height:1}
+    .bk-wd,.bk-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:1px}
+    .bk-wd span{text-align:center;font-size:7px;color:var(--muted);padding-bottom:2px}
+    .d{position:relative;aspect-ratio:1;display:flex;flex-direction:column;align-items:center;justify-content:center;
+      font-size:9px;font-weight:600;border-radius:50%}
+    .d i{width:2.5px;height:2.5px;border-radius:50%;background:var(--teal);margin-top:1px}
+    .d.off{color:#d6d1c6;font-weight:400}
+    .d.on{background:rgba(30,58,95,.06);color:var(--indigo)}
+    .d.pick{background:var(--indigo);color:#fff}
+    .d.pick i{background:#fff}
+    .bk-hint{text-align:center;font-size:7.5px;color:var(--muted);margin-top:7px}
+    .bk-day{font-size:10px;font-weight:700;color:var(--ink);margin-bottom:8px}
+    .bk-g{display:flex;align-items:center;gap:5px;margin-bottom:5px}
+    .bk-g span{font-size:8px;color:var(--muted)}
+    .bk-g i{flex:1;height:1px;background:var(--line)}
+    .bk-slots{display:grid;grid-template-columns:repeat(3,1fr);gap:4px;margin-bottom:9px}
+    .bk-slots span{border:1px solid var(--line);border-radius:4px;padding:5px 0;text-align:center;
+      font-family:ui-monospace,monospace;font-size:9px;color:var(--indigo)}
+    .bk-slots span.sel{background:var(--indigo);border-color:var(--indigo);color:#fff}
+    .bk-sum{background:rgba(30,58,95,.05);border:1px solid rgba(30,58,95,.2);border-radius:4px;padding:7px 9px;margin-bottom:10px}
+    .bk-sum b{display:block;font-size:10.5px;color:var(--indigo)}
+    .bk-sum small{font-size:8px;color:var(--muted)}
     .ph-sum{background:rgba(30,58,95,.05);border:1px solid rgba(30,58,95,.2);border-radius:4px;padding:8px 10px;font-size:9px;color:var(--muted);margin-bottom:10px}
     .ph-sum b{display:block;font-size:12px;color:var(--indigo);margin-top:2px}
     .ph-f{margin-bottom:9px}
@@ -253,9 +275,9 @@
 
     /* no entry keyframe on the phone - .fan-l already carries it on the scroll */
     .hero-scene.play .ps1{animation:stepOn .3s var(--ease-out) .5s both,stepOff .3s var(--ease-out) 2.1s forwards}
-    .hero-scene.play .ps1 .sel{animation:selOn .22s 1.4s both}
+    .hero-scene.play .d.pick{animation:popIn .3s var(--ease-out) 1.4s both}
     .hero-scene.play .ps2{animation:stepOn .3s var(--ease-out) 2.35s both,stepOff .3s var(--ease-out) 3.7s forwards}
-    .hero-scene.play .ps2 .sel{animation:selOn .22s 3.1s both}
+    .hero-scene.play .bk-slots .sel{animation:popIn .3s var(--ease-out) 3.1s both}
     .hero-scene.play .ps3{animation:stepOn .3s var(--ease-out) 3.95s both,stepOff .3s var(--ease-out) 5.55s forwards}
     .hero-scene.play .type-name{animation:typeIn .8s steps(7,end) 4.4s both}
     .hero-scene.play .pbtn{animation:pressBtn .28s ease 5.25s}
@@ -674,27 +696,29 @@
             <div class="ph-brand"><span class="ph-dot"></span>קליניקל · קביעת תור</div>
             <div class="ph-body">
             <div class="ps ps1">
-              <div class="ph-h">בחרי יום מהזמנים הבאים:</div>
-              <div class="day-grid">
-                <div class="day"><small>ראשון</small><b>12/9</b><em>3 זמינים</em></div>
-                <div class="day"><small>שני</small><b>13/9</b><em>5 זמינים</em></div>
-                <div class="day day-on"><small>שלישי</small><b>14/9</b><em>6 זמינים</em><i class="sel"></i></div>
-                <div class="day"><small>רביעי</small><b>15/9</b><em>2 זמינים</em></div>
+              <div class="bk-mon"><b>אוגוסט 2026</b><span class="bk-nav"><i>›</i><i>‹</i></span></div>
+              <div class="bk-wd"><span>א׳</span><span>ב׳</span><span>ג׳</span><span>ד׳</span><span>ה׳</span><span>ו׳</span><span>ש׳</span></div>
+              <div class="bk-grid">
+                <span class="d off">2</span><span class="d off">3</span><span class="d on">4<i></i></span><span class="d off">5</span><span class="d on">6<i></i></span><span class="d off">7</span><span class="d off">8</span>
+                <span class="d on">9<i></i></span><span class="d off">10</span><span class="d pick">11<i></i></span><span class="d off">12</span><span class="d on">13<i></i></span><span class="d off">14</span><span class="d off">15</span>
+                <span class="d off">16</span><span class="d off">17</span><span class="d on">18<i></i></span><span class="d off">19</span><span class="d on">20<i></i></span><span class="d off">21</span><span class="d off">22</span>
               </div>
+              <div class="bk-hint">ימים עם נקודה ירוקה פנויים - בחרי יום</div>
             </div>
             <div class="ps ps2">
-              <div class="ph-h">בחרי שעה · שלישי 14/9</div>
-              <div class="slot-grid">
-                <div class="slot" dir="ltr">13:00</div>
-                <div class="slot slot-on" dir="ltr">14:00<i class="sel"></i></div>
-                <div class="slot" dir="ltr">15:00</div>
-                <div class="slot" dir="ltr">16:30</div>
-                <div class="slot" dir="ltr">17:30</div>
-                <div class="slot" dir="ltr">18:30</div>
+              <div class="bk-day">יום שלישי, 11.8</div>
+              <div class="bk-g"><span>בוקר</span><i></i></div>
+              <div class="bk-slots">
+                <span dir="ltr">09:00</span><span dir="ltr">09:20</span><span dir="ltr">10:10</span>
+                <span class="sel" dir="ltr">11:20</span><span dir="ltr">11:40</span>
+              </div>
+              <div class="bk-g"><span>אחר הצהריים</span><i></i></div>
+              <div class="bk-slots">
+                <span dir="ltr">12:30</span><span dir="ltr">13:40</span><span dir="ltr">14:00</span>
               </div>
             </div>
             <div class="ps ps3">
-              <div class="ph-sum">המועד שבחרת<b>שלישי 14/9 · 14:00</b></div>
+              <div class="bk-sum"><b>יום שלישי, 11.8 · 11:20</b><small>המועד שבחרת</small></div>
               <div class="ph-f"><small>שם מלא *</small><div class="ph-in"><span class="type-name">דנה לוי</span></div></div>
               <div class="ph-f"><small>טלפון נייד *</small><div class="ph-in" dir="ltr">050-1234567</div></div>
               <div class="pbtn">שלחי בקשת הזמנה</div>
@@ -702,9 +726,9 @@
             <div class="ps ps4">
               <div class="ph-ok">✅</div>
               <div class="ph-ok-t">הבקשה התקבלה!</div>
-              <div class="ph-ok-s">שלישי 14/9 · בשעה 14:00</div>
+              <div class="ph-ok-s">יום שלישי, 11.8 · בשעה 11:20</div>
             </div>
-            </div>
+          </div>
           </div>
         </div>
         </div>
