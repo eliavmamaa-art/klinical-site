@@ -424,7 +424,10 @@
     .fg-logo img{width:18px;height:18px;object-fit:contain}
     .fg-brand b{display:block;font-size:13px;line-height:1.2}
     .fg-brand small{display:block;font-size:8px;color:rgba(255,255,255,.5)}
-    .fg-nav{display:flex;flex-direction:column;flex:1}
+    /* The site-wide `nav{display:flex;align-items:center}` rule was cascading in
+       and centring every row - which is why the icons never lined up however
+       the anchors were laid out. Reset it explicitly here. */
+    .fg-nav{display:flex;flex-direction:column;align-items:stretch;flex:1}
     /* Flex kept centring the short rows. Absolute columns cannot: the icon is
        pinned to a fixed column at the right edge, the label is right-aligned
        against it, the badge is pinned to the left edge - like the real sidebar. */
