@@ -425,9 +425,10 @@
     .fg-brand b{display:block;font-size:13px;line-height:1.2}
     .fg-brand small{display:block;font-size:8px;color:rgba(255,255,255,.5)}
     .fg-nav{display:flex;flex-direction:column;flex:1}
-    .fg-nav a{position:relative;display:flex;align-items:center;gap:8px;padding:6px 12px;font-size:10.5px;color:rgba(255,255,255,.82);text-decoration:none}
-    .fg-nav a .ai{width:13px;height:13px}
-    .fg-nav a span{flex:1;text-align:right}
+    .fg-nav a{position:relative;display:flex;align-items:center;gap:8px;padding:7px 14px;font-size:11px;color:rgba(255,255,255,.82);text-decoration:none}
+    .fg-nav a .ai{width:14px;height:14px}
+    .fg-nav a span{text-align:right}
+    .fg-nav a em{margin-inline-start:auto}
     .fg-nav a.on{background:rgba(255,255,255,.12);color:#fff}
     .fg-nav a.on::before{content:"";position:absolute;right:0;top:4px;bottom:4px;width:3px;border-radius:99px;background:var(--teal)}
     .fg-nav a.on .ai{background-color:var(--teal)}
@@ -452,13 +453,13 @@
     .fg-c{position:absolute;top:0;bottom:0}
     .fg-c1{right:56px;left:calc(50% + 2px)}
     .fg-c2{right:calc(50% + 4px);left:4px}
-    .fga{position:absolute;right:3px;left:3px;background:#e7eaf0;border:1px solid #1e3a5f;border-right-width:3px;border-radius:4px;padding:7px 10px;overflow:hidden;box-shadow:0 1px 2px rgba(26,26,46,.06)}
+    .fga{position:absolute;right:3px;left:3px;background:#e7eaf0;border:1px solid #1e3a5f;border-right-width:3px;border-radius:4px;padding:5px 10px 4px;overflow:hidden;box-shadow:0 1px 2px rgba(26,26,46,.06)}
     .fga b{display:block;font-size:12.5px;font-weight:700;color:#1e3a5f}
     .fga>span{display:block;font-size:10.5px;color:#1e3a5f;opacity:.75;text-align:right}
     .fga .fga-ph{opacity:.55}
     .fga.am{background:rgba(217,119,6,.13);border-color:#d97706}
     .fga.am b,.fga.am>span{color:#92400e}
-    .fga .fchip{margin-top:3px;font-size:9.5px;padding:2px 7px}
+    .fga .fchip{margin-top:2px;font-size:9.5px;padding:1.5px 7px}
     .fgs{position:absolute;right:3px;left:3px;border:2px dashed #34d399;background:#ecfdf5;color:#065f46;border-radius:4px;display:grid;place-content:center;text-align:center;font-size:12px;font-weight:700}
     .fgs small{font-weight:400;font-size:10px;opacity:.8}
     .fg-now{position:absolute;right:52px;left:0;height:2px;background:#dc2626;z-index:3}
@@ -1191,7 +1192,7 @@
                     <nav class="fg-nav">
                       <a class="on"><i class="ai" style="--i:url(icons/app/calendar.png)"></i><span>חודש</span></a>
                       <a><i class="ai" style="--i:url(icons/app/reports.png)"></i><span>לוח בקרה</span></a>
-                      <a><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="fg-b2">14</em></a>
+                      <a><i class="ai" style="--i:url(icons/app/tasks.png)"></i><span>משימות</span><em class="fg-b2">14✏️</em></a>
                       <a><i class="ai" style="--i:url(icons/app/leads.png)"></i><span>לידים</span></a>
                       <a><i class="ai" style="--i:url(icons/app/patients.png)"></i><span>מטופלים</span></a>
                       <a><i class="ai" style="--i:url(icons/app/reminders.png)"></i><span>הודעות לשליחה</span><em class="fg-b">4</em></a>
@@ -1200,6 +1201,7 @@
                       <a><i class="ai" style="--i:url(icons/app/billing.png)"></i><span>כספים</span></a>
                       <a><i class="ai" style="--i:url(icons/app/rooms.png)"></i><span>השכרת חדרים</span></a>
                       <a><i class="ai" style="--i:url(icons/app/settings.png)"></i><span>הגדרות</span></a>
+                      <a><i class="ai" style="--i:url(icons/app/team.png)"></i><span>ניהול מטפלים</span></a>
                     </nav>
                     <div class="fg-foot">← התנתק</div>
                   </div>
@@ -1216,13 +1218,13 @@
                       <span class="fg-t" style="top:258px">12:00</span><span class="fg-l" style="top:266px"></span>
                       <span class="fg-t" style="top:342px">13:00</span><span class="fg-l" style="top:350px"></span>
                       <div class="fg-c fg-c1">
-                        <div class="fga" style="top:16px;height:74px"><b>דנה כהן</b><span dir="ltr">09:00–09:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
-                        <div class="fga" style="top:142px;height:74px"><b>יוסי לוי</b><span dir="ltr">10:30–11:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip go">✅ אישר הגעה</i></div>
+                        <div class="fga" style="top:14px;height:80px"><b>דנה כהן</b><span dir="ltr">09:00–09:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga" style="top:140px;height:80px"><b>יוסי לוי</b><span dir="ltr">10:30–11:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip go">✅ אישר הגעה</i></div>
                         <div class="fgs" style="top:268px;height:70px">✓ פנוי<small>12:00</small></div>
                       </div>
                       <div class="fg-c fg-c2">
-                        <div class="fga" style="top:58px;height:74px"><b>נועה פרידמן</b><span dir="ltr">09:30–10:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
-                        <div class="fga am" style="top:184px;height:74px"><b>אבי מזרחי</b><span dir="ltr">11:00–11:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip tk">🎫 3/5</i></div>
+                        <div class="fga" style="top:56px;height:80px"><b>נועה פרידמן</b><span dir="ltr">09:30–10:25</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip ok">קבלה</i></div>
+                        <div class="fga am" style="top:182px;height:80px"><b>אבי מזרחי</b><span dir="ltr">11:00–11:55</span><span dir="ltr" class="fga-ph">050-5550557</span><i class="fchip tk">🎫 3/5</i></div>
                       </div>
                       <div class="fg-now" style="top:236px"><i></i></div>
                     </div>
