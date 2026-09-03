@@ -9,7 +9,7 @@
 import { mkdirSync, writeFileSync } from "node:fs";
 import { dirname, join } from "node:path";
 import { fileURLToPath } from "node:url";
-import { SITE, FEATURES, COMMON_FAQ, SPECIALTIES } from "./pages-data.mjs";
+import { SITE, FEATURES, COMMON_FAQ, SPECIALTIES, WHATSAPP_OPENINGS, ANALYTICS } from "./pages-data.mjs";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..");
 
@@ -19,6 +19,14 @@ function assertNoEmDash(where, text) {
   if (bad) {
     throw new Error(`em-dash or en-dash found in ${where}. Use a plain hyphen.`);
   }
+}
+
+// Cookieless pageview + event tracking. Emitted only once a real website id
+// is configured, so a half-set-up site does not ship a script that 400s.
+function analyticsTag() {
+  const id = ANALYTICS.umamiWebsiteId;
+  if (!id || id === "PASTE-UMAMI-WEBSITE-ID") return "";
+  return `\n  <script defer src="${ANALYTICS.umamiScript}" data-website-id="${id}"></script>`;
 }
 
 function esc(s) {
@@ -32,6 +40,16 @@ function esc(s) {
 function cta(campaign, label = "מתחילים 3 חודשים חינם") {
   const href = `${SITE.app}/signup?utm_source=site&utm_medium=specialty_page&utm_campaign=${campaign}`;
   return `<a class="btn" href="${href}">${label}<span class="btn-sub">ללא כרטיס אשראי</span></a>`;
+}
+
+// The soft option next to the signup button. The pre-filled opening line is
+// what tells us which page the conversation started from, so this is the only
+// place a WhatsApp link is built: pass the page slug and nothing else.
+function whatsapp(slug, lead = "יש שאלות נוספות?", label = "תמיד אפשר לפנות אלינו בוואטסאפ ונענה בהקדם") {
+  const text = WHATSAPP_OPENINGS[slug];
+  if (!text) throw new Error(`no WhatsApp opening line for "${slug}". Add one in pages-data.mjs.`);
+  const href = `https://wa.me/${SITE.phoneIntl}?text=${encodeURIComponent(text)}`;
+  return `<p class="wa-line">${lead} <a class="wa-alt" href="${href}" target="_blank" rel="noopener" data-umami-event="whatsapp" data-umami-event-page="${slug}">${label}<svg viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a10 10 0 0 0-8.6 15l-1.3 4.7 4.9-1.3A10 10 0 1 0 12 2zm5.8 13.8c-.2.7-1.4 1.3-2 1.4-.5 0-1.2.1-1.8-.1-.4-.1-1-.3-1.7-.6-3-1.3-4.9-4.3-5.1-4.5-.1-.2-1.2-1.6-1.2-3s.8-2.2 1-2.5c.2-.3.6-.4.8-.4h.6c.2 0 .4 0 .7.5.2.6.8 2 .9 2.2.1.1.1.3 0 .5l-.3.5-.5.5c-.2.2-.3.4-.1.6.2.4.9 1.4 1.8 2.2 1.3 1.1 2.3 1.4 2.6 1.6.3.1.4.1.6-.1l.9-1c.2-.3.4-.2.7-.1.3.1 1.7.8 2 1 .3.1.4.2.5.3.1.3 0 .7-.2 1.3z"/></svg></a></p>`;
 }
 
 // The shared look, lifted from privacy.html/terms.html (the established
@@ -64,6 +82,10 @@ const STYLE = `
     .btn-sub{display:block;font-weight:400;font-size:13px;opacity:.85;margin-top:2px}
     .cta-box{background:var(--teal-soft);border:1px solid var(--line);border-radius:14px;padding:28px 24px;text-align:center;margin:40px 0 8px}
     .cta-box p{margin-bottom:18px}
+    .cta-box .wa-line{margin:16px 0 0;color:var(--muted);font-size:15px}
+    .wa-alt{display:inline-flex;align-items:center;gap:7px;color:var(--muted);font-weight:500;text-decoration:none;border-bottom:1px solid var(--line);padding-bottom:2px}
+    .wa-alt svg{width:17px;height:17px;color:#25D366;flex:none}
+    .wa-alt:hover{color:var(--teal);border-bottom-color:var(--teal)}
     details{border-bottom:1px solid var(--line);padding:14px 0}
     summary{cursor:pointer;font-weight:600;font-size:17px}
     details p{margin:10px 0 0;color:var(--muted)}
@@ -94,7 +116,7 @@ function shell({ title, description, canonical, jsonLd, body }) {
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Heebo:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
-  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>
+  <script type="application/ld+json">${JSON.stringify(jsonLd)}</script>${analyticsTag()}
   <style>${STYLE}
   </style>
 </head>
@@ -188,6 +210,7 @@ ${spec.intro.map((p) => `    <p>${esc(p)}</p>`).join("\n")}
     <div class="cta-box">
       <p>3 חודשים חינם, בלי כרטיס אשראי. הקמה בדקות.</p>
       ${cta(spec.slug)}
+      ${whatsapp(spec.slug)}
     </div>
 
     <h2>מה קליניקל עושה ${esc(spec.forName)}</h2>
@@ -201,6 +224,7 @@ ${renderFaq(faq)}
     <div class="cta-box">
       <p>אפשר להתחיל עכשיו ולראות איך זה מרגיש בקליניקה שלך.</p>
       ${cta(`${spec.slug}_bottom`)}
+      ${whatsapp(spec.slug)}
     </div>
 
     <div class="siblings">
@@ -274,6 +298,7 @@ function buildSwitchPage() {
     <div class="cta-box">
       <p>3 חודשים חינם, והעברת הרשימה עלינו.</p>
       ${cta("switch")}
+      ${whatsapp("switch")}
     </div>
 
     <h2>שאלות נפוצות על המעבר</h2>
@@ -320,6 +345,10 @@ function write(relPath, contents) {
   mkdirSync(dirname(full), { recursive: true });
   writeFileSync(full, contents, "utf8");
   console.log(`  ${relPath}`);
+}
+
+if (!analyticsTag()) {
+  console.log("note: analytics is off. Set ANALYTICS.umamiWebsiteId in pages-data.mjs to turn it on.\n");
 }
 
 console.log("building pages:");
