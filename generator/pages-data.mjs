@@ -5,6 +5,15 @@
 // dropped straight into "תוכנה לניהול קליניקה ל<forName>".
 // House rule: no em-dash anywhere. The build fails if one slips in.
 
+// Analytics. Cookieless, no consent banner needed, ~2KB.
+// websiteId comes from cloud.umami.is > Websites > the site > Edit.
+// While it is still the placeholder the build refuses to emit the tag, so an
+// unconfigured site simply ships without analytics instead of with a broken one.
+export const ANALYTICS = {
+  umamiWebsiteId: "PASTE-UMAMI-WEBSITE-ID",
+  umamiScript: "https://cloud.umami.is/script.js",
+};
+
 export const SITE = {
   origin: "https://klinical.co.il",
   app: "https://app.klinical.co.il",
@@ -359,3 +368,26 @@ export const SPECIALTIES = [
     ],
   },
 ];
+
+// Opening line that WhatsApp pre-fills when someone taps the WhatsApp link,
+// keyed by page slug. This is the only way we know which page a conversation
+// started from, so every page that has a WhatsApp link needs an entry here.
+// Keep it sounding like something a person would actually type.
+export const WHATSAPP_OPENINGS = {
+  home: "היי, הגעתי מהאתר של קליניקל ורציתי לשאול",
+  switch: "היי, הגעתי מהעמוד על מעבר ממערכת אחרת ורציתי לשאול על קליניקל",
+  dikur: "היי, הגעתי מעמוד הדיקור באתר ורציתי לשאול על קליניקל",
+  "refua-sinit": "היי, הגעתי מעמוד הרפואה הסינית באתר ורציתי לשאול על קליניקל",
+  "refua-yapanit": "היי, הגעתי מעמוד הרפואה היפנית באתר ורציתי לשאול על קליניקל",
+  naturopathy: "היי, הגעתי מעמוד הנטורופתיה באתר ורציתי לשאול על קליניקל",
+  reflexology: "היי, הגעתי מעמוד הרפלקסולוגיה באתר ורציתי לשאול על קליניקל",
+  shiatsu: "היי, הגעתי מעמוד השיאצו באתר ורציתי לשאול על קליניקל",
+  "medical-massage": "היי, הגעתי מעמוד העיסוי הרפואי באתר ורציתי לשאול על קליניקל",
+  homeopathy: "היי, הגעתי מעמוד ההומאופתיה באתר ורציתי לשאול על קליניקל",
+  nutrition: "היי, הגעתי מעמוד התזונה באתר ורציתי לשאול על קליניקל",
+  cosmetics: "היי, הגעתי מעמוד הקוסמטיקה הטיפולית באתר ורציתי לשאול על קליניקל",
+  "emotional-therapy": "היי, הגעתי מעמוד הטיפול הרגשי באתר ורציתי לשאול על קליניקל",
+  mindfulness: "היי, הגעתי מעמוד המדיטציה והמיינדפולנס באתר ורציתי לשאול על קליניקל",
+  osteopathy: "היי, הגעתי מעמוד האוסטאופתיה באתר ורציתי לשאול על קליניקל",
+  hypnosis: "היי, הגעתי מעמוד ההיפנוזה והדמיון המודרך באתר ורציתי לשאול על קליניקל",
+};
