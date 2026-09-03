@@ -6,11 +6,12 @@
 // House rule: no em-dash anywhere. The build fails if one slips in.
 
 // Analytics. Cookieless, no consent banner needed, ~2KB.
-// websiteId comes from cloud.umami.is > Websites > the site > Edit.
-// While it is still the placeholder the build refuses to emit the tag, so an
-// unconfigured site simply ships without analytics instead of with a broken one.
+// websiteId comes from cloud.umami.is > Websites > the site > Edit. Data region: EU.
+// While it is still the PASTE-UMAMI-WEBSITE-ID placeholder the build refuses to emit
+// the tag, so an unconfigured site ships without analytics instead of with a broken one.
+// index.html, privacy.html and terms.html carry the same tag by hand.
 export const ANALYTICS = {
-  umamiWebsiteId: "PASTE-UMAMI-WEBSITE-ID",
+  umamiWebsiteId: "68653728-f6f4-41f7-8f96-9c24e4abcb56",
   umamiScript: "https://cloud.umami.is/script.js",
 };
 
