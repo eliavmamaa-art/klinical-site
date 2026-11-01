@@ -230,6 +230,32 @@
       .slide.tall{width:66vw}
     }
 
+    /* Proof video */
+    .proof{padding:34px 0 94px}
+    .proof-grid{display:grid;grid-template-columns:1fr auto;gap:64px;align-items:center;max-width:900px;margin:0 auto}
+    .proof-text h2{font-size:clamp(28px,4.2vw,42px);font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-bottom:16px}
+    .proof-text p{color:var(--muted);font-size:18px;max-width:440px}
+    .proof-text .fine{font-size:14px;margin-top:14px}
+    .proof-phone{height:640px}
+    .proof-phone .phone-frame{aspect-ratio:600/1298}
+    .proof-phone video,.shot-box .phone-frame video{width:100%;height:100%;object-fit:cover;border-radius:31px;display:block;background:#fff}
+    .proof-flip{grid-template-columns:auto 1fr;margin-top:80px}
+    .proof-flip .proof-phone{order:-1}
+    .sync-video{margin:0 auto 56px;max-width:1040px}
+    .sync-video video{width:100%;height:auto;aspect-ratio:1400/900;display:block;border-radius:18px;border:1px solid var(--line);background:#fff;box-shadow:var(--shadow-lg)}
+    .sync-video figcaption{text-align:center;padding-top:20px}
+    .sync-video h3{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
+    .sync-video p{color:var(--muted);font-size:16px}
+    @media(max-width:760px){
+      .proof{padding:20px 0 70px}
+      .proof-grid,.proof-flip{grid-template-columns:1fr;gap:32px;justify-items:center}
+      .proof-flip{margin-top:64px}
+      .proof-flip .proof-phone{order:0}
+      .proof-phone{height:560px}
+      .sync-video video{aspect-ratio:600/1148}
+      .shot-box.device:has(video){height:520px}
+    }
+
     /* FAQ */
     .faq{max-width:770px;margin:0 auto}
     .faq details{background:#fff;border:1px solid var(--line);border-radius:14px;margin-bottom:12px;padding:0 20px}
@@ -398,6 +424,37 @@
     </div>
   </header>
 
+  <!-- PROOF VIDEO -->
+  <section class="proof" id="proof">
+    <div class="wrap">
+      <div class="proof-grid">
+        <div class="proof-text">
+          <span class="eyebrow">בסוף הטיפול</span>
+          <h2>הסיכום נכתב לבד, ואתם רק עוברים עליו</h2>
+          <p>מקליטים את הטיפול בהסכמת המטופל. הסיכום מחכה בתיק יחד עם טיוטת הודעה, ואתם עוברים, מתקנים ושולחים.</p>
+          <p class="fine">במסלולי פלוס ומאסטר. קובץ השמע נמחק כברירת מחדל אחרי 14 יום, התמלול והסיכום נשארים בתיק.</p>
+        </div>
+        <div class="proof-phone">
+          <div class="phone-frame">
+            <video data-src="images/record-to-summary.mp4" poster="images/record-to-summary-poster.webp" width="600" height="1298" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: בוחרים תור ביומן השבועי, מקליטים את הטיפול, ובסופו מופיעים סיכום מסודר וטיוטת הודעה למטופלת"></video>
+          </div>
+        </div>
+      </div>
+      <div class="proof-grid proof-flip">
+        <div class="proof-text">
+          <span class="eyebrow">אחרי הטיפול</span>
+          <h2>המטופל יוצא עם דף שנראה כמו הקליניקה שלכם</h2>
+          <p>ההנחיות מהטיפול מסתדרות בדף אחד עם הלוגו והצבע שלכם. אפשר להדפיס אותו ולתלות על המקרר.</p>
+        </div>
+        <div class="proof-phone">
+          <div class="phone-frame">
+            <video data-src="images/instructions-sheet.mp4" poster="images/instructions-sheet-poster.webp" width="600" height="1298" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: ההנחיות מהטיפול מסתדרות בעורך, ונשלח קישור לדף ממותג שהמטופלת רואה בטלפון"></video>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <!-- FEATURES -->
   <section id="features">
     <div class="wrap">
@@ -449,6 +506,13 @@
         <h2>הכול במסך אחד, ברור ופשוט</h2>
         <p>יומן, מטופלים ואישורי הגעה - נגיש מהמחשב ומהנייד</p>
       </div>
+      <figure class="sync-video">
+        <video data-src="images/calendar-sync.mp4" data-src-mobile="images/calendar-sync-phone.mp4" data-poster-mobile="images/calendar-sync-phone-poster.webp" poster="images/calendar-sync-poster.webp" width="1400" height="900" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: תור שמועבר בקליניקל עובר גם ביומן Google, ואירוע שנוסף ב-Google חוסם את השעה בקליניקל"></video>
+        <figcaption>
+          <h3>לא עוזבים את Google ולא מקלידים פעמיים</h3>
+          <p>כל תור נכתב ליומן Google שלכם, וכל מה שתכניסו שם חוסם את השעה בקליניקל.</p>
+        </figcaption>
+      </figure>
       <div class="gal-wrap">
         <div class="gallery" id="gallery">
 
@@ -480,11 +544,11 @@
           </figure>
 
           <figure class="slide tall">
-            <div class="shot-box"><img src="images/booking.webp" alt="דף זימון התורים שהמטופלת רואה" loading="lazy" width="1100" height="1196" /></div>
+            <div class="shot-box device"><div class="phone-frame"><video data-src="images/booking-flow.mp4" poster="images/booking-flow-poster.webp" width="600" height="1298" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: מטופלת בוחרת יום ושעה בדף הזימון, והבקשה מגיעה ללוח הבקרה של המטפל לאישור"></video></div></div>
             <figcaption>
               <div class="cap-label">זימון אונליין</div>
               <h3>המטופלים קובעים בעצמם</h3>
-              <p>שולחים קישור אחד, והם בוחרים יום ושעה מהזמנים שפתחתם.</p>
+              <p>שולחים קישור אחד, והם בוחרים יום ושעה מהזמנים שפתחתם. הבקשה מגיעה אליכם לאישור, או נקבעת מיד אם תבחרו בכך.</p>
             </figcaption>
           </figure>
 
@@ -719,6 +783,27 @@
         });
       },{rootMargin:'0px 0px -8% 0px',threshold:.08});
       els.forEach(function(el){ io.observe(el); });
+    })();
+    (function(){
+      var vids=document.querySelectorAll('video[data-src]');
+      var conn=navigator.connection||{};
+      var mobile=matchMedia('(max-width: 760px)').matches;
+      if(mobile) vids.forEach(function(v){ if(v.dataset.posterMobile) v.poster=v.dataset.posterMobile; });
+      if(!vids.length || !('IntersectionObserver' in window) || conn.saveData || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+      var io=new IntersectionObserver(function(entries){
+        entries.forEach(function(e){
+          var v=e.target;
+          if(e.isIntersecting){
+            if(!v.src){
+              v.src=(mobile&&v.dataset.srcMobile)||v.dataset.src;
+              if(window.umami) umami.track('video_view',{video:v.dataset.src});
+            }
+            var p=v.play();
+            if(p&&p.catch) p.catch(function(){});
+          } else if(v.src){ v.pause(); }
+        });
+      },{rootMargin:'200px 0px',threshold:0});
+      vids.forEach(function(v){ io.observe(v); });
     })();
     function galMove(dir){
       var g=document.getElementById('gallery'); if(!g) return;
