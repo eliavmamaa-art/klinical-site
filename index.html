@@ -197,38 +197,23 @@
     .band h2{font-size:clamp(24px,3.5vw,34px);font-weight:800;margin-bottom:14px;letter-spacing:-.5px}
     .band p{opacity:.92;font-size:18px;max-width:680px;margin:0 auto}
 
-    /* Product showcase - horizontal gallery */
+    /* Product showcase */
     .showcase{background:var(--cream);overflow:hidden}
-    .gal-wrap{position:relative}
-    .gallery{display:flex;gap:26px;overflow-x:auto;padding:6px 0 30px;
-      -ms-overflow-style:none;scrollbar-width:none}
-    .gallery::-webkit-scrollbar{display:none}
-    .slide{flex:0 0 auto;width:min(820px,84vw);display:flex;flex-direction:column}
-    .slide.tall{width:min(360px,62vw)}
-    .shot-box{height:540px;border-radius:20px;background:var(--teal-soft);display:flex;align-items:center;justify-content:center;padding:24px;overflow:hidden}
-    .shot-box.sand{background:var(--sand)}
-    .shot-box.device{background:linear-gradient(160deg,#EEF4F3,var(--teal-soft));padding:22px}
-    /* iPhone frame */
     .phone-frame{position:relative;height:100%;aspect-ratio:9/19.5;background:#111214;border-radius:38px;padding:7px;overflow:hidden;
       box-shadow:0 22px 48px rgba(30,42,44,.32), 0 0 0 1.5px #2c2f33, inset 0 0 0 1px rgba(255,255,255,.06)}
     .phone-frame::after{content:"";position:absolute;top:17px;left:50%;transform:translateX(-50%);
       width:31%;height:20px;background:#0a0b0c;border-radius:99px;z-index:2}
-    .shot-box img{max-width:100%;max-height:100%;min-width:0;min-height:0;object-fit:contain;border-radius:10px;box-shadow:0 10px 34px rgba(30,42,44,.16)}
-    .shot-box .phone-frame img{width:100%;height:100%;max-width:none;max-height:none;object-fit:cover;border-radius:31px;display:block;box-shadow:none}
-    .slide figcaption{padding:20px 4px 0}
-    .slide .cap-label{font-size:13px;font-weight:600;color:var(--teal);margin-bottom:5px}
-    .slide h3{font-size:20px;font-weight:800;letter-spacing:-.5px;margin-bottom:6px}
-    .slide p{color:var(--muted);font-size:15.5px}
-    .gal-nav{display:flex;justify-content:center;gap:10px;margin-top:6px}
-    .gal-nav button{direction:ltr;unicode-bidi:isolate}
-    .gal-nav button{width:44px;height:44px;border-radius:50%;border:1px solid var(--line);background:#fff;color:var(--ink);
-      font-size:20px;line-height:1;cursor:pointer;transition:.2s;display:grid;place-items:center}
-    .gal-nav button:hover{border-color:var(--teal);color:var(--teal);box-shadow:var(--shadow)}
-    .gal-hint{text-align:center;color:var(--muted);font-size:14px;margin-top:12px}
-    @media(max-width:700px){
-      .shot-box{height:400px;padding:14px}
-      .slide{width:86vw}
-      .slide.tall{width:66vw}
+    .proof-grid.booking-proof{margin-top:0;margin-bottom:84px}
+    .shots{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch}
+    .shot{display:flex;flex-direction:column}
+    .shot-img{flex:1;display:flex;align-items:center;border-radius:18px;background:var(--sand);padding:18px}
+    .shot-img img{width:100%;height:auto;display:block;border-radius:12px;box-shadow:0 10px 28px rgba(30,42,44,.14)}
+    .shot figcaption{padding:16px 4px 0;min-height:100px}
+    .shot h3{font-size:19px;font-weight:800;letter-spacing:-.4px;margin-bottom:4px}
+    .shot p{color:var(--muted);font-size:15.5px}
+    .proof-grid.home-proof{margin-top:84px}
+    @media(max-width:760px){
+      .shots{grid-template-columns:1fr;gap:30px}
     }
 
     /* Proof video */
@@ -239,7 +224,7 @@
     .proof-text .fine{font-size:14px;margin-top:14px}
     .proof-phone{height:640px}
     .proof-phone .phone-frame{aspect-ratio:600/1298}
-    .proof-phone video,.shot-box .phone-frame video{width:100%;height:100%;object-fit:cover;border-radius:31px;display:block;background:#fff}
+    .proof-phone video,.proof-phone img{width:100%;height:100%;object-fit:cover;border-radius:31px;display:block;background:#fff}
     .proof-flip{grid-template-columns:auto 1fr;margin-top:80px}
     .proof-flip .proof-phone{order:-1}
     .sync-video{margin:0 auto 56px;max-width:1040px}
@@ -254,7 +239,6 @@
       .proof-flip .proof-phone{order:0}
       .proof-phone{height:560px}
       .sync-video video{aspect-ratio:600/1148}
-      .shot-box.device:has(video){height:520px}
     }
 
     /* FAQ */
@@ -514,60 +498,50 @@
           <p>כל תור נכתב ליומן Google שלכם, וכל מה שתכניסו שם חוסם את השעה בקליניקל.</p>
         </figcaption>
       </figure>
-      <div class="gal-wrap">
-        <div class="gallery" id="gallery">
-
-          <figure class="slide tall">
-            <div class="shot-box device"><div class="phone-frame"><img src="images/phone.webp" alt="קליניקל על מסך הבית של האייפון" loading="lazy" width="560" height="1213" /></div></div>
-            <figcaption>
-              <div class="cap-label">בטלפון</div>
-              <h3>יושבת במסך הבית, כמו אפליקציה</h3>
-              <p>בלי חנות אפליקציות ובלי התקנה. פותחים ומתחילים לעבוד, תמיד מעודכנת.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="shot-box"><img src="images/calendar.webp" alt="היומן של קליניקל" loading="lazy" width="1800" height="1060" /></div>
-            <figcaption>
-              <div class="cap-label">היומן</div>
-              <h3>כל היום שלך במסך אחד</h3>
-              <p>שני חדרים במקביל, מי אישר הגעה ומי כבר קיבל קבלה. גוררים תור למשבצת אחרת והכול מתעדכן לבד.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="shot-box sand"><img src="images/log.webp" alt="לוג טיפול בתיק המטופל" loading="lazy" width="1400" height="962" /></div>
-            <figcaption>
-              <div class="cap-label">תיק המטופל</div>
-              <h3>התיעוד נכתב בזמן הטיפול</h3>
-              <p>תלונה, מה נעשה, והערות שרק אתם רואים. ההיסטוריה של הטיפולים הקודמים פתוחה לידכם.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="slide tall">
-            <div class="shot-box device"><div class="phone-frame"><video data-src="images/booking-flow.mp4" poster="images/booking-flow-poster.webp" width="600" height="1298" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: מטופלת בוחרת יום ושעה בדף הזימון, והבקשה מגיעה ללוח הבקרה של המטפל לאישור"></video></div></div>
-            <figcaption>
-              <div class="cap-label">זימון אונליין</div>
-              <h3>המטופלים קובעים בעצמם</h3>
-              <p>שולחים קישור אחד, והם בוחרים יום ושעה מהזמנים שפתחתם. הבקשה מגיעה אליכם לאישור, או נקבעת מיד אם תבחרו בכך.</p>
-            </figcaption>
-          </figure>
-
-          <figure class="slide">
-            <div class="shot-box sand"><img src="images/outbox.webp" alt="הודעות מעקב אישיות מוכנות לשליחה" loading="lazy" width="1500" height="982" /></div>
-            <figcaption>
-              <div class="cap-label">אחרי הטיפול</div>
-              <h3>מילה אישית לכל מטופל, בלי לכתוב אותה</h3>
-              <p>קליניקל מכינה טיוטת הודעת מעקב לפי מה שנעשה בטיפול. קוראים, מתקנים אם צריך, ושולחים.</p>
-            </figcaption>
-          </figure>
-
+      <div class="proof-grid proof-flip booking-proof">
+        <div class="proof-text">
+          <span class="eyebrow">זימון אונליין</span>
+          <h2>המטופלים קובעים בעצמם</h2>
+          <p>שולחים קישור אחד, והם בוחרים יום ושעה מהזמנים שפתחתם. הבקשה מגיעה אליכם לאישור, או נקבעת מיד אם תבחרו בכך.</p>
         </div>
-        <div class="gal-nav">
-          <button type="button" aria-label="הקודם" onclick="galMove(-1)">&#8250;</button>
-          <button type="button" aria-label="הבא" onclick="galMove(1)">&#8249;</button>
+        <div class="proof-phone">
+          <div class="phone-frame">
+            <video data-src="images/booking-flow.mp4" poster="images/booking-flow-poster.webp" width="600" height="1298" muted playsinline loop preload="none" aria-label="סרטון קצר ללא קול: מטופלת בוחרת יום ושעה בדף הזימון, והבקשה מגיעה ללוח הבקרה של המטפל לאישור"></video>
+          </div>
         </div>
-        <div class="gal-hint">אפשר גם להחליק הצידה</div>
+      </div>
+      <div class="shots">
+        <figure class="shot">
+          <div class="shot-img"><img src="images/shot-patient.webp" alt="תיק מטופלת עם רישום הטיפול האחרון" loading="lazy" width="448" height="858" /></div>
+          <figcaption>
+            <h3>תיק אחד לכל מטופל</h3>
+            <p>תלונה, מה נעשה, והערות שרק אתם רואים.</p>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-img"><img src="images/shot-messages.webp" alt="טיוטת הודעה אישית למטופלת, מוכנה לשליחה" loading="lazy" width="720" height="650" /></div>
+          <figcaption>
+            <h3>הודעות שמחכות לכם</h3>
+            <p>קוראים, מתקנים אם צריך, ושולחים מהוואטסאפ שלכם.</p>
+          </figcaption>
+        </figure>
+        <figure class="shot">
+          <div class="shot-img"><img src="images/shot-receipt.webp" alt="טופס הפקת קבלה מתוך חלון התור" loading="lazy" width="780" height="1294" /></div>
+          <figcaption>
+            <h3>קבלה מתוך התור</h3>
+            <p>הסכום והשם כבר ממולאים, דרך מערכת החשבוניות שלכם.</p>
+          </figcaption>
+        </figure>
+      </div>
+      <div class="proof-grid home-proof">
+        <div class="proof-text">
+          <span class="eyebrow">בטלפון</span>
+          <h2>יושבת במסך הבית, כמו אפליקציה</h2>
+          <p>בלי חנות אפליקציות ובלי התקנה. פותחים ומתחילים לעבוד, תמיד מעודכנת.</p>
+        </div>
+        <div class="proof-phone">
+          <div class="phone-frame"><img src="images/home-screen.webp" alt="האייקון של קליניקל על מסך הבית של אייפון" loading="lazy" width="600" height="1304" /></div>
+        </div>
       </div>
     </div>
   </section>
@@ -769,7 +743,7 @@
   <script>
     (function(){
       if(!('IntersectionObserver' in window) || matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-      var els=document.querySelectorAll('.sec-head, .card, .more-panel, .band, .gal-wrap, .about-text, .founder, .plan, .bill-wrap, .price-annual, .price-note, .faq details, .chan, form, .final-cta .wrap');
+      var els=document.querySelectorAll('.sec-head, .card, .more-panel, .band, .sync-video, .shot, .about-text, .founder, .plan, .bill-wrap, .price-annual, .price-note, .faq details, .chan, form, .final-cta .wrap');
       els.forEach(function(el){
         el.classList.add('rv');
         var p=el.parentElement;
@@ -806,56 +780,6 @@
       },{rootMargin:'200px 0px',threshold:0});
       vids.forEach(function(v){ io.observe(v); });
     })();
-    function galMove(dir){
-      var g=document.getElementById('gallery'); if(!g) return;
-      var slides=[].slice.call(g.querySelectorAll('.slide'));
-      var gr=g.getBoundingClientRect(), mid=gr.left+gr.width/2;
-      var cur=0,best=Infinity;
-      slides.forEach(function(s,i){
-        var r=s.getBoundingClientRect(), d=Math.abs((r.left+r.width/2)-mid);
-        if(d<best){best=d;cur=i;}
-      });
-      var next=Math.max(0,Math.min(slides.length-1,cur+dir));
-      var nr=slides[next].getBoundingClientRect();
-      var from=g.scrollLeft, dist=(nr.left+nr.width/2)-mid;
-      if(!dist) return;
-      if(window.matchMedia('(prefers-reduced-motion: reduce)').matches){ g.scrollLeft=from+dist; return; }
-      clearInterval(g._anim);
-      var i=0, steps=22;
-      g._anim=setInterval(function(){
-        i++;
-        var p=i/steps, e=p<.5 ? 2*p*p : 1-Math.pow(-2*p+2,2)/2;
-        g.scrollLeft=from+dist*e;
-        if(i>=steps) clearInterval(g._anim);
-      },16);
-    }
-    // Signup links name the site that sent this visitor, so a signup shows its real
-    // origin instead of "klinical.co.il". utm_campaign stays the button's name.
-    (function(){
-      try{
-        var key='klinical_source', src=sessionStorage.getItem(key);
-        if(!src){
-          src=new URLSearchParams(location.search).get('utm_source')||'';
-          if(!src && document.referrer){
-            var host=new URL(document.referrer).hostname.replace(/^www\./,'');
-            if(!/(^|\.)klinical\.co\.il$/.test(host)) src=host;
-          }
-          if(src) sessionStorage.setItem(key,src);
-        }
-        if(!src) return;
-        document.querySelectorAll('a[href*="app.klinical.co.il/signup"]').forEach(function(a){
-          var u=new URL(a.href);
-          u.searchParams.set('utm_source',src);
-          a.href=u.href;
-        });
-      }catch(e){}
-    })();
-    function togglePlanList(btn){
-      var list=document.getElementById(btn.getAttribute('aria-controls'));
-      var open=list.classList.toggle('open');
-      btn.setAttribute('aria-expanded',open?'true':'false');
-      btn.textContent=open?'פחות פרטים':'לכל מה שכלול';
-    }
     function toggleMenu(){
       var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');
       var open=n.classList.toggle('open');
