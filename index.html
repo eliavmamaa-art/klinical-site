@@ -64,6 +64,7 @@
         "publisher": { "@id": "https://klinical.co.il/#organization" },
         "offers": [
           { "@type": "Offer", "name": "קליניקל", "price": "99", "priceCurrency": "ILS", "description": "מערכת ניהול הקליניקה המלאה: תזכורות אוטומטיות למטופלים ב-SMS או בוואטסאפ, יומן חכם עם סנכרון Google דו-כיווני, תיקי מטופלים, זימון תורים אונליין, חשבוניות וקבלות, כרטיסיות טיפולים, ניהול חדרים והשכרות, וסריקת קבלות עם דוח מוכן לרואה חשבון." },
+          { "@type": "Offer", "name": "קליניקל פלוס", "price": "129", "priceCurrency": "ILS", "description": "כל מה שבמסלול קליניקל, ובנוסף הקלטה, תמלול וסיכום קליני אוטומטי ל-15 טיפולים בחודש, וטיוטת הודעה אישית למטופל." },
           { "@type": "Offer", "name": "קליניקל מאסטר", "price": "149", "priceCurrency": "ILS", "description": "כל מה שבמסלול קליניקל, ובנוסף הקליניקה שנכתבת לבד: הקלטת טיפול, תמלול וסיכום קליני אוטומטי ללא הגבלה, וטיוטת הודעה אישית למטופל אחרי כל טיפול." }
         ]
       },
@@ -73,11 +74,12 @@
         "inLanguage": "he-IL",
         "mainEntity": [
           { "@type": "Question", "name": "צריך להתקין תוכנה?", "acceptedAnswer": { "@type": "Answer", "text": "לא. קליניקל עובדת בענן מכל דפדפן - מחשב, טלפון או טאבלט. נכנסים ומתחילים לעבוד." } },
-          { "@type": "Question", "name": "איך המטופלים מקבלים את התזכורות?", "acceptedAnswer": { "@type": "Answer", "text": "אוטומטית, יום לפני התור. כל מטפלת מקבלת תזכורות SMS פעילות מהרגע הראשון, וניתן גם לחבר שליחה בוואטסאפ. בוואטסאפ המטופל מאשר הגעה בלחיצה ואתם רואים מיד ביומן מי מגיע ומי ביטל." } },
+          { "@type": "Question", "name": "איך המטופלים מקבלים את התזכורות?", "acceptedAnswer": { "@type": "Answer", "text": "אוטומטית, יום לפני התור. כל קליניקה מתחילה עם תזכורות SMS פעילות, בלי להגדיר כלום. אפשר גם לחבר שליחה בוואטסאפ, ואז המטופל מאשר הגעה בלחיצה ואתם רואים מיד ביומן מי מגיע ומי ביטל." } },
           { "@type": "Question", "name": "המידע של המטופלים מאובטח?", "acceptedAnswer": { "@type": "Answer", "text": "כן. כל המידע מוצפן ומגובה בענן, ומאוחסן על שרתים מאובטחים באיחוד האירופי. כל מטפל רואה אך ורק את הנתונים של הקליניקה שלו, בהפרדה מלאה." } },
           { "@type": "Question", "name": "כמה זמן לוקח להתחיל?", "acceptedAnswer": { "@type": "Answer", "text": "דקות. פותחים חשבון, מגדירים את שעות הפעילות והחדרים - והמערכת מוכנה לעבודה." } },
-          { "@type": "Question", "name": "יש התחייבות?", "acceptedAnswer": { "@type": "Answer", "text": "אין. 3 החודשים הראשונים חינם לגמרי, בלי כרטיס אשראי בהרשמה. רק בחודש השלישי נשלח קישור לתשלום, וממשיכים חודש בחודשו - אפשר לבטל בכל עת." } },
+          { "@type": "Question", "name": "יש התחייבות?", "acceptedAnswer": { "@type": "Answer", "text": "אין. 3 החודשים הראשונים חינם לגמרי, בלי כרטיס אשראי בהרשמה. בסוף התקופה בוחרים מסלול, וממשיכים חודש בחודשו - אפשר לבטל בכל עת." } },
           { "@type": "Question", "name": "מה מקבלים במסלול קליניקל מאסטר?", "acceptedAnswer": { "@type": "Answer", "text": "את הקליניקה שנכתבת לבד: מקליטים את הטיפול, וקליניקל מתמללת, כותבת סיכום קליני מסודר ישר לתיק המטופל, ומכינה טיוטת הודעה אישית למטופל - ללא הגבלת שימוש, כלול במחיר." } },
+          { "@type": "Question", "name": "מה קורה להקלטה של הטיפול?", "acceptedAnswer": { "@type": "Answer", "text": "מקליטים רק כשאתם בוחרים בכך, בכל טיפול בנפרד, ובאחריותכם ליידע את המטופל ולקבל את הסכמתו. קובץ השמע נמחק אוטומטית אחרי תקופה קצרה, והתמלול והסיכום נשמרים בתיק המטופל. הם שייכים לקליניקה שלכם בלבד, ואפשר למחוק אותם בכל עת." } },
           { "@type": "Question", "name": "למי קליניקל מתאימה?", "acceptedAnswer": { "@type": "Answer", "text": "למטפלים ומטפלות ברפואה משלימה, דיקור, נטורופתיה, עיסוי, טיפול רגשי ועוד - כל מי שמנהל קליניקה ורוצה פחות עבודה ידנית ויותר זמן לטפל." } }
         ]
       }
@@ -256,9 +258,9 @@
     .bt{border:none;background:transparent;font-family:inherit;font-weight:600;font-size:15px;color:var(--muted);padding:9px 22px;border-radius:999px;cursor:pointer;transition:.2s;white-space:nowrap}
     .bt.on{background:var(--teal);color:#fff}
     .bt .save{font-size:12px;opacity:.9}
-    .price-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:24px;align-items:stretch;max-width:900px;margin:0 auto}
+    .price-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;align-items:stretch;margin:0 auto}
     .price-annual{text-align:center;margin-top:20px;color:var(--muted);font-size:15px}
-    .plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:40px 36px;display:flex;flex-direction:column;position:relative;transition:.2s}
+    .plan{background:#fff;border:1px solid var(--line);border-radius:24px;padding:36px 28px;display:flex;flex-direction:column;position:relative;transition:.2s}
     .plan:hover{box-shadow:var(--shadow);transform:translateY(-3px)}
     .plan.pop{border:1px solid var(--teal-soft);box-shadow:var(--shadow-lg);background:var(--teal-soft)}
     .plan .headline{font-size:clamp(24px,2.4vw,31px);font-weight:800;letter-spacing:-1.2px;line-height:1.15;margin-bottom:30px;min-height:2.3em}
@@ -279,6 +281,11 @@
     .plan.pop li{border-top-color:rgba(12,85,78,.12)}
     .plan li:first-child{border-top:none}
     .plan li::before{content:"";width:19px;height:19px;flex:0 0 auto;margin-top:1px;background:var(--teal);-webkit-mask:var(--chk-m) center/12px no-repeat;mask:var(--chk-m) center/12px no-repeat}
+    .plan-more{display:none;margin-top:8px;padding:10px 0;background:none;border:none;font-family:inherit;font-size:15px;font-weight:600;color:var(--teal);cursor:pointer}
+    @media(max-width:900px){
+      .plan-long:not(.open) li:nth-child(n+6){display:none}
+      .plan-more{display:block}
+    }
     .price-note{text-align:center;margin-top:26px;color:var(--muted);font-size:15px}
     .price-note b{color:var(--teal)}
     .price-note .pn-ico{display:inline-block;vertical-align:-4px;margin-left:6px;color:var(--teal)}
@@ -382,7 +389,7 @@
           <div><b>קליניקל</b><small>הודעה עסקית</small></div>
         </div>
         <div class="demo-body">
-          <div class="bubble">שלום דנה 🌿<br>מזכירים לך את התור מחר, יום שלישי בשעה 14:00, בקליניקה.<br>נגיע?</div>
+          <div class="bubble">שלום דנה 🌿<br>מזכירים לך את התור מחר, יום שלישי בשעה 14:00, בקליניקה.<br>מגיעה?</div>
           <div class="reply-btns"><span><svg class="chk" viewBox="0 0 24 24"><path d="M4 12.5l5.5 5.5L20 6.5"/></svg>מאשרת הגעה</span></div>
           <div class="bubble me">✅ מאשרת הגעה</div>
           <div class="bubble">מעולה, נתראה מחר 🌿</div>
@@ -401,7 +408,7 @@
       </div>
       <div class="grid">
         <div class="card"><div class="ico"><img src="icons/reminders.png" alt="" /></div><h3>תזכורות אוטומטיות</h3><p>כל מטופל מקבל תזכורת יום לפני התור - אוטומטית, בלי שתעשו כלום.</p></div>
-        <div class="card"><div class="ico"><img src="icons/confirm.png" alt="" /></div><h3>אישורי הגעה</h3><p>המטופל מאשר בלחיצה, ואתם רואים מיד ביומן מי מגיע ומי ביטל. פחות חורים ביומן.</p></div>
+        <div class="card"><div class="ico"><img src="icons/confirm.png" alt="" /></div><h3>אישורי הגעה</h3><p>בוואטסאפ המטופל מאשר בלחיצה, ואתם רואים מיד ביומן מי מגיע ומי ביטל. אפשר להתחיל ב-SMS ולחבר וואטסאפ בהמשך.</p></div>
         <div class="card"><div class="ico"><img src="icons/summary.png" alt="" /></div><h3>סיכומי טיפול שנכתבים לבד</h3><p>מקליטים את הטיפול - וקליניקל מתמללת, כותבת סיכום קליני מסודר לתיק, ומכינה טיוטת הודעה למטופל. התיעוד של סוף היום פשוט נעלם.</p></div>
         <div class="card"><div class="ico"><img src="icons/calendar.png" alt="" /></div><h3>יומן חכם</h3><p>יומן טיפולים נגיש מהמחשב ומהנייד, עם סנכרון ליומן Google - כדי שלא תתבלבלו לעולם.</p></div>
         <div class="card"><div class="ico"><img src="icons/patients.png" alt="" /></div><h3>תיקי מטופלים</h3><p>היסטוריית טיפולים, הערות ומסמכים - הכול מסודר ונגיש, לכל מטופל תיק אחד ברור.</p></div>
@@ -420,6 +427,7 @@
           <li><b>סריקת קבלות + דוח לרו"ח</b> - מצלמים הוצאה, קליניקל מסכמת</li>
           <li><b>דוחות ותובנות</b> - הכנסות, מטופלים חוזרים ותנועה במבט אחד</li>
           <li><b>אבטחה וגיבוי</b> - מוצפן ומגובה בענן, בהפרדה מלאה לכל מטפל</li>
+          <li><span><b>מעבר ממערכת אחרת</b> - <a href="/switch/">מייבאים את רשימת המטופלים</a> מאקסל או מקובץ, בלי תוספת תשלום</span></li>
         </ul>
       </div>
     </div>
@@ -526,8 +534,8 @@
     <div class="wrap">
       <div class="sec-head">
         <span class="eyebrow">מחירים</span>
-        <h2>שני מסלולים, שניהם קליניקה שלמה</h2>
-        <p>כל כלי הניהול כלולים בשני המסלולים, ללא הגבלה. בוחרים לפי סגנון העבודה שלכם - ואפשר לשדרג בכל רגע.</p>
+        <h2>שלושה מסלולים, כולם קליניקה שלמה</h2>
+        <p>כל כלי הניהול כלולים בכל המסלולים, ללא הגבלה. בוחרים לפי סגנון העבודה שלכם - ואפשר לשדרג בכל רגע.</p>
       </div>
       <div class="bill-wrap">
         <div class="bill-toggle" role="tablist">
@@ -544,7 +552,7 @@
           <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
           <a href="https://app.klinical.co.il/signup?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pricing_basic" class="btn btn-ghost">מתחילים 3 חודשים חינם<span class="btn-sub">ללא כרטיס אשראי</span></a>
           <div class="incl-label">מה כלול:</div>
-          <ul>
+          <ul class="plan-long" id="basicList">
             <li>תזכורות אוטומטיות למטופלים ב-SMS או בוואטסאפ</li>
             <li>יומן חכם עם סנכרון דו-כיווני ל-Google</li>
             <li>יומן מרובה חדרים, בלי התנגשויות</li>
@@ -559,6 +567,21 @@
             <li>דוחות ותובנות על הקליניקה</li>
             <li>אבטחה, הצפנה וגיבוי בענן</li>
             <li>נגיש מהמחשב ומהנייד, בלי התקנה</li>
+          </ul>
+          <button type="button" class="plan-more" aria-expanded="false" aria-controls="basicList" onclick="togglePlanList(this)">לכל מה שכלול</button>
+        </div>
+        <div class="plan">
+          <div class="headline">סיכום שנכתב לבד, ל-15 טיפולים בחודש.</div>
+          <h3>קליניקל פלוס</h3>
+          <div class="price" data-month="₪129" data-year="₪1,290"><span class="amt">₪129</span> <small>/ לחודש</small></div>
+          <div class="save-line" data-full="₪1,548" data-save="₪258"></div>
+          <div class="vat">מחיר סופי, בלי תוספת מע״מ</div>
+          <a href="https://app.klinical.co.il/signup?utm_source=site&amp;utm_medium=cta&amp;utm_campaign=pricing_plus" class="btn btn-ghost">מתחילים 3 חודשים חינם<span class="btn-sub">ללא כרטיס אשראי</span></a>
+          <div class="incl-label">כל מה שבמסלול קליניקל, ובנוסף:</div>
+          <ul>
+            <li>הקלטת טיפול ותמלול ל-15 טיפולים בחודש</li>
+            <li>סיכום קליני אוטומטי ישר לתיק המטופל</li>
+            <li>טיוטת הודעה אישית למטופל אחרי הטיפול</li>
           </ul>
         </div>
         <div class="plan pop">
@@ -578,7 +601,7 @@
         </div>
       </div>
       <div class="price-annual" id="billNote">רוצים לחסוך? במעבר לתשלום שנתי מקבלים <b>חודשיים מתנה</b> בכל מסלול.</div>
-      <div class="price-note"><span class="pn-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5zM12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5z"/></svg></span><b>3 חודשים ראשונים חינם - לגמרי.</b> בלי כרטיס אשראי בהרשמה; קישור לתשלום נשלח רק בחודש השלישי.</div>
+      <div class="price-note"><span class="pn-ico"><svg width="19" height="19" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="8" width="18" height="4" rx="1"/><path d="M12 8v13M4 12v7a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2v-7"/><path d="M12 8S10.5 3 8 3a2.5 2.5 0 0 0 0 5zM12 8s1.5-5 4-5a2.5 2.5 0 0 1 0 5z"/></svg></span><b>3 חודשים ראשונים חינם - לגמרי.</b> בלי כרטיס אשראי בהרשמה. בסוף התקופה בוחרים מסלול.</div>
     </div>
   </section>
 
@@ -594,8 +617,9 @@
         <details><summary>איך המטופלים מקבלים את התזכורות?</summary><div class="a">אוטומטית, יום לפני התור. כל קליניקה מתחילה עם תזכורות SMS פעילות, בלי להגדיר כלום. אפשר גם לחבר שליחה בוואטסאפ, ואז המטופל מאשר הגעה בלחיצה ואתם רואים מיד ביומן מי מגיע ומי ביטל.</div></details>
         <details><summary>המידע של המטופלים מאובטח?</summary><div class="a">כן. כל המידע מוצפן ומגובה בענן, ומאוחסן על שרתים מאובטחים באיחוד האירופי. כל מטפל רואה אך ורק את הנתונים של הקליניקה שלו, בהפרדה מלאה.</div></details>
         <details><summary>כמה זמן לוקח להתחיל?</summary><div class="a">דקות. פותחים חשבון, מגדירים את שעות הפעילות והחדרים - והמערכת מוכנה לעבודה.</div></details>
-        <details><summary>יש התחייבות?</summary><div class="a">אין. 3 החודשים הראשונים חינם לגמרי, בלי כרטיס אשראי בהרשמה. רק בחודש השלישי נשלח קישור לתשלום, וממשיכים חודש בחודשו - אפשר לבטל בכל עת.</div></details>
+        <details><summary>יש התחייבות?</summary><div class="a">אין. 3 החודשים הראשונים חינם לגמרי, בלי כרטיס אשראי בהרשמה. בסוף התקופה בוחרים מסלול, וממשיכים חודש בחודשו - אפשר לבטל בכל עת.</div></details>
         <details><summary>מה מקבלים במסלול קליניקל מאסטר?</summary><div class="a">את הקליניקה שנכתבת לבד: מקליטים את הטיפול, וקליניקל מתמללת, כותבת סיכום קליני מסודר ישר לתיק המטופל, ומכינה טיוטת הודעה אישית למטופל - ללא הגבלת שימוש, כלול במחיר.</div></details>
+        <details><summary>מה קורה להקלטה של הטיפול?</summary><div class="a">מקליטים רק כשאתם בוחרים בכך, בכל טיפול בנפרד, ובאחריותכם ליידע את המטופל ולקבל את הסכמתו. קובץ השמע נמחק אוטומטית אחרי תקופה קצרה, והתמלול והסיכום נשמרים בתיק המטופל. הם שייכים לקליניקה שלכם בלבד, ואפשר למחוק אותם בכל עת. פרטים נוספים ב<a href="privacy.html">מדיניות הפרטיות</a>.</div></details>
         <details><summary>למי קליניקל מתאימה?</summary><div class="a">למטפלים ומטפלות ברפואה משלימה, דיקור, נטורופתיה, עיסוי, טיפול רגשי ועוד - כל מי שמנהל קליניקה ורוצה פחות עבודה ידנית ויותר זמן לטפל.</div></details>
       </div>
     </div>
@@ -718,6 +742,33 @@
         g.scrollLeft=from+dist*e;
         if(i>=steps) clearInterval(g._anim);
       },16);
+    }
+    // Signup links name the site that sent this visitor, so a signup shows its real
+    // origin instead of "klinical.co.il". utm_campaign stays the button's name.
+    (function(){
+      try{
+        var key='klinical_source', src=sessionStorage.getItem(key);
+        if(!src){
+          src=new URLSearchParams(location.search).get('utm_source')||'';
+          if(!src && document.referrer){
+            var host=new URL(document.referrer).hostname.replace(/^www\./,'');
+            if(!/(^|\.)klinical\.co\.il$/.test(host)) src=host;
+          }
+          if(src) sessionStorage.setItem(key,src);
+        }
+        if(!src) return;
+        document.querySelectorAll('a[href*="app.klinical.co.il/signup"]').forEach(function(a){
+          var u=new URL(a.href);
+          u.searchParams.set('utm_source',src);
+          a.href=u.href;
+        });
+      }catch(e){}
+    })();
+    function togglePlanList(btn){
+      var list=document.getElementById(btn.getAttribute('aria-controls'));
+      var open=list.classList.toggle('open');
+      btn.setAttribute('aria-expanded',open?'true':'false');
+      btn.textContent=open?'פחות פרטים':'לכל מה שכלול';
     }
     function toggleMenu(){
       var n=document.getElementById('navLinks'),t=document.querySelector('.menu-toggle');

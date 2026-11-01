@@ -195,6 +195,7 @@ function buildSpecialty(spec, index) {
         url: canonical,
         offers: [
           { "@type": "Offer", name: "קליניקל", price: SITE.priceBasic, priceCurrency: "ILS" },
+          { "@type": "Offer", name: "קליניקל פלוס", price: SITE.pricePlus, priceCurrency: "ILS" },
           { "@type": "Offer", name: "קליניקל מאסטר", price: SITE.pricePro, priceCurrency: "ILS" },
         ],
       },
